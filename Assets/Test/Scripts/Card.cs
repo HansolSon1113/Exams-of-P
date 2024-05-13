@@ -11,6 +11,7 @@ public class Card : MonoBehaviour
 
     public Item item;
     public PRS originPRS;
+    private bool isDragging = false;
 
     public void Setup(Item item)
     {
@@ -27,8 +28,26 @@ public class Card : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other){
+        isDragging = false;
         GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
-        GameObject.Find("Card Manager").GetComponent<CardManager>().willDestroyCard(this);
-        Destroy(this.gameObject);
+        var cardMan = GameObject.Find("Card Manager");
+        cardMan.GetComponent<CardManager>().clearCards(this);
+        this.transform.rotation = Quaternion.Euler(0, 0, 0);
+        this.transform.position = other.transform.position;
+        Destroy(other);
+    }
+
+    private void OnMouseDown()
+    {
+        isDragging = true;
+    }
+    private void OnMouseDrag()
+    {
+        if(isDragging)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 objPosition = new Vector2(mousePosition.x, mousePosition.y);
+            transform.position = mousePosition;
+        }
     }
 }

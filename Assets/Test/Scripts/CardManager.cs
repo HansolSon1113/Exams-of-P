@@ -14,6 +14,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform leftAlignment;
     [SerializeField] Transform rightAlignment;
     List<Item> itemBuffer;
+    private int targetCount = 0;
+    public GameObject target;
 
     void Start()
     {
@@ -22,6 +24,27 @@ public class CardManager : MonoBehaviour
 
     public void draw(){
         AddCard();
+    }
+
+    public void draw5(){
+        targetCount++;
+        if(targetCount > 7){
+            targetCount -= 7;
+        }
+        for(int i = 0; i < 5; i++)
+        {
+            AddCard();
+        }
+        var newTarget = Instantiate(target, new Vector3(-8+2*targetCount, -3, 0), Utils.QI);
+    }
+
+    public void clearCards(Card donotDestroy){
+        for(int i = 0; i < cards.Count; i++)
+        {
+            if(cards[i] != donotDestroy)
+                Destroy(cards[i].gameObject);
+        }
+        cards.Clear();
     }
 
     void SetupItemBuffer()
