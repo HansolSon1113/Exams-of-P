@@ -38,6 +38,7 @@ public class CardManager : MonoBehaviour
         var newTarget = Instantiate(target, new Vector3(-8+2*targetCount, -3, 0), Utils.QI);
     }
 
+    //donotDestroy(카드)를 제외한 모든 카드 삭제
     public void clearCards(Card donotDestroy){
         for(int i = 0; i < cards.Count; i++)
         {
@@ -108,12 +109,15 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    //카드 한개 삭제
+    /*
     public void willDestroyCard(Card card)
     {
         cards.Remove(card);
         SetOriginOrder();
         CardAlignment();
     }
+    */
 
     List<PRS> RoundAlignment(Transform leftAlignment, Transform rightAlignment, int objCount, float height, Vector3 scale)
     {

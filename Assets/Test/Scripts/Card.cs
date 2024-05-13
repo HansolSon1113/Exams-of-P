@@ -20,6 +20,11 @@ public class Card : MonoBehaviour
         nameText.text = this.item.name;
     }
 
+    private void Start()
+    {
+        GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
+    }
+
     public void MoveTransform(PRS prs, float time)
     {
         transform.DOMove(prs.pos, time);
