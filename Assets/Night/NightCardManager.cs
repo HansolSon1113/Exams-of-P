@@ -24,6 +24,11 @@ public class NightCardManager : MonoBehaviour
     public const int PLAY = 3;
     public List<Card> selectedCards;
     public int currentShowing;
+    [SerializeField] GameObject leftScroller;
+    [SerializeField] GameObject rightScroller;
+
+    public bool isLeftScrollEnabled = false;
+    public bool isRightScrollEnabled = false;
 
     void Start(){
         QualitySettings.vSyncCount = 1;
@@ -32,11 +37,35 @@ public class NightCardManager : MonoBehaviour
     }
 
     public void draw(int type){
+        isLeftScrollEnabled = false;
+        isRightScrollEnabled = false;
         if(currentShowing != type)
         {
             clearCards();
             currentShowing = type;
             AddCard(type);
+            if(cards.Count > 6){
+                isRightScrollEnabled = true;
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if(NightCardManager.Inst.isLeftScrollEnabled){
+            leftScroller.SetActive(true);
+        }
+        else
+        {
+            leftScroller.SetActive(false);
+        }
+
+        if(NightCardManager.Inst.isRightScrollEnabled){
+            rightScroller.SetActive(true);
+        }
+        else
+        {
+            rightScroller.SetActive(false);
         }
     }
 
@@ -54,8 +83,6 @@ public class NightCardManager : MonoBehaviour
 
     public void ScrollCards(float scrollDelta)
     {
-        if(cards[0].originPRS.pos.x + scrollDelta > 6 || cards[cards.Count - 1].originPRS.pos.x + scrollDelta < -6)
-            return;
         for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
@@ -63,7 +90,26 @@ public class NightCardManager : MonoBehaviour
             targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 1.9f);
             targetCard.MoveTransform(targetCard.originPRS, 0.1f);
         }
-
+        if(cards.Count > 6){
+            if(cards[cards.Count-1].originPRS.pos.x <= 8){
+                isRightScrollEnabled = false;
+            }
+            else
+            {
+                isRightScrollEnabled = true;
+            }
+            if(cards[0].originPRS.pos.x >= -8){
+                isLeftScrollEnabled = false;
+            }
+            else
+            {
+                isLeftScrollEnabled = true;
+            }
+        }
+        else{
+            isLeftScrollEnabled = false;
+            isRightScrollEnabled = false;
+        }
     }
 
     //selectedCards 제외하고 삭제
@@ -99,11 +145,34 @@ public class NightCardManager : MonoBehaviour
         Destroy(target3);
     }
 
+    private void addBlank(){
+        for(int i = 0;i < itemSO.items.Length; i++){
+            if(itemSO.items[i].type == 4) {
+                var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
+                var card = cardObject.GetComponent<Card>();
+                card.Setup(itemSO.items[i]);
+                cards.Add(card);
+                break;
+            }
+        }
+    }
+
+    public void isUsed(Card card)
+    {
+        for(int i = 0; i < itemSO.items.Length; i++)
+        {
+            if(card.item.name == itemSO.items[i].name)
+            {
+                itemSO.items[i].used = true;
+            }
+        }
+    }
+
     void AddCard(int type)
     {
         for(int i = 0; i < itemSO.items.Length; i++)
         {
-            if(itemSO.items[i].type == type)
+            if(itemSO.items[i].type == type && itemSO.items[i].used == false)
             {
                 if (cardManager != null && cardManager.position != null)
                 {
@@ -113,6 +182,13 @@ public class NightCardManager : MonoBehaviour
                     cards.Add(card);
                 }
             }
+            else if(itemSO.items[i].type == type && itemSO.items[i].used == true)
+            {
+                addBlank();
+            }
+        }
+        while(cards.Count%6 != 0){
+            addBlank();
         }
         SetOriginOrder();
         CardAlignment();
@@ -134,24 +210,10 @@ public class NightCardManager : MonoBehaviour
         {
             var targetCard = cards[i];
             Vector3 alignment;
-            if(cards.Count == 1){
-                alignment = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0);
-            } 
-            else if(cards.Count == 2){
-                alignment = Vector3.Lerp(new Vector3(-2, 0, 0), new Vector3(2, 0, 0), (float)i / (cards.Count - 1));
-            } 
-            else if(cards.Count == 3){
-                alignment = Vector3.Lerp(new Vector3(-4, 0, 0), new Vector3(4, 0, 0), (float)i / (cards.Count - 1));
-            }
-            else if(cards.Count == 4){
-                alignment = Vector3.Lerp(new Vector3(-6, 0, 0), new Vector3(6, 0, 0), (float)i / (cards.Count - 1));
-            }
-            else{
-                alignment = Vector3.Lerp(new Vector3(-6, 0, 0), new Vector3(10, 0, 0), (float)i / 4);
-            }
+            alignment = new Vector3(-6 + i * 2.4f, 0, 0);
             targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1.9f);
             targetCard.MoveTransform(targetCard.originPRS, 0.1f);
         }
-    }
+    }    
 }
 

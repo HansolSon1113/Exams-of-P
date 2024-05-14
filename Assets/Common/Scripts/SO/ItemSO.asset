@@ -19,117 +19,144 @@ MonoBehaviour:
     time: 3
     sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: "\uBC1C\uB808\uB9AC\uC548"
     type: 0
     cost: 3
     time: 3
     sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: "\uB124\uC78E\uD074\uB85C\uBC84"
     type: 0
     cost: 3
     time: 3
     sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: "\uB77C\uBCA4\uB354"
     type: 0
     cost: 3
     time: 3
     sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: "\uACA8\uC6B0\uC0B4\uC774"
     type: 0
     cost: 3
     time: 3
     sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: "\uCC9C\uBB38\uD559"
     type: 1
     cost: 2
     time: 2
     sprite: {fileID: 21300000, guid: e5144008d987748a3a4ec0d1b0f70e02, type: 3}
     percent: 0
+    used: 0
   - name: "\uB8EC \uBB38\uC790"
     type: 1
     cost: 2
     time: 2
     sprite: {fileID: 21300000, guid: e5144008d987748a3a4ec0d1b0f70e02, type: 3}
     percent: 0
+    used: 1
   - name: "\uC810\uC220"
     type: 1
     cost: 2
     time: 2
     sprite: {fileID: 21300000, guid: e5144008d987748a3a4ec0d1b0f70e02, type: 3}
     percent: 0
+    used: 1
   - name: "\uB9C8\uBC95"
     type: 1
     cost: 2
     time: 2
     sprite: {fileID: 21300000, guid: e5144008d987748a3a4ec0d1b0f70e02, type: 3}
     percent: 0
+    used: 0
   - name: "\uC124\uAC70\uC9C0"
     type: 2
     cost: 5
     time: 5
     sprite: {fileID: 21300000, guid: 9d4d4bea98f8244c4977801dd0861b58, type: 3}
     percent: 0
+    used: 0
   - name: "\uC11C\uBE59\uD558\uAE30"
     type: 2
     cost: 5
     time: 5
     sprite: {fileID: 21300000, guid: 9d4d4bea98f8244c4977801dd0861b58, type: 3}
     percent: 0
+    used: 0
   - name: "\uD3EC\uC158 \uC81C\uC870"
     type: 2
     cost: 5
     time: 5
     sprite: {fileID: 21300000, guid: 9d4d4bea98f8244c4977801dd0861b58, type: 3}
     percent: 0
+    used: 1
   - name: "\uACE0\uC591\uC774\uB791 \uB180\uAE30"
     type: 3
     cost: -2
     time: 2
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
+    used: 0
   - name: "\uD558\uC774\uD0B9"
     type: 3
     cost: -4
     time: 4
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
+    used: 0
   - name: "\uC1FC\uD551"
     type: 3
     cost: -3
     time: 3
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
+    used: 1
   - name: VR
     type: 3
     cost: -1
     time: 1
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
+    used: 0
   - name: "\uD38D"
     type: 3
     cost: -4
     time: 4
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
+    used: 0
   - name: Test1
     type: 0
     cost: 3
     time: 2
-    sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
+    sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: Test2
     type: 0
     cost: 3
     time: 2
-    sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
+    sprite: {fileID: 21300000, guid: f0a41029c7f4140209250896f55bd523, type: 3}
     percent: 0
+    used: 0
   - name: Test3
     type: 0
     cost: 3
     time: 2
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
+    used: 0
+  - name: Blank
+    type: 4
+    cost: 0
+    time: 0
+    sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    percent: 0
+    used: 0

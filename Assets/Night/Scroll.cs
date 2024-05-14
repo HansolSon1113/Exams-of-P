@@ -7,10 +7,10 @@ public class Scroll : MonoBehaviour
     private void OnMouseDown(){
         float scrollSpeed;
         if(this.gameObject.name == "Scroll Left"){
-            scrollSpeed = 2f;
+            scrollSpeed = 14.4f;
         }
         else{
-            scrollSpeed = -2f;
+            scrollSpeed = -14.4f;
         }
         NightCardManager.Inst.ScrollCards(scrollSpeed);
     }

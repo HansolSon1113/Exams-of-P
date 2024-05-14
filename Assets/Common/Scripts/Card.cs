@@ -11,6 +11,8 @@ public class Card : MonoBehaviour
 
     public Item item;
     public PRS originPRS;
+    private bool isSelected = false;
+    private Vector3 originLocation;
     private bool isDragging = false;
 
     public void Setup(Item item)
@@ -34,25 +36,41 @@ public class Card : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         isDragging = false;
+        isSelected = true;
         NightCardManager.Inst.selectedCards.Add(this);
         NightCardManager.Inst.clearCards();
         NightCardManager.Inst.currentShowing = -1;
+        NightCardManager.Inst.isUsed(this);
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
-        this.transform.position = other.transform.position;
+        this.transform.DOMove(other.transform.position, 0.05f);
         Destroy(other.gameObject);
     }
 
     private void OnMouseDown()
     {
-        isDragging = true;
+        if(this.item.type != 4 && isSelected == false)
+        {
+            isDragging = true;
+            originLocation = this.transform.position;
+        }
     }
+
     private void OnMouseDrag()
     {
         if(isDragging)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 objPosition = new Vector2(mousePosition.x, mousePosition.y);
-            transform.position = mousePosition;
+            this.transform.DOMove(objPosition, 0.01f);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        isDragging = false;
+        if (isSelected == false)
+        {
+            this.transform.DOMove(originLocation, 0.3f);
         }
     }
 }

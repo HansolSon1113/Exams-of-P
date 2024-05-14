@@ -11,6 +11,8 @@ public class Item
     public int time;
     public Sprite sprite;
     public float percent;
+
+    public bool used = false;
 }
 
 [CreateAssetMenu(fileName = "ItemSO", menuName = "Scriptable Object/ItemSO")]
