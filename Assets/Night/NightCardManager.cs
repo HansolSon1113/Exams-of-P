@@ -22,23 +22,26 @@ public class NightCardManager : MonoBehaviour
     public const int LIB = 1;
     public const int WORK = 2;
     public const int PLAY = 3;
-    private bool isShowing = false;
     private float scrollSpeed = 0.1f;
+    public List<Card> selectedCards;
+    public int currentShowing;
 
     void Start(){
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
+        currentShowing = -1;
     }
 
     public void draw(int type){
-        if(isShowing)
+        if(currentShowing != type)
         {
-            clearCards(null);
+            clearCards();
+            currentShowing = type;
+            AddCard(type);
         }
-        AddCard(type);
     }
 
-    void Update()
+    /*void Update()
     {
         Vector3 mousePosition = Input.mousePosition;
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -48,10 +51,12 @@ public class NightCardManager : MonoBehaviour
             float scrollDelta = Input.GetAxis("Mouse X") * scrollSpeed * -1;
             ScrollCards(scrollDelta);
         }
-    }
+    }*/
 
-    void ScrollCards(float scrollDelta)
+    public void ScrollCards(float scrollDelta)
     {
+        if(cards[0].originPRS.pos.x + scrollDelta > 6 || cards[cards.Count - 1].originPRS.pos.x + scrollDelta < -6)
+            return;
         for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
@@ -59,14 +64,24 @@ public class NightCardManager : MonoBehaviour
             targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 1.9f);
             targetCard.MoveTransform(targetCard.originPRS, 0.1f);
         }
+
     }
 
-    //donotDestroy(카드)를 제외한 모든 카드 삭제
-    public void clearCards(Card donotDestroy){
+    //selectedCards 제외하고 삭제
+    public void clearCards(){
+        bool isSel = false;
         for(int i = 0; i < cards.Count; i++)
         {
-            if(cards[i] != donotDestroy)
+            for(int j = 0; j < selectedCards.Count; j++)
+            {
+                if(cards[i] == selectedCards[j])
+                    isSel = true;
+            }
+            if(isSel == false)
+            {
                 Destroy(cards[i].gameObject);
+            }
+            isSel = false;
         }
         cards.Clear();
     }
@@ -106,28 +121,24 @@ public class NightCardManager : MonoBehaviour
         {
             var targetCard = cards[i];
             Vector3 alignment;
-            if(cards.Count == 2){
+            if(cards.Count == 1){
+                alignment = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, 0), 0);
+            } 
+            else if(cards.Count == 2){
                 alignment = Vector3.Lerp(new Vector3(-2, 0, 0), new Vector3(2, 0, 0), (float)i / (cards.Count - 1));
             } 
-            else if(cards.Count <= 4){
+            else if(cards.Count == 3){
                 alignment = Vector3.Lerp(new Vector3(-4, 0, 0), new Vector3(4, 0, 0), (float)i / (cards.Count - 1));
+            }
+            else if(cards.Count == 4){
+                alignment = Vector3.Lerp(new Vector3(-6, 0, 0), new Vector3(6, 0, 0), (float)i / (cards.Count - 1));
             }
             else{
                 alignment = Vector3.Lerp(new Vector3(-6, 0, 0), new Vector3(10, 0, 0), (float)i / 4);
             }
             targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1.9f);
-            targetCard.MoveTransform(targetCard.originPRS, 0.7f);
+            targetCard.MoveTransform(targetCard.originPRS, 0.1f);
         }
     }
-
-    //카드 한개 삭제
-    /*
-    public void willDestroyCard(Card card)
-    {
-        cards.Remove(card);
-        SetOriginOrder();
-        CardAlignment();
-    }
-    */
 }
 

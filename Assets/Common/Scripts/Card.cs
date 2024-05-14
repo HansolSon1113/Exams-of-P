@@ -34,7 +34,8 @@ public class Card : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         isDragging = false;
-        NightCardManager.Inst.clearCards(this);
+        NightCardManager.Inst.selectedCards.Add(this);
+        NightCardManager.Inst.clearCards();
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         this.transform.position = other.transform.position;
         Destroy(other.gameObject);
