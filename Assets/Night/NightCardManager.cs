@@ -22,7 +22,6 @@ public class NightCardManager : MonoBehaviour
     public const int LIB = 1;
     public const int WORK = 2;
     public const int PLAY = 3;
-    private float scrollSpeed = 0.1f;
     public List<Card> selectedCards;
     public int currentShowing;
 
