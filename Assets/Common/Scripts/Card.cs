@@ -36,6 +36,7 @@ public class Card : MonoBehaviour
         isDragging = false;
         NightCardManager.Inst.selectedCards.Add(this);
         NightCardManager.Inst.clearCards();
+        NightCardManager.Inst.currentShowing = -1;
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         this.transform.position = other.transform.position;
         Destroy(other.gameObject);

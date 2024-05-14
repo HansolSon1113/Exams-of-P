@@ -85,6 +85,20 @@ public class NightCardManager : MonoBehaviour
         cards.Clear();
     }
 
+
+    public void END(){
+        clearCards();
+        for(int i = 0; i < selectedCards.Count; i++)
+        {
+            Destroy(selectedCards[i].gameObject);
+        }
+        selectedCards.Clear();
+        cards.Clear();
+        Destroy(target1);
+        Destroy(target2);
+        Destroy(target3);
+    }
+
     void AddCard(int type)
     {
         for(int i = 0; i < itemSO.items.Length; i++)

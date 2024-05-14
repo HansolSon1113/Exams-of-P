@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
         if (timerObj.transform.localScale.x <= 0)
         {
             CancelInvoke("timer");
+            NightCardManager.Inst.END();
             nightEndPanel.SetActive(true);
             Time.timeScale = 0;
         }
