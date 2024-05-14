@@ -19,6 +19,8 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
         SetupItemBuffer();
     }
 
@@ -50,7 +52,7 @@ public class CardManager : MonoBehaviour
 
     void SetupItemBuffer()
     {
-        itemBuffer = new List<Item>(10);
+        itemBuffer = new List<Item>(100);
         for(int i = 0; i < itemSO.items.Length; i++)
         {
             itemBuffer.Add(itemSO.items[i]);

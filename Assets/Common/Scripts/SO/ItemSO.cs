@@ -6,7 +6,7 @@ using UnityEngine;
 public class Item
 {
     public string name;
-    public int type; //0: Study, 1: Work, 2: Play
+    public int type; //0: Major, 1: Liberal, 2: Work, 3: Play
     public int cost;
     public int time;
     public Sprite sprite;

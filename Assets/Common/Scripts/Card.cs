@@ -22,7 +22,7 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
+        //GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
     }
 
     public void MoveTransform(PRS prs, float time)
@@ -34,12 +34,10 @@ public class Card : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         isDragging = false;
-        GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
-        var cardMan = GameObject.Find("Card Manager");
-        cardMan.GetComponent<CardManager>().clearCards(this);
+        NightCardManager.Inst.clearCards(this);
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         this.transform.position = other.transform.position;
-        Destroy(other);
+        Destroy(other.gameObject);
     }
 
     private void OnMouseDown()
