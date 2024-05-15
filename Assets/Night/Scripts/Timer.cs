@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("timer", 0, 0.01f);
+        InvokeRepeating("timer", 0, 0.0185f);
     }
 
     private void timer()

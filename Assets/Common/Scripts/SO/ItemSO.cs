@@ -13,6 +13,7 @@ public class Item
     public float percent;
 
     public bool used = false;
+    public bool pass = false;
 }
 
 [CreateAssetMenu(fileName = "ItemSO", menuName = "Scriptable Object/ItemSO")]

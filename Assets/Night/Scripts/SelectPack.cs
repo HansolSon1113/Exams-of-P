@@ -8,19 +8,19 @@ public class PackClicked : MonoBehaviour
     {
         if (this.gameObject.name == "Major Pack")
         {
-            NightCardManager.Inst.draw(NightCardManager.MAJOR);
+            NightCardManager.Inst.showCards(NightCardManager.MAJOR);
         }
         else if (this.gameObject.name == "Liberal Pack")
         {
-            NightCardManager.Inst.draw(NightCardManager.LIB);
+            NightCardManager.Inst.showCards(NightCardManager.LIB);
         }
         else if (this.gameObject.name == "Work Pack")
         {
-            NightCardManager.Inst.draw(NightCardManager.WORK);
+            NightCardManager.Inst.showCards(NightCardManager.WORK);
         }
         else if (this.gameObject.name == "Play Pack")
         {
-            NightCardManager.Inst.draw(NightCardManager.PLAY);
+            NightCardManager.Inst.showCards(NightCardManager.PLAY);
         }
     }
 }
