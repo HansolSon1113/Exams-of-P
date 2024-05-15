@@ -48,7 +48,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(this.item.type != 4 && isSelected == false)
+        if(isSelected == false)
         {
             isDragging = true;
             originLocation = this.transform.position;
@@ -57,7 +57,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if(isDragging)
+        if(isDragging && this.item.type != 4)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 objPosition = new Vector2(mousePosition.x, mousePosition.y);

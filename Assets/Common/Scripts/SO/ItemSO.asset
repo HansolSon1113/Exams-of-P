@@ -61,14 +61,14 @@ MonoBehaviour:
     time: 2
     sprite: {fileID: 21300000, guid: e5144008d987748a3a4ec0d1b0f70e02, type: 3}
     percent: 0
-    used: 1
+    used: 0
   - name: "\uC810\uC220"
     type: 1
     cost: 2
     time: 2
     sprite: {fileID: 21300000, guid: e5144008d987748a3a4ec0d1b0f70e02, type: 3}
     percent: 0
-    used: 1
+    used: 0
   - name: "\uB9C8\uBC95"
     type: 1
     cost: 2
@@ -96,7 +96,7 @@ MonoBehaviour:
     time: 5
     sprite: {fileID: 21300000, guid: 9d4d4bea98f8244c4977801dd0861b58, type: 3}
     percent: 0
-    used: 1
+    used: 0
   - name: "\uACE0\uC591\uC774\uB791 \uB180\uAE30"
     type: 3
     cost: -2
@@ -117,7 +117,7 @@ MonoBehaviour:
     time: 3
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
-    used: 1
+    used: 0
   - name: VR
     type: 3
     cost: -1
@@ -153,10 +153,10 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 7310f50190d1e46afa1d70f3cf7b6d1a, type: 3}
     percent: 0
     used: 0
-  - name: Blank
+  - name: 
     type: 4
     cost: 0
     time: 0
-    sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    sprite: {fileID: 0}
     percent: 0
     used: 0
