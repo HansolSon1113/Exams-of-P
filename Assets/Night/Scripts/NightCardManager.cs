@@ -22,9 +22,11 @@ public class NightCardManager : MonoBehaviour
     public const int WORK = 2;
     public const int PLAY = 3;
     public List<Card> selectedCards;
+    private List<bool> originUsed = new List<bool>();
     public int currentShowing;
     [SerializeField] GameObject leftScroller;
     [SerializeField] GameObject rightScroller;
+    public GameObject nightEndPanel;
 
     public bool isLeftScrollEnabled = false;
     public bool isRightScrollEnabled = false;
@@ -36,6 +38,10 @@ public class NightCardManager : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             selectedCards.Add(null);
+        }
+        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        {
+            originUsed.Add(itemSO.items[i].used);
         }
     }
 
@@ -135,15 +141,25 @@ public class NightCardManager : MonoBehaviour
         int passCount = 0;
         for(int i = 0; i < itemSO.items.Length; i++)
         {
+            itemSO.items[i].used = false;
             for(int j = 0; j < 3; j++)
             {
-                if(selectedCards[j] != null)
+                try
                 {
-                    if(selectedCards[j].item.name == itemSO.items[i].name)
+                    if(selectedCards[j] != null)
                     {
-                        itemSO.items[i].pass = true;
-                        passCount++;
+                        if(selectedCards[j].item.name == itemSO.items[i].name)
+                        {
+                            itemSO.items[i].pass = true;
+                            passCount++;
+                            Debug.Log(passCount);
+                            break;
+                        }
                     }
+                }
+                catch
+                {
+                    continue;
                 }
             }
         }
@@ -162,9 +178,16 @@ public class NightCardManager : MonoBehaviour
         clearCards();
         for(int i = 0; i < 3; i++)
         {
-            if(selectedCards[i] != null)
+            try
             {
-                Destroy(selectedCards[i].gameObject);
+                if(selectedCards[i] != null)
+                {
+                    Destroy(selectedCards[i].gameObject);
+                }
+            }
+            catch
+            {
+                continue;
             }
         }
         selectedCards.Clear();
@@ -172,6 +195,11 @@ public class NightCardManager : MonoBehaviour
         Destroy(target1);
         Destroy(target2);
         Destroy(target3);
+
+        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        {
+            itemSO.items[i].used = originUsed[i];
+        }
     }
 
     //빈칸 추가

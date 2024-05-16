@@ -25,7 +25,10 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        //GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
+        if(SceneManager.GetActiveScene().name == "TestScene")
+        {
+            GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
+        }
     }
 
     public void MoveTransform(PRS prs, float time)
@@ -62,7 +65,7 @@ public class Card : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (SceneManager.GetActiveScene().name == "Night")
+        if(SceneManager.GetActiveScene().name == "Night")
         {
             isDragging = false;
             isSelected = true;
@@ -121,6 +124,8 @@ public class Card : MonoBehaviour
             NightCardManager.Inst.clearCards();
             NightCardManager.Inst.currentShowing = -1;
             NightCardManager.Inst.isUsed(this);
+            NightCardManager.Inst.isLeftScrollEnabled = false;
+            NightCardManager.Inst.isRightScrollEnabled = false;
         }
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
         this.transform.DOMove(other.transform.position, 0.05f);

@@ -7,6 +7,7 @@ public class NextDay : MonoBehaviour
 {
     public void nextDay(){
         Time.timeScale = 1;
-        SceneManager.LoadScene("Day");
+        NightCardManager.Inst.nightEndPanel.SetActive(true);
+        SceneManager.LoadScene("TestScene");
     }
 }

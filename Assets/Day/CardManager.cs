@@ -13,31 +13,23 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<Card> cards;
     [SerializeField] Transform leftAlignment;
     [SerializeField] Transform rightAlignment;
-    List<Item> itemBuffer;
-    private int targetCount = 0;
+    [SerializeField] GameObject endPanel;
+    [SerializeField] GameObject MP;
+    [SerializeField] GameObject gameOverPanel;
     public GameObject target;
+    private int passCount = 0;
+    private int cardCount = 0;
+    private int unusedCount = 0;
 
     void Start()
     {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
-        SetupItemBuffer();
+        MP.transform.localScale = new Vector3(CostManager.MP/10, 0.5f, 1);
     }
 
     public void draw(){
         AddCard();
-    }
-
-    public void draw5(){
-        targetCount++;
-        if(targetCount > 7){
-            targetCount -= 7;
-        }
-        for(int i = 0; i < 5; i++)
-        {
-            AddCard();
-        }
-        var newTarget = Instantiate(target, new Vector3(-8+2*targetCount, -3, 0), Utils.QI);
     }
 
     //donotDestroy(카드)를 제외한 모든 카드 삭제
@@ -50,43 +42,99 @@ public class CardManager : MonoBehaviour
         cards.Clear();
     }
 
-    void SetupItemBuffer()
+    public void isUsed(Card card)
     {
-        itemBuffer = new List<Item>(100);
         for(int i = 0; i < itemSO.items.Length; i++)
         {
-            itemBuffer.Add(itemSO.items[i]);
+            if(card.item.name == itemSO.items[i].name)
+            {
+                itemSO.items[i].used = true;
+            }
         }
-        
-        for(int i = 0; i < itemBuffer.Count; i++)
-        {
-            int randomIndex = Random.Range(i, itemBuffer.Count);
-            Item temp = itemBuffer[i];
-            itemBuffer[i] = itemBuffer[randomIndex];
-            itemBuffer[randomIndex] = temp;
-        }
-    }
-
-    public Item PopItem()
-    {
-        if(itemBuffer.Count == 0)
-        {
-            SetupItemBuffer();
-        }
-
-        Item item = itemBuffer[0];
-        itemBuffer.RemoveAt(0);
-        return item;
     }
 
     void AddCard()
     {
-        var cardObject = Instantiate(cardPrefab, cardManager.transform.position, Utils.QI);
-        var card = cardObject.GetComponent<Card>();
-        card.Setup(PopItem());
-        cards.Add(card);
-        SetOriginOrder();
-        CardAlignment();
+        if(cardCount == 7)
+        {
+            END();
+            clearCards(null);
+            Time.timeScale = 0;
+            endPanel.SetActive(true);
+            return;
+        }
+        for(int i = 0; i < itemSO.items.Length-1; i++)
+        {
+            if(itemSO.items[i].used == false)
+            {
+                unusedCount++;
+            }
+        }
+        if(CostManager.drawedCardCount < itemSO.items.Length-1 && unusedCount > 0)
+        {
+            int randIndex;
+            do{
+                randIndex = Random.Range(0, itemSO.items.Length-1);
+            } while(itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4);
+            if(itemSO.items[randIndex].pass == true)
+            {
+                passCount++;
+            }
+            cardCount++;
+
+            if((cardCount == 5 && passCount < 1 || cardCount == 6 && passCount < 2 || cardCount == 7 && passCount < 3))
+            {
+                do{
+                    randIndex = Random.Range(0, itemSO.items.Length-1);
+                } while(itemSO.items[randIndex].used == true || itemSO.items[randIndex].pass == false);
+                passCount++;
+            }
+
+            var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
+            var card = cardObject.GetComponent<Card>();
+            card.Setup(itemSO.items[randIndex]);
+            cards.Add(card);
+            isUsed(card);
+
+            SetOriginOrder();
+            CardAlignment();
+        
+            switch(itemSO.items[randIndex].type)
+            {
+                case 0:
+                    CostManager.drawedMajor++;
+                    break;
+                case 1:
+                    CostManager.drawedLib++;
+                    break;
+                case 2:
+                    CostManager.drawedWork++;
+                    break;
+                case 3:
+                    CostManager.drawedPlay++;
+                    break;
+            }
+            CostManager.drawedCardCount++;
+            CostManager.MP -= itemSO.items[randIndex].cost;
+
+            MP.transform.localScale = new Vector3(CostManager.MP/ 10f, 0.5f, 1f);
+            if (MP.transform.localScale.x <= 0f)
+            {
+                END();
+                clearCards(null);
+                Time.timeScale = 0f;
+                gameOverPanel.SetActive(true);
+            }
+        }
+    }
+
+    public void END()
+    {
+        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        {
+            itemSO.items[i].pass = false;
+        }
+        Debug.Log($"Major: {CostManager.drawedMajor} Lib: {CostManager.drawedLib} Work: {CostManager.drawedWork} Play: {CostManager.drawedPlay}");
     }
 
     public void SetOriginOrder()
