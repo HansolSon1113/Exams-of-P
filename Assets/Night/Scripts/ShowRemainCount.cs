@@ -19,6 +19,7 @@ public class ShowRemainCount : MonoBehaviour
 
     private void setCounts(){
         for(int i = 0; i < itemSO.items.Length; i++){
+            if(itemSO.items[i].used) continue;
             switch(itemSO.items[i].type){
                 case 0:
                     majorCount++;
