@@ -134,8 +134,6 @@ public class Card : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = true;
-        if(isSelected)
-            isSelected = false;
         originLocation = this.transform.position;
     }
 

@@ -178,16 +178,9 @@ public class NightCardManager : MonoBehaviour
         clearCards();
         for(int i = 0; i < 3; i++)
         {
-            try
+            if(selectedCards[i] != null)
             {
-                if(selectedCards[i] != null)
-                {
-                    Destroy(selectedCards[i].gameObject);
-                }
-            }
-            catch
-            {
-                continue;
+                Destroy(selectedCards[i].gameObject);
             }
         }
         selectedCards.Clear();
