@@ -16,6 +16,7 @@ public class Timer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            CancelInvoke("timer");
             timerObj.SetActive(false);
             NightCardManager.Inst.END();
             NightCardManager.Inst.nightEndPanel.SetActive(true);
@@ -30,6 +31,7 @@ public class Timer : MonoBehaviour
         if (timerObj.transform.localScale.x <= 0)
         {
             CancelInvoke("timer");
+            NightCardManager.Inst.END();
             nightEndPanel.SetActive(true);
             Time.timeScale = 0;
         }
