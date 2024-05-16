@@ -97,7 +97,7 @@ public class NightCardManager : MonoBehaviour
         {
             var targetCard = cards[i];
             Vector3 newPosition = targetCard.originPRS.pos + new Vector3(scrollDelta, 0, 0);
-            targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 1.9f);
+            targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 1f);
             targetCard.MoveTransform(targetCard.originPRS, 0.1f);
             hidCard(targetCard.originPRS, targetCard);
         }
@@ -279,7 +279,7 @@ public class NightCardManager : MonoBehaviour
             var targetCard = cards[i];
             Vector3 alignment;
             alignment = new Vector3(-6 + i * 2.4f, 0, 0);
-            targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1.9f);
+            targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1f);
             targetCard.MoveTransform(targetCard.originPRS, 0.1f);
             hidCard(targetCard.originPRS, targetCard);
         }

@@ -8,7 +8,6 @@ using DG.Tweening;
 public class Card : MonoBehaviour
 {
     [SerializeField] SpriteRenderer card;
-    [SerializeField] TMP_Text nameText;
 
     public Item item;
     public PRS originPRS;
@@ -20,7 +19,6 @@ public class Card : MonoBehaviour
     {
         this.item = item;
         this.card.sprite = this.item.sprite;
-        nameText.text = this.item.name;
     }
 
     private void Start()
