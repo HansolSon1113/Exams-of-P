@@ -12,6 +12,7 @@ public class Initialize : MonoBehaviour
             itemSO.items[i].used = false;
             itemSO.items[i].pass = false;
         }
+        CostManager.passedCards = new List<Item>();
         CostManager.MP = 100;
         CostManager.drawedCardCount = 0;
         CostManager.drawedMajor = 0;

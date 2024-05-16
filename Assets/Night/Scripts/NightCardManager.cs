@@ -148,8 +148,9 @@ public class NightCardManager : MonoBehaviour
                 {
                     if(selectedCards[j] != null)
                     {
-                        if(selectedCards[j].item.name == itemSO.items[i].name)
+                        if(selectedCards[j].item.name == itemSO.items[i].name && selectedCards[j].item.used == false)
                         {
+                            CostManager.passedCards.Add(selectedCards[j].item);
                             itemSO.items[i].pass = true;
                             passCount++;
                             Debug.Log(passCount);
@@ -166,8 +167,9 @@ public class NightCardManager : MonoBehaviour
         for(int i = passCount; i < 3; i++)
         {
             var randIndex = Random.Range(0, itemSO.items.Length - 1);
-            if(itemSO.items[randIndex].pass == false)
+            if(itemSO.items[randIndex].pass == false && itemSO.items[randIndex].used == false)
             {
+                CostManager.passedCards.Add(itemSO.items[randIndex]);
                 itemSO.items[randIndex].pass = true;
             }
             else

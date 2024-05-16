@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CardManager : MonoBehaviour
 {
@@ -15,11 +16,9 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform rightAlignment;
     [SerializeField] GameObject endPanel;
     [SerializeField] GameObject MP;
-    [SerializeField] GameObject gameOverPanel;
     public GameObject target;
     private int passCount = 0;
     private int cardCount = 0;
-    private int unusedCount = 0;
 
     void Start()
     {
@@ -63,14 +62,7 @@ public class CardManager : MonoBehaviour
             endPanel.SetActive(true);
             return;
         }
-        for(int i = 0; i < itemSO.items.Length-1; i++)
-        {
-            if(itemSO.items[i].used == false)
-            {
-                unusedCount++;
-            }
-        }
-        if(CostManager.drawedCardCount < itemSO.items.Length-1 && unusedCount > 0)
+        if(CostManager.drawedCardCount < itemSO.items.Length-1)
         {
             int randIndex;
             do{
@@ -86,7 +78,7 @@ public class CardManager : MonoBehaviour
             {
                 do{
                     randIndex = Random.Range(0, itemSO.items.Length-1);
-                } while(itemSO.items[randIndex].used == true || itemSO.items[randIndex].pass == false);
+                } while(!CostManager.passedCards.Contains(itemSO.items[randIndex]));
                 passCount++;
             }
 
@@ -115,7 +107,11 @@ public class CardManager : MonoBehaviour
                     break;
             }
             CostManager.drawedCardCount++;
-            CostManager.MP -= itemSO.items[randIndex].cost;
+            Debug.Log(CostManager.drawedCardCount);
+            if(CostManager.MP - itemSO.items[randIndex].cost <= 100)
+                CostManager.MP -= itemSO.items[randIndex].cost;
+            else
+                CostManager.MP = 100;
 
             MP.transform.localScale = new Vector3(CostManager.MP/ 10f, 0.5f, 1f);
             if (MP.transform.localScale.x <= 0f)
@@ -123,18 +119,25 @@ public class CardManager : MonoBehaviour
                 END();
                 clearCards(null);
                 Time.timeScale = 0f;
-                gameOverPanel.SetActive(true);
+                SceneManager.LoadScene("Ending");
             }
+        }
+        else
+        {
+            END();
+            clearCards(null);
+            Time.timeScale = 0f;
+            SceneManager.LoadScene("Ending");
         }
     }
 
     public void END()
     {
+        CostManager.passedCards.Clear();
         for(int i = 0; i < itemSO.items.Length - 1; i++)
         {
             itemSO.items[i].pass = false;
         }
-        Debug.Log($"Major: {CostManager.drawedMajor} Lib: {CostManager.drawedLib} Work: {CostManager.drawedWork} Play: {CostManager.drawedPlay}");
     }
 
     public void SetOriginOrder()

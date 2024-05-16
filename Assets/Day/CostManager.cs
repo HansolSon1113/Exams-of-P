@@ -11,4 +11,5 @@ public static class CostManager
     public static int drawedPlay;
     public static int MP;
     public static float lateTime = 0;
+    public static List<Item> passedCards;
 }
