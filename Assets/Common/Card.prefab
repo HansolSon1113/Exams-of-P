@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7880434111155524487}
   - component: {fileID: 9184356090331752395}
   - component: {fileID: 3006316590124430417}
-  - component: {fileID: 6416276615460447135}
   - component: {fileID: 4798487885446299895}
+  - component: {fileID: 6092881938813465366}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: -1778399357
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 237868925, guid: 213a516cbc5364bf285e515c53c81988, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.36, y: 4.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,33 @@ MonoBehaviour:
   - {fileID: 9184356090331752395}
   frontRenderers: []
   sortingLayerName: Cards
---- !u!61 &6416276615460447135
+--- !u!114 &4798487885446299895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094357769642855669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d602253aa6d6403180ba729e8c7f242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 9184356090331752395}
+  item:
+    name: 
+    type: 0
+    cost: 0
+    time: 0
+    sprite: {fileID: 0}
+    percent: 0
+    used: 0
+    pass: 0
+  originPRS:
+    pos: {x: 0, y: 0, z: 0}
+    rot: {x: 0, y: 0, z: 0, w: 0}
+    scale: {x: 0, y: 0, z: 0}
+--- !u!61 &6092881938813465366
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,42 +161,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.033975482, y: -0.0135730505}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3.36, y: 4.41}
+    newSize: {x: 3.36, y: 4.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.8952525, y: 3.8417761}
   m_EdgeRadius: 0
---- !u!114 &4798487885446299895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3094357769642855669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d602253aa6d6403180ba729e8c7f242, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  card: {fileID: 9184356090331752395}
-  item:
-    name: 
-    type: 0
-    cost: 0
-    time: 0
-    sprite: {fileID: 0}
-    percent: 0
-    used: 0
-    pass: 0
-  originPRS:
-    pos: {x: 0, y: 0, z: 0}
-    rot: {x: 0, y: 0, z: 0, w: 0}
-    scale: {x: 0, y: 0, z: 0}

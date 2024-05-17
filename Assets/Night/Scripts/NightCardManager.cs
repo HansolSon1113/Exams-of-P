@@ -280,7 +280,7 @@ public class NightCardManager : MonoBehaviour
             Vector3 alignment;
             alignment = new Vector3(-6 + i * 2.4f, 0, 0);
             targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1f);
-            targetCard.MoveTransform(targetCard.originPRS, 0.1f);
+            targetCard.MoveTransform(targetCard.originPRS, 0.2f);
             hidCard(targetCard.originPRS, targetCard);
         }
     }    

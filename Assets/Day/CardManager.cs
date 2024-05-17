@@ -16,19 +16,32 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform rightAlignment;
     [SerializeField] GameObject endPanel;
     [SerializeField] GameObject MP;
+    [SerializeField] GameObject burstPanel;
     public GameObject target;
     private int passCount = 0;
     private int cardCount = 0;
+    public float usedTime;
 
     void Start()
     {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
-        MP.transform.localScale = new Vector3(CostManager.MP/10, 0.5f, 1);
+        MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1);
     }
 
     public void draw(){
-        AddCard();
+        if(cardCount == 7 || usedTime > 24f - CostManager.startTime)
+        {
+            burstPanel.SetActive(false);
+            END();
+            clearCards(null);
+            Time.timeScale = 0;
+            endPanel.SetActive(true);
+            return;
+        }
+        else{
+            AddCard();
+        }
     }
 
     //donotDestroy(카드)를 제외한 모든 카드 삭제
@@ -52,16 +65,19 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    public void unUsed(Card card)
+    {
+        for(int i = 0; i < itemSO.items.Length; i++)
+        {
+            if(card.item.name == itemSO.items[i].name)
+            {
+                itemSO.items[i].used = false;
+            }
+        }
+    }
+
     void AddCard()
     {
-        if(cardCount == 7)
-        {
-            END();
-            clearCards(null);
-            Time.timeScale = 0;
-            endPanel.SetActive(true);
-            return;
-        }
         if(CostManager.drawedCardCount < itemSO.items.Length-1)
         {
             int randIndex;
@@ -81,39 +97,48 @@ public class CardManager : MonoBehaviour
                 } while(!CostManager.passedCards.Contains(itemSO.items[randIndex]));
                 passCount++;
             }
-
-            var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
-            var card = cardObject.GetComponent<Card>();
-            card.Setup(itemSO.items[randIndex]);
-            cards.Add(card);
-            isUsed(card);
-
-            SetOriginOrder();
-            CardAlignment();
-        
-            switch(itemSO.items[randIndex].type)
+            if(usedTime <= 24f - CostManager.startTime)
             {
-                case 0:
-                    CostManager.drawedMajor++;
-                    break;
-                case 1:
-                    CostManager.drawedLib++;
-                    break;
-                case 2:
-                    CostManager.drawedWork++;
-                    break;
-                case 3:
-                    CostManager.drawedPlay++;
-                    break;
+                usedTime += itemSO.items[randIndex].time;
+                var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
+                var card = cardObject.GetComponent<Card>();
+                card.Setup(itemSO.items[randIndex]);
+                cards.Add(card);
+                if(usedTime > 24f - CostManager.startTime)
+                {
+                    burstPanel.SetActive(true);
+                }
+                else
+                {
+                    isUsed(card);
+                }
+
+                SetOriginOrder();
+                CardAlignment();
+            
+                switch(itemSO.items[randIndex].type)
+                {
+                    case 0:
+                        CostManager.drawedMajor++;
+                        break;
+                    case 1:
+                        CostManager.drawedLib++;
+                        break;
+                    case 2:
+                        CostManager.drawedWork++;
+                        break;
+                    case 3:
+                        CostManager.drawedPlay++;
+                        break;
+                }
+                CostManager.drawedCardCount++;
+                Debug.Log(CostManager.drawedCardCount);
             }
-            CostManager.drawedCardCount++;
-            Debug.Log(CostManager.drawedCardCount);
             if(CostManager.MP - itemSO.items[randIndex].cost <= 100)
                 CostManager.MP -= itemSO.items[randIndex].cost;
             else
                 CostManager.MP = 100;
-
-            MP.transform.localScale = new Vector3(CostManager.MP/ 10f, 0.5f, 1f);
+            MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1f);
             if (MP.transform.localScale.x <= 0f)
             {
                 END();
@@ -137,6 +162,14 @@ public class CardManager : MonoBehaviour
         for(int i = 0; i < itemSO.items.Length - 1; i++)
         {
             itemSO.items[i].pass = false;
+        }
+        if(usedTime <= 24f - CostManager.startTime)
+        {
+            CostManager.startTime = 6f;
+        }
+        else
+        {
+            CostManager.startTime = 8f;
         }
     }
 

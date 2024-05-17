@@ -19,6 +19,8 @@ public class Initialize : MonoBehaviour
         CostManager.drawedLib = 0;
         CostManager.drawedWork = 0;
         CostManager.drawedPlay = 0;
+        CostManager.dayCount = 0;
+        CostManager.startTime = 6f;
         SceneManager.LoadScene("Night");
     }
 }

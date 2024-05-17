@@ -9,6 +9,11 @@ public class Clock : MonoBehaviour
     private bool isRotating = false;
     private List<float> waitList = new List<float>();
 
+    private void Start()
+    {
+        HourHand.transform.eulerAngles = new Vector3(0, 0, 360 - CostManager.startTime * 15);
+    }
+
     private void Update()
     {
         if(waitList.Count > 0 && isRotating == false)
