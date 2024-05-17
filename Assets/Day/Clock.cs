@@ -9,6 +9,9 @@ public class Clock : MonoBehaviour
     private bool isRotating = false;
     private List<float> waitList = new List<float>();
 
+    // 회전 속도 조절
+    public float power = 4f;
+
     private void Start()
     {
         HourHand.transform.eulerAngles = new Vector3(0, 0, 360 - CostManager.startTime * 15);
@@ -40,12 +43,12 @@ public class Clock : MonoBehaviour
         isRotating = true;
         float targetRot = HourHand.transform.eulerAngles.z - 15*targetTime;
         float startTime = Time.time;
-        float endTime = startTime + targetTime;
+        float endTime = startTime + (targetTime / power);
 
         while (Time.time < endTime)
         {
-            HourHand.transform.Rotate(0, 0, -15 * Time.deltaTime);
-            MinuteHand.transform.Rotate(0, 0, -360 * Time.deltaTime);
+            HourHand.transform.Rotate(0, 0, -15 * Time.deltaTime * power);
+            MinuteHand.transform.Rotate(0, 0, -360 * Time.deltaTime * power);
             yield return null;
         }
 
