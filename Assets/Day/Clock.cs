@@ -7,12 +7,26 @@ public class Clock : MonoBehaviour
     public GameObject HourHand;
     public GameObject MinuteHand;
     private bool isRotating = false;
+    private List<float> waitList = new List<float>();
+
+    private void Update()
+    {
+        if(waitList.Count > 0 && isRotating == false)
+        {
+            StartCoroutine(RotateClock(waitList[0]));
+            waitList.RemoveAt(0);
+        }
+    }
 
     public void moveClock(int time)
     {
-        if (!isRotating && time >= 0)
+        if(!isRotating && time >= 0)
         {
             StartCoroutine(RotateClock(time));
+        }
+        else if(isRotating && time >= 0)
+        {
+            waitList.Add(time);
         }
     }
 
