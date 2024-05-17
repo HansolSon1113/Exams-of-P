@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NightCardManager : MonoBehaviour
 {
@@ -21,20 +22,22 @@ public class NightCardManager : MonoBehaviour
     public const int LIB = 1;
     public const int WORK = 2;
     public const int PLAY = 3;
+    public int scrollCount = 0;
+    public int currentType = -1;
     public List<Card> selectedCards;
     private List<bool> originUsed = new List<bool>();
-    public int currentShowing;
     [SerializeField] GameObject leftScroller;
     [SerializeField] GameObject rightScroller;
     public GameObject nightEndPanel;
-
     public bool isLeftScrollEnabled = false;
     public bool isRightScrollEnabled = false;
 
     void Start(){
-        QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 60;
-        currentShowing = -1;
+        if(CostManager.dayCount >= 7)
+        {
+            Time.timeScale = 0f;
+            SceneManager.LoadScene("Ending");
+        }
         for(int i = 0; i < 3; i++)
         {
             selectedCards.Add(null);
@@ -45,17 +48,17 @@ public class NightCardManager : MonoBehaviour
         }
     }
 
-    public void showCards(int type){
+    public void showCards(int type, bool imediate){
         isLeftScrollEnabled = false;
-        isRightScrollEnabled = false;
-        if(currentShowing != type)
+        clearCards();
+        AddCard(type, imediate);
+        currentType = type;
+        if(cards[cards.Count-1].originPRS.pos.x > 8){
+            isRightScrollEnabled = true;
+        }
+        else
         {
-            clearCards();
-            currentShowing = type;
-            AddCard(type);
-            if(cards.Count > 6){
-                isRightScrollEnabled = true;
-            }
+            isRightScrollEnabled = false;
         }
     }
 
@@ -78,27 +81,21 @@ public class NightCardManager : MonoBehaviour
         }
     }
 
-    //Scroll by Mouse
-    /*void Update()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        if (worldMousePosition.x <= -6 || worldMousePosition.x >= 6)
-        {
-            float scrollDelta = Input.GetAxis("Mouse X") * scrollSpeed * -1;
-            ScrollCards(scrollDelta);
-        }
-    }*/
-
-    public void ScrollCards(float scrollDelta)
+    public void ScrollCards(float scrollDelta, bool imediate)
     {
         for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
             Vector3 newPosition = targetCard.originPRS.pos + new Vector3(scrollDelta, 0, 0);
             targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 1f);
-            targetCard.MoveTransform(targetCard.originPRS, 0.1f);
+            if (imediate)
+            {
+                targetCard.transform.position = targetCard.originPRS.pos;
+            }
+            else
+            {
+                targetCard.MoveTransform(targetCard.originPRS, 0.1f);
+            }
             hidCard(targetCard.originPRS, targetCard);
         }
         if(cards.Count > 6){
@@ -234,7 +231,7 @@ public class NightCardManager : MonoBehaviour
     }
 
     //카드 추가(itemSO에 직접 접근)
-    void AddCard(int type)
+    public void AddCard(int type, bool imediate)
     {
         for(int i = 0; i < itemSO.items.Length; i++)
         {
@@ -257,7 +254,7 @@ public class NightCardManager : MonoBehaviour
             addBlank();
         }
         SetOriginOrder();
-        CardAlignment();
+        CardAlignment(imediate);
     }
 
     //표시 순서 설정
@@ -272,7 +269,7 @@ public class NightCardManager : MonoBehaviour
     }
 
     //카드 정렬
-    void CardAlignment()
+    public void CardAlignment(bool imediate)
     {
         for(int i = 0; i < cards.Count; i++)
         {
@@ -280,8 +277,19 @@ public class NightCardManager : MonoBehaviour
             Vector3 alignment;
             alignment = new Vector3(-6 + i * 2.4f, 0, 0);
             targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1f);
-            targetCard.MoveTransform(targetCard.originPRS, 0.2f);
+            if(imediate)
+            {
+                targetCard.transform.position = targetCard.originPRS.pos;
+            }
+            else
+            {
+                targetCard.MoveTransform(targetCard.originPRS, 0.2f);
+            }
             hidCard(targetCard.originPRS, targetCard);
+        }
+        if(scrollCount != 0)
+        {
+            ScrollCards(scrollCount * -14.4f, true);
         }
     }    
 

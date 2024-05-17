@@ -8,10 +8,12 @@ public class Scroll : MonoBehaviour
         float scrollSpeed;
         if(this.gameObject.name == "Scroll Left"){
             scrollSpeed = 14.4f;
+            NightCardManager.Inst.scrollCount--;
         }
         else{
             scrollSpeed = -14.4f;
+            NightCardManager.Inst.scrollCount++;
         }
-        NightCardManager.Inst.ScrollCards(scrollSpeed);
+        NightCardManager.Inst.ScrollCards(scrollSpeed, false);
     }
 }

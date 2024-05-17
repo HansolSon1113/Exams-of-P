@@ -14,7 +14,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<Card> cards;
     [SerializeField] Transform leftAlignment;
     [SerializeField] Transform rightAlignment;
-    [SerializeField] GameObject endPanel;
+    public GameObject endPanel;
     [SerializeField] GameObject MP;
     [SerializeField] GameObject burstPanel;
     public GameObject target;
@@ -27,17 +27,22 @@ public class CardManager : MonoBehaviour
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
         MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1);
+        if(MP.transform.localScale.x <= 0f)
+        {
+            Time.timeScale = 0f;
+            SceneManager.LoadScene("Ending");
+        }
     }
 
     public void draw(){
         if(cardCount == 7 || usedTime > 24f - CostManager.startTime)
         {
+            clearCards(null);
             burstPanel.SetActive(false);
             END();
             clearCards(null);
-            Time.timeScale = 0;
             endPanel.SetActive(true);
-            return;
+            Time.timeScale = 0;
         }
         else{
             AddCard();
@@ -104,13 +109,11 @@ public class CardManager : MonoBehaviour
                 var card = cardObject.GetComponent<Card>();
                 card.Setup(itemSO.items[randIndex]);
                 cards.Add(card);
+                isUsed(card);
                 if(usedTime > 24f - CostManager.startTime)
                 {
                     burstPanel.SetActive(true);
-                }
-                else
-                {
-                    isUsed(card);
+                    unUsed(card);
                 }
 
                 SetOriginOrder();
@@ -135,17 +138,10 @@ public class CardManager : MonoBehaviour
                 Debug.Log(CostManager.drawedCardCount);
             }
             if(CostManager.MP - itemSO.items[randIndex].cost <= 100)
-                CostManager.MP -= itemSO.items[randIndex].cost;
+                CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
             else
                 CostManager.MP = 100;
             MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1f);
-            if (MP.transform.localScale.x <= 0f)
-            {
-                END();
-                clearCards(null);
-                Time.timeScale = 0f;
-                SceneManager.LoadScene("Ending");
-            }
         }
         else
         {

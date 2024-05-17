@@ -14,12 +14,7 @@ public class Order : MonoBehaviour
         this.originOrder = originOrder;
         SetOrder(originOrder);
     }
-
-    public void SetMostFrontOrder(bool isMostFront)
-    {
-        SetOrder(isMostFront ? 100 : originOrder);
-    }
-
+    
     public void SetOrder(int order)
     {
         int mulOrder = order * 10;

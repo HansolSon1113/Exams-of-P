@@ -14,6 +14,8 @@ public class Card : MonoBehaviour
     private bool isSelected = false;
     private Vector3 originLocation;
     private bool isDragging = false;
+    private bool isClicked = false;
+    private Vector3 targetLocation;
 
     public void Setup(Item item)
     {
@@ -51,22 +53,13 @@ public class Card : MonoBehaviour
         return -1;
     }
 
-    /*private void printCardName()
-    {
-        if(NightCardManager.Inst.selectedCards[0] != null)
-            Debug.Log("1" + NightCardManager.Inst.selectedCards[0].item.name);
-        if(NightCardManager.Inst.selectedCards[1] != null)
-            Debug.Log("2" + NightCardManager.Inst.selectedCards[1].item.name);
-        if(NightCardManager.Inst.selectedCards[2] != null)
-            Debug.Log("3" + NightCardManager.Inst.selectedCards[2].item.name);
-    }*/
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(SceneManager.GetActiveScene().name == "Night")
         {
             isDragging = false;
             isSelected = true;
+            targetLocation = other.transform.position;
             int thisIndex = nightCardClear();
             if (other.gameObject.name == "Target 1")
             {
@@ -119,35 +112,34 @@ public class Card : MonoBehaviour
                 }
                 NightCardManager.Inst.selectedCards[2] = this;
             }
-            NightCardManager.Inst.clearCards();
-            NightCardManager.Inst.currentShowing = -1;
             NightCardManager.Inst.isUsed(this);
-            NightCardManager.Inst.isLeftScrollEnabled = false;
-            NightCardManager.Inst.isRightScrollEnabled = false;
+            NightCardManager.Inst.showCards(this.item.type, true);
         }
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
-        this.transform.DOMove(other.transform.position, 0.05f);
+        originLocation = targetLocation;
     }
 
     private void OnMouseDown()
     {
         isDragging = true;
+        isClicked = true;
         originLocation = this.transform.position;
     }
 
     private void OnMouseDrag()
     {
-        if(isDragging && this.item.type != 4)
+        if(this.item.type != 4)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 objPosition = new Vector2(mousePosition.x, mousePosition.y);
             this.transform.DOMove(objPosition, 0.01f);
-            if(isSelected && mousePosition.y >= -1.5f)
+            if(isDragging && isSelected && mousePosition.y >= -1.5f)
             {
                 isSelected = false;
                 isDragging = false;
                 nightCardClear();
                 NightCardManager.Inst.unUsed(this);
+                NightCardManager.Inst.showCards(NightCardManager.Inst.currentType, true);
                 Destroy(this.gameObject);
             }
         }
@@ -156,9 +148,10 @@ public class Card : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
-        if (isSelected == false)
+        if (isClicked == true)
         {
             this.transform.DOMove(originLocation, 0.3f);
+            isClicked = false;
         }
     }
 }

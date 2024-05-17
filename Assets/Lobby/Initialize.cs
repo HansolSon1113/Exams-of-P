@@ -7,6 +7,16 @@ public class Initialize : MonoBehaviour
 {
     [SerializeField] ItemSO itemSO;
 
+    void Start(){
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = 60;
+    }
+
+    void OnMouseDown()
+    {
+        gameStart();
+    }
+
     public void gameStart(){
         for(int i = 0; i < itemSO.items.Length; i++){
             itemSO.items[i].used = false;
