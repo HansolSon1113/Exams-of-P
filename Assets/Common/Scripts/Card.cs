@@ -27,10 +27,6 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        if(SceneManager.GetActiveScene().name == "TestScene")
-        {
-            GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
-        }
         if(SceneManager.GetActiveScene().name == "Day")
         {
             GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
@@ -39,9 +35,9 @@ public class Card : MonoBehaviour
 
     public void MoveTransform(PRS prs, float time)
     {
-        transform.DOMove(prs.pos, time);
-        transform.DORotateQuaternion(prs.rot, time);
-        transform.DOScale(prs.scale, time);
+        this.transform.DOMove(prs.pos, time);
+        this.transform.DORotateQuaternion(prs.rot, time);
+        this.transform.DOScale(prs.scale, time);
     }
 
     private int nightCardClear(){
@@ -120,9 +116,10 @@ public class Card : MonoBehaviour
                 NightCardManager.Inst.selectedCards[2] = this;
             }
             NightCardManager.Inst.isUsed(this);
-            NightCardManager.Inst.showCards(this.item.type, true);
+            NightCardManager.Inst.showCards(NightCardManager.Inst.currentType, true);
         }
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
+        this.transform.DOScale(Vector3.one * 0.6f, 0.1f);
         originLocation = targetLocation;
     }
 

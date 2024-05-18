@@ -9,6 +9,7 @@ public class Buttons : MonoBehaviour
     {
         if(gameObject.name == "Night Button")
         {
+            Time.timeScale = 1f;
             Audio.Inst.playSceneChange();
             CardManager.Inst.END();
             SceneManager.LoadScene("Night");

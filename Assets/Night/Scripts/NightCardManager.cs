@@ -90,7 +90,7 @@ public class NightCardManager : MonoBehaviour
         {
             var targetCard = cards[i];
             Vector3 newPosition = targetCard.originPRS.pos + new Vector3(scrollDelta, 0, 0);
-            targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 0.8f);
+            targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 0.7f);
             if (imediate)
             {
                 targetCard.transform.position = targetCard.originPRS.pos;
@@ -278,8 +278,8 @@ public class NightCardManager : MonoBehaviour
         {
             var targetCard = cards[i];
             Vector3 alignment;
-            alignment = new Vector3(-6.3f + i * 2.5f, 1, 0);
-            targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 0.8f);
+            alignment = new Vector3(-6.3f + i * 2.45f, 1, 0);
+            targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 0.7f);
             if(imediate)
             {
                 targetCard.transform.position = targetCard.originPRS.pos;
@@ -293,7 +293,7 @@ public class NightCardManager : MonoBehaviour
         }
         if(scrollCount != 0)
         {
-            ScrollCards(scrollCount * -14.4f, true);
+            ScrollCards(scrollCount * -14.7f, true);
         }
     }    
 

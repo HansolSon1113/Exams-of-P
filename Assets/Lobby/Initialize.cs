@@ -10,6 +10,7 @@ public class Initialize : MonoBehaviour
     void Start(){
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
+        DG.Tweening.DOTween.Init();
         Audio.Inst.playTitleBackground();
     }
 
