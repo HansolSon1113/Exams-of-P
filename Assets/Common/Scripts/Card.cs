@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using TMPro;
 using DG.Tweening;
 
@@ -26,6 +28,10 @@ public class Card : MonoBehaviour
     private void Start()
     {
         if(SceneManager.GetActiveScene().name == "TestScene")
+        {
+            GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
+        }
+        if(SceneManager.GetActiveScene().name == "Day")
         {
             GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
         }
@@ -119,6 +125,16 @@ public class Card : MonoBehaviour
         originLocation = targetLocation;
     }
 
+    private void CardMouseOver() {
+        print("마우스 온");
+        this.EnlargeCard(true);
+    }
+
+    private void CardMouseExit() {
+        print("마우스 오프");
+        this.EnlargeCard(false);
+    }
+
     private void OnMouseDown()
     {
         isDragging = true;
@@ -153,5 +169,15 @@ public class Card : MonoBehaviour
             this.transform.DOMove(originLocation, 0.3f);
             isClicked = false;
         }
+    }
+    
+    void EnlargeCard(bool isEnlarge) {
+        if (isEnlarge) {
+            Vector3 enlargePos = new Vector3(this.originPRS.pos.x, -1.8f, -100f);
+            this.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 3.5f), 0);
+        }
+        else
+            this.MoveTransform(this.originPRS, 0);
+        card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
     }
 }
