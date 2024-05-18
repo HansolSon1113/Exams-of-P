@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b74823ba0698f4c1d990264858766d73
+guid: 8fdbbea996e6ec3468ba59ca9918fc00
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Main Card Images Lerp_0
+      name: UI & Buttons_0
       rect:
         serializedVersion: 2
-        x: 54
-        y: 717
-        width: 336
-        height: 441
+        x: 44
+        y: 390
+        width: 273
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ec35f496502b401cbc887744846a1d6
-      internalID: 1184711887
+      spriteID: 2f714a9f95a1bd5418836d20f77b347a
+      internalID: -1148268287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_1
+      name: UI & Buttons_1
       rect:
         serializedVersion: 2
-        x: 446
-        y: 717
-        width: 336
-        height: 441
+        x: 358
+        y: 384
+        width: 275
+        height: 239
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f7783d1758574aa6ab20feba6eac60e
-      internalID: 1886296203
+      spriteID: 40ba1c3a62deb6048b4627368badbf85
+      internalID: 1483788434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_2
+      name: UI & Buttons_2
       rect:
         serializedVersion: 2
-        x: 832
-        y: 717
-        width: 336
-        height: 441
+        x: 706
+        y: 391
+        width: 53
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9d7dda8a6321493fa112ccdb6cd6748
-      internalID: -1246000531
+      spriteID: eca9649f9ddf9184ca06aaf7e02bf76a
+      internalID: -2057797107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_3
+      name: UI & Buttons_3
       rect:
         serializedVersion: 2
-        x: 1214
-        y: 731
-        width: 336
-        height: 441
+        x: 774
+        y: 391
+        width: 53
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b14801638638402d97809daa1f1fef6
-      internalID: 1774696536
+      spriteID: d21a6985f13f915438e7ec17fc5d9b40
+      internalID: -809096202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_4
+      name: UI & Buttons_4
       rect:
         serializedVersion: 2
-        x: 60
-        y: 199
-        width: 336
-        height: 441
+        x: 1071
+        y: 404
+        width: 76
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d96760ba087248f9afe8644cbbc3587
-      internalID: 1179873027
+      spriteID: 7aea3d390743daa4788d3d8f7c88ece2
+      internalID: 872190895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_5
+      name: UI & Buttons_5
       rect:
         serializedVersion: 2
-        x: 444
-        y: 198
-        width: 336
-        height: 441
+        x: 1145
+        y: 476
+        width: 76
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a1a3547796914dc1bce880b64a4f46f
-      internalID: -204592405
+      spriteID: 3d5a22a7ccc0b4a45b1007bd77557dc1
+      internalID: -912712843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_6
+      name: UI & Buttons_6
       rect:
         serializedVersion: 2
-        x: 833
-        y: 198
-        width: 336
-        height: 441
+        x: 33
+        y: 26
+        width: 306
+        height: 317
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9576a0155b6a454aabf2087a322eafc
-      internalID: -2100469575
+      spriteID: 37dc3e2bd8e17ba40a99bf8db24e7d02
+      internalID: 392000033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Main Card Images Lerp_7
+      name: UI & Buttons_7
       rect:
         serializedVersion: 2
-        x: 1209
-        y: 198
-        width: 336
-        height: 441
+        x: 340
+        y: 27
+        width: 306
+        height: 317
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,8 +258,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 609e5b156cdd34caab2ea5a9933dd104
-      internalID: -315519725
+      spriteID: ec9ad55d08ec7fd42be95f89ce68b9b1
+      internalID: -1365188688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI & Buttons_8
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 328
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5156b8e6a1b1e34eb37799adb7c14f7
+      internalID: 1362891387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI & Buttons_9
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 31
+        width: 287
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 186b1cb12a5d5c9499d7925a9ef43d84
+      internalID: -1083814565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI & Buttons_10
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 31
+        width: 287
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24be51e06db194c409d17e57d49a5965
+      internalID: -1288525231
       vertices: []
       indices: 
       edges: []
@@ -275,14 +338,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Main Card Images Lerp_0: 1184711887
-      Main Card Images Lerp_1: 1886296203
-      Main Card Images Lerp_2: -1246000531
-      Main Card Images Lerp_3: 1774696536
-      Main Card Images Lerp_4: 1179873027
-      Main Card Images Lerp_5: -204592405
-      Main Card Images Lerp_6: -2100469575
-      Main Card Images Lerp_7: -315519725
+      UI & Buttons_0: -1148268287
+      UI & Buttons_1: 1483788434
+      UI & Buttons_10: -1288525231
+      UI & Buttons_2: -2057797107
+      UI & Buttons_3: -809096202
+      UI & Buttons_4: 872190895
+      UI & Buttons_5: -912712843
+      UI & Buttons_6: 392000033
+      UI & Buttons_7: -1365188688
+      UI & Buttons_8: 1362891387
+      UI & Buttons_9: -1083814565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
