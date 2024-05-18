@@ -77,6 +77,6 @@ public class MPChatManager : MonoBehaviour
 
     private void setBox(int width)
     {
-        chatSprite.size += new Vector2(width+0.5f, 0);
+        chatSprite.size += new Vector2(width+1f, 0);
     }
 }

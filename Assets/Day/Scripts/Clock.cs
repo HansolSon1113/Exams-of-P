@@ -13,6 +13,7 @@ public class Clock : MonoBehaviour
     public bool isShowing = false;
     private bool isRotating = false;
     private List<float> waitList = new List<float>();
+    [SerializeField] float power = 4f;
 
     private void Start()
     {
@@ -45,12 +46,12 @@ public class Clock : MonoBehaviour
         isRotating = true;
         float targetRot = HourHand.transform.eulerAngles.z - 15*targetTime;
         float startTime = Time.time;
-        float endTime = startTime + targetTime;
+        float endTime = startTime + (targetTime / power);
 
         while (Time.time < endTime)
         {
-            HourHand.transform.Rotate(0, 0, -15 * Time.deltaTime);
-            MinuteHand.transform.Rotate(0, 0, -360 * Time.deltaTime);
+            HourHand.transform.Rotate(0, 0, -15 * Time.deltaTime * power);
+            MinuteHand.transform.Rotate(0, 0, -360 * Time.deltaTime * power);
             yield return null;
         }
 
