@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        if(gameObject.name == "Night Button")
+        if (gameObject.name == "Night Button Circle")
         {
-            CardManager.Inst.END();
-            SceneManager.LoadScene("Night");
+            SceneChangeAnimation circleAnimation = GetComponent<SceneChangeAnimation>();
+            circleAnimation.Day2Night_Circle();
         }
-        if(gameObject.name == "Draw Button")
+        else if (gameObject.name == "Night Button Bright")
+        {
+            SceneChangeAnimation BrightAnimation = GetComponent<SceneChangeAnimation>();
+            BrightAnimation.Day2Night_Bright();
+        }
+        else if (gameObject.name == "Draw Button")
         {
             CardManager.Inst.draw();
         }

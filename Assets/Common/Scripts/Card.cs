@@ -125,21 +125,6 @@ public class Card : MonoBehaviour
         originLocation = targetLocation;
     }
 
-    void OnMouseOver() {
-        CardManager.Inst.CardMouseOver(this);
-    }
-
-    void OnMouseExit() {
-        CardManager.Inst.CardMouseExit(this);
-    }
-
-    private void OnMouseDown()
-    {
-        isDragging = true;
-        isClicked = true;
-        originLocation = this.transform.position;
-    }
-
     private void OnMouseDrag()
     {
         if(this.item.type != 4)
