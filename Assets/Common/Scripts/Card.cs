@@ -125,11 +125,11 @@ public class Card : MonoBehaviour
         originLocation = targetLocation;
     }
 
-    void OnMouseOver() {
+    private void OnMouseOver() {
         CardManager.Inst.CardMouseOver(this);
     }
 
-    void OnMouseExit() {
+    private void OnMouseExit() {
         CardManager.Inst.CardMouseExit(this);
     }
 

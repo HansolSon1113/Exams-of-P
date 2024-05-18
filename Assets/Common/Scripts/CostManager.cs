@@ -12,5 +12,6 @@ public static class CostManager
     public static int dayCount;
     public static float startTime;
     public static int MP;
+    public static int chatOrder = 110;
     public static List<Item> passedCards;
 }

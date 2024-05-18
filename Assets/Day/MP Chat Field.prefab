@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 7128662810048284821}
   - component: {fileID: 2811420150938946737}
   - component: {fileID: 4470649531487731657}
+  - component: {fileID: 6043872243775385187}
   m_Layer: 0
   m_Name: MP Chat Field
   m_TagString: Untagged
@@ -272,3 +273,20 @@ MonoBehaviour:
   chatText: {fileID: 2728311959138431168}
   chatBox: {fileID: 3030682776090211566}
   chatSprite: {fileID: 2811420150938946737}
+--- !u!114 &6043872243775385187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030682776090211566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353deda8500bc4a26b66f6f63fc9b43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backRenderers:
+  - {fileID: 2811420150938946737}
+  frontRenderers:
+  - {fileID: 4779633926149279668}
+  sortingLayerName: Default

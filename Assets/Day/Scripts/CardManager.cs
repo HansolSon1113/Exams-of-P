@@ -241,23 +241,28 @@ public class CardManager : MonoBehaviour
         return results;
     }
 
-    #region cards
+    #region card
     
     public void CardMouseOver(Card card) {
-        EnlargeCard(true, card);
+        if (card.item.type != 4) {
+            EnlargeCard(true, card);
+        }
     }
 
     public void CardMouseExit(Card card) {
-        EnlargeCard(false, card);
+        if (card.item.type != 4) {
+            EnlargeCard(false, card);
+        }
     }
+
 
     void EnlargeCard(bool isEnlarge, Card card) {
         if (isEnlarge == true) {
-            Vector3 enlargePos = new Vector3(card.originPRS.pos.x, -1.8f, -100f);
+            Vector3 enlargePos = new Vector3(card.transform.position.x, -1.8f, -100f);
             card.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 2f), 0);
         }
         else {
-            card.MoveTransform(card.originPRS, 0);
+            //card.MoveTransform(card.originPRS, 0);
         }
         card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
     }
