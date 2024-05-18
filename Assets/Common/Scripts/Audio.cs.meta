@@ -3,7 +3,22 @@ guid: 5499f73f6158e4e89873b4da24971fbd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - DayBurnout: {fileID: 8300000, guid: 06e1eb492732b431c8765686e69e13b7, type: 3}
+  - DayBurst: {fileID: 8300000, guid: 8086aeb9d87c04454863be053ee31a79, type: 3}
+  - DayDraw: {fileID: 8300000, guid: 1fd7e44921eb34fdcab2a9beba07b9a5, type: 3}
+  - NightCardOnTarget: {fileID: 8300000, guid: 671567e5444494724ac838d4523c2acd, type: 3}
+  - SceneChange: {fileID: 8300000, guid: 5d7e02c016f0144e1b2f7c84c82fba16, type: 3}
+  - Settings: {fileID: 8300000, guid: 8c08207f1d6204a95a8aa32a40f64973, type: 3}
+  - DayBackground: {fileID: 8300000, guid: fa564d980e4b64aa8989d814d1676916, type: 3}
+  - NightBackground: {fileID: 8300000, guid: 78baef6c0efe748599563ee198f5329c, type: 3}
+  - BurnOutCut: {fileID: 8300000, guid: 55cd6c8ac7172442ba27fbc837741dfb, type: 3}
+  - FiredEnding: {fileID: 8300000, guid: 574996e335263484cb40d2edb5ebcb7d, type: 3}
+  - NormalEnding: {fileID: 8300000, guid: 6c04806d0865d41d0a6469ec985a730f, type: 3}
+  - NormalEndingCut: {fileID: 8300000, guid: 64883cdf13bbe4f81ae7a07351be619d, type: 3}
+  - TitleBackground: {fileID: 8300000, guid: 1b842e5d4b7614aaf80a5bf5b1591a9c, type: 3}
+  - EndingStamp: {fileID: 8300000, guid: 60d9c6d08b8554ce9a30efdd4821f7b6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

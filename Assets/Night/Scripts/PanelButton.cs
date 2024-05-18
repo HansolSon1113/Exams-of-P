@@ -7,6 +7,7 @@ public class PanelButton : MonoBehaviour
 {
     private void OnMouseDown()
     {
+        Audio.Inst.playSceneChange();
         SceneManager.LoadScene("Day");
     }
 }

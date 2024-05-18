@@ -24,8 +24,7 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 60;
+        Audio.Inst.playDayBackground();
         MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1);
         if(MP.transform.localScale.x <= 0f)
         {
@@ -41,6 +40,7 @@ public class CardManager : MonoBehaviour
             burstPanel.SetActive(false);
             END();
             clearCards(null);
+            Audio.Inst.playSceneChange();
             endPanel.SetActive(true);
             Time.timeScale = 0;
         }
@@ -112,6 +112,7 @@ public class CardManager : MonoBehaviour
                 isUsed(card);
                 if(usedTime > 24f - CostManager.startTime)
                 {
+                    Audio.Inst.playBurst();
                     burstPanel.SetActive(true);
                     unUsed(card);
                 }
@@ -147,6 +148,7 @@ public class CardManager : MonoBehaviour
         {
             END();
             clearCards(null);
+            Audio.Inst.playBurnout();
             Time.timeScale = 0f;
             SceneManager.LoadScene("Ending");
         }

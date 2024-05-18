@@ -9,11 +9,13 @@ public class Buttons : MonoBehaviour
     {
         if(gameObject.name == "Night Button")
         {
+            Audio.Inst.playSceneChange();
             CardManager.Inst.END();
             SceneManager.LoadScene("Night");
         }
         if(gameObject.name == "Draw Button")
         {
+            Audio.Inst.playDraw();
             CardManager.Inst.draw();
         }
     }

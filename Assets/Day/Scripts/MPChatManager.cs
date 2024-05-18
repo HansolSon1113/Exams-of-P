@@ -23,7 +23,7 @@ public class MPChatManager : MonoBehaviour
             chatBox?.GetComponent<Order>().SetOriginOrder(100);
         }
         chatBox.transform.DOScale(new Vector3(0.4f, 0.4f, 1f), 0.6f).SetEase(Ease.OutBounce);
-        chatBox.transform.DORotate(new Vector3(0, 0, 0), 0.2f).SetEase(Ease.OutBack);
+        chatBox.transform.DORotate(new Vector3(0, 0, 0), 0.4f).SetEase(Ease.OutBack);
         Invoke("destroy", 2f);
     }
 

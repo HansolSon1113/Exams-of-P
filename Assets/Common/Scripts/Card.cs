@@ -63,6 +63,7 @@ public class Card : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Night")
         {
+            Audio.Inst.playCardOnTarget();
             isDragging = false;
             isSelected = true;
             targetLocation = other.transform.position;
@@ -125,13 +126,15 @@ public class Card : MonoBehaviour
         originLocation = targetLocation;
     }
 
-    private void OnMouseOver() {
-        CardManager.Inst.CardMouseOver(this);
+    /*private void OnMouseOver() {
+        if(SceneManager.GetActiveScene().name == "Day")
+            CardManager.Inst.CardMouseOver(this);
     }
 
     private void OnMouseExit() {
-        CardManager.Inst.CardMouseExit(this);
-    }
+        if(SceneManager.GetActiveScene().name == "Day")
+            CardManager.Inst.CardMouseExit(this);
+    }*/
 
     private void OnMouseDown()
     {

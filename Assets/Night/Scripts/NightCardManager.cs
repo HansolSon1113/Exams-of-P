@@ -33,8 +33,10 @@ public class NightCardManager : MonoBehaviour
     public bool isRightScrollEnabled = false;
 
     void Start(){
+        Audio.Inst.playNightBackground();
         if(CostManager.dayCount >= 7)
         {
+            Audio.Inst.playSceneChange();
             Time.timeScale = 0f;
             SceneManager.LoadScene("Ending");
         }
@@ -83,6 +85,7 @@ public class NightCardManager : MonoBehaviour
 
     public void ScrollCards(float scrollDelta, bool imediate)
     {
+        Audio.Inst.playSlide();
         for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
