@@ -123,16 +123,6 @@ public class Card : MonoBehaviour
         originLocation = targetLocation;
     }
 
-    /*private void OnMouseOver() {
-        if(SceneManager.GetActiveScene().name == "Day")
-            CardManager.Inst.CardMouseOver(this);
-    }
-
-    private void OnMouseExit() {
-        if(SceneManager.GetActiveScene().name == "Day")
-            CardManager.Inst.CardMouseExit(this);
-    }*/
-
     private void OnMouseDown()
     {
         isDragging = true;
