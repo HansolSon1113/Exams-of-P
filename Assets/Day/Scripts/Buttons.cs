@@ -24,12 +24,6 @@ public class Buttons : MonoBehaviour
         });
     }
 
-    private void Day2NightFade() {
-        BlackSqaure.SetActive(true);
-        Color bright = BlackSqaure.GetComponent<SpriteRenderer>().color;
-        bright.a = 1.0f;
-    }
-    
     private void OnMouseDown()
     {
         if(gameObject.name == "Night Button")
