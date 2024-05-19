@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class NightCardManager : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class NightCardManager : MonoBehaviour
     public GameObject nightEndPanel;
     public bool isLeftScrollEnabled = false;
     public bool isRightScrollEnabled = false;
+    public GameObject MaskObject;
+    public GameObject BlackSquare;
+    public GameObject ChangeScene;
 
     void Start(){
         Audio.Inst.playNightBackground();
@@ -62,6 +66,17 @@ public class NightCardManager : MonoBehaviour
         {
             isRightScrollEnabled = false;
         }
+    }
+
+    public void Night2Day_Circle()
+    {
+        ChangeScene.SetActive(true);
+        Audio.Inst.playSceneChange();
+        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).OnComplete(() =>
+        {
+            ChangeScene.SetActive(false);
+            nightEndPanel.SetActive(true);
+        });
     }
 
     private void Update()

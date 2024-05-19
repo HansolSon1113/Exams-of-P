@@ -18,8 +18,7 @@ public class Timer : MonoBehaviour
         timerObj.SetActive(false);
         Audio.Inst.playSceneChange();
         NightCardManager.Inst.END();
-        NightCardManager.Inst.nightEndPanel.SetActive(true);
-        Time.timeScale = 0;
+        NightCardManager.Inst.Night2Day_Circle();
     }
 
     private void timer()

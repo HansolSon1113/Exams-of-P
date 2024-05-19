@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Night.unity
     guid: 17ab37870de234d8ca3393e91b263bce
   - enabled: 1
-    path: Assets/Scenes/Day.unity
+    path: Assets/Scenes/Day_Temp.unity
     guid: f595df498f843114692e2be3897f689c
   - enabled: 1
     path: Assets/Scenes/Endings/Ending.unity
     guid: cf5e81e61883c472ba683431cbfdec60
+  - enabled: 1
+    path: Assets/Scenes/Day.unity
+    guid: 2ba1c9af950c944f2911e65d73db4119
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d144c604c162445df9ab6647b52da7d1, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d0e4dd768b91342f8aa3a9144628925f, type: 2}

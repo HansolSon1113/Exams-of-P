@@ -14,9 +14,8 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<Card> cards;
     [SerializeField] Transform leftAlignment;
     [SerializeField] Transform rightAlignment;
-    public GameObject endPanel;
     [SerializeField] GameObject MP;
-    [SerializeField] GameObject burstPanel;
+    public GameObject burstPanel;
     public GameObject target;
     private int passCount = 0;
     private int cardCount = 0;
@@ -41,8 +40,7 @@ public class CardManager : MonoBehaviour
             END();
             clearCards(null);
             Audio.Inst.playSceneChange();
-            endPanel.SetActive(true);
-            Time.timeScale = 0;
+            GameObject.Find("Night Button Circle").GetComponent<Buttons>().Day2Night_Circle();
         }
         else{
             AddCard();
