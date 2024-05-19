@@ -21,7 +21,7 @@ public class CardHighlights : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Day") {
             cardRenderer.sortingLayerName = "Cards";
             transform.DOScale(new Vector3(1.3f, 1.3f, 0), 0.05f);
-            cardRenderer.sortingOrder = currentOrder * 10;
+            cardRenderer.sortingOrder = 100;
         }
     }
 
