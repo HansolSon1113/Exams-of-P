@@ -1,5 +1,8 @@
 using System.Collections;
 using DG.Tweening;
+using System.Collections.Generic;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -54,6 +57,23 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Night");
     }
 
+    [SerializeField] GameObject BlackSqaure;
+    [SerializeField] GameObject MaskObject;
+
+    void Start() {
+        BlackSqaure.SetActive(false);
+        MaskObject.SetActive(false);
+    }
+
+    private void Day2NightCircle() {
+        BlackSqaure.SetActive(true);
+        MaskObject.SetActive(true);
+        MaskObject.transform.DOScale(new Vector3(0,0,1), 3f).OnComplete(() =>
+        {
+            SceneManager.LoadScene("Night");
+        });
+    }
+
     private void OnMouseDown()
     {
         if (gameObject.name == "Night Button Circle")
@@ -65,6 +85,8 @@ public class Buttons : MonoBehaviour
         {
             Audio.Inst.playSceneChange();
             Day2Night_Bright();
+            CardManager.Inst.END();
+            Day2NightCircle();
         }
         else if (gameObject.name == "Draw Button")
         {
