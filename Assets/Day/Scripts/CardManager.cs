@@ -40,7 +40,7 @@ public class CardManager : MonoBehaviour
             END();
             clearCards(null);
             Audio.Inst.playSceneChange();
-            GameObject.Find("Night Button Circle").GetComponent<Buttons>().Day2Night_Circle();
+            GameObject.Find("Draw Button").GetComponent<Buttons>().Day2NightCircle();
         }
         else{
             AddCard();
