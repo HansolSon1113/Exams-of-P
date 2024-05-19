@@ -189,3 +189,11 @@ MonoBehaviour:
     percent: 0
     used: 0
     pass: 0
+  - name: 
+    type: 4
+    cost: 0
+    time: 0
+    sprite: {fileID: 0}
+    percent: 0
+    used: 0
+    pass: 0

@@ -33,8 +33,10 @@ public class NightCardManager : MonoBehaviour
     public bool isRightScrollEnabled = false;
 
     void Start(){
+        Audio.Inst.playNightBackground();
         if(CostManager.dayCount >= 7)
         {
+            Audio.Inst.playSceneChange();
             Time.timeScale = 0f;
             SceneManager.LoadScene("Ending");
         }
@@ -83,11 +85,12 @@ public class NightCardManager : MonoBehaviour
 
     public void ScrollCards(float scrollDelta, bool imediate)
     {
+        Audio.Inst.playSlide();
         for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
             Vector3 newPosition = targetCard.originPRS.pos + new Vector3(scrollDelta, 0, 0);
-            targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 1f);
+            targetCard.originPRS = new PRS(newPosition, Utils.QI, Vector3.one * 0.7f);
             if (imediate)
             {
                 targetCard.transform.position = targetCard.originPRS.pos;
@@ -275,11 +278,12 @@ public class NightCardManager : MonoBehaviour
         {
             var targetCard = cards[i];
             Vector3 alignment;
-            alignment = new Vector3(-6 + i * 2.4f, 0, 0);
-            targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 1f);
+            alignment = new Vector3(-6.3f + i * 2.45f, 1, 0);
+            targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 0.7f);
             if(imediate)
             {
                 targetCard.transform.position = targetCard.originPRS.pos;
+                targetCard.transform.localScale = targetCard.originPRS.scale;
             }
             else
             {
@@ -289,7 +293,7 @@ public class NightCardManager : MonoBehaviour
         }
         if(scrollCount != 0)
         {
-            ScrollCards(scrollCount * -14.4f, true);
+            ScrollCards(scrollCount * -14.7f, true);
         }
     }    
 

@@ -12,16 +12,14 @@ public class Timer : MonoBehaviour
         InvokeRepeating("timer", 0, 0.0185f);
     }
 
-    private void Update()
+    private void OnMouseDown()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            CancelInvoke("timer");
-            timerObj.SetActive(false);
-            NightCardManager.Inst.END();
-            NightCardManager.Inst.nightEndPanel.SetActive(true);
-            Time.timeScale = 0;
-        }
+        CancelInvoke("timer");
+        timerObj.SetActive(false);
+        Audio.Inst.playSceneChange();
+        NightCardManager.Inst.END();
+        NightCardManager.Inst.nightEndPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void timer()

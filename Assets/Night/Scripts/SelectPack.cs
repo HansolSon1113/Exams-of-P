@@ -6,6 +6,7 @@ public class PackClicked : MonoBehaviour
 {
     private void OnMouseDown()
     {
+        Audio.Inst.playPack();
         NightCardManager.Inst.scrollCount = 0;
         if (this.gameObject.name == "Major Pack")
         {
