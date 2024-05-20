@@ -125,6 +125,7 @@ public class CardManager : MonoBehaviour
                     Audio.Inst.playBurst();
                     burstPanel.SetActive(true);
                     unUsed(card);
+                    CostManager.drawedCardCount--;
                 }
 
                 SetOriginOrder();
