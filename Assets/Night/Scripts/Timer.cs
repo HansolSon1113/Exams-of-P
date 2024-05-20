@@ -9,8 +9,6 @@ using UnityEngine.U2D.Animation;
 public class Timer : MonoBehaviour
 {
     [SerializeField] GameObject timerObj;
-    [SerializeField] GameObject nightEndPanel;
-    [SerializeField] TMP_Text dayCountText;
     [SerializeField] GameObject BlackSqaure;
     [SerializeField] GameObject MaskObject;
     GameObject DayButton;
@@ -27,8 +25,6 @@ public class Timer : MonoBehaviour
         timerObj.SetActive(false);
         Audio.Inst.playSceneChange();
         NightCardManager.Inst.END();
-        Time.timeScale = 0;
-        Time.timeScale = 1;
         Audio.Inst.playSceneChange();
         CostManager.dayCount++;
         BlackSqaure.SetActive(true);
@@ -38,9 +34,9 @@ public class Timer : MonoBehaviour
         DayButton.GetComponent<BoxCollider2D>().enabled = false;
         MaskObject.transform.DOScale(new Vector3(0,0,0), 3f).OnComplete(() =>
             {
-                dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
-                dayCountText.GetComponent<Renderer>().sortingOrder = 2;
-                dayCountText.text = CostManager.dayCount.ToString() + " 일차";
+                //dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
+                //dayCountText.GetComponent<Renderer>().sortingOrder = 2;
+                //dayCountText.text = CostManager.dayCount.ToString() + " 일차";
                 BlackSqaure.transform.DOScale(new Vector3(18,10,0), 3f).OnComplete(() =>
                 {
                     SceneManager.LoadScene("Day");
@@ -56,7 +52,6 @@ public class Timer : MonoBehaviour
         {
             CancelInvoke("timer");
             NightCardManager.Inst.END();
-            nightEndPanel.SetActive(true);
             Time.timeScale = 0;
         }
     }

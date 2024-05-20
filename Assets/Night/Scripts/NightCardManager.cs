@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class NightCardManager : MonoBehaviour
 {
@@ -31,20 +32,29 @@ public class NightCardManager : MonoBehaviour
     public GameObject nightEndPanel;
     public bool isLeftScrollEnabled = false;
     public bool isRightScrollEnabled = false;
+    public GameObject MaskObject;
+    public GameObject BlackSquare;
+    public GameObject ChangeScene;
+    [SerializeField] SpriteRenderer overPanel;
 
-    void Start(){
+    void Start()
+    {
+        Time.timeScale = 1f;
         Audio.Inst.playNightBackground();
-        if(CostManager.dayCount >= 7)
+        if (CostManager.dayCount >= 7)
         {
             Audio.Inst.playSceneChange();
-            Time.timeScale = 0f;
-            SceneManager.LoadScene("Ending");
+            overPanel.DOFade(1f, 1.5f).OnComplete(() =>
+            {
+                Time.timeScale = 0f;
+                SceneManager.LoadScene("Normal Ending");
+            });
         }
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             selectedCards.Add(null);
         }
-        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        for (int i = 0; i < itemSO.items.Length - 1; i++)
         {
             originUsed.Add(itemSO.items[i].used);
         }
@@ -62,6 +72,17 @@ public class NightCardManager : MonoBehaviour
         {
             isRightScrollEnabled = false;
         }
+    }
+
+    public void Night2Day_Circle()
+    {
+        ChangeScene.SetActive(true);
+        Audio.Inst.playSceneChange();
+        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).OnComplete(() =>
+        {
+            ChangeScene.SetActive(false);
+            nightEndPanel.SetActive(true);
+        });
     }
 
     private void Update()
@@ -137,18 +158,20 @@ public class NightCardManager : MonoBehaviour
 
 
     //다음 날에 데이터 넘기기
-    public void END(){
+    public void END()
+    {
+        ChangeScene.SetActive(true);
         int passCount = 0;
-        for(int i = 0; i < itemSO.items.Length; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
             itemSO.items[i].used = false;
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
                 try
                 {
-                    if(selectedCards[j] != null)
+                    if (selectedCards[j] != null)
                     {
-                        if(selectedCards[j].item.name == itemSO.items[i].name && selectedCards[j].item.used == false)
+                        if (selectedCards[j].item.name == itemSO.items[i].name && selectedCards[j].item.used == false)
                         {
                             CostManager.passedCards.Add(selectedCards[j].item);
                             itemSO.items[i].pass = true;
@@ -164,10 +187,10 @@ public class NightCardManager : MonoBehaviour
                 }
             }
         }
-        for(int i = passCount; i < 3; i++)
+        for (int i = passCount; i < 3; i++)
         {
-            var randIndex = Random.Range(0, itemSO.items.Length - 1);
-            if(itemSO.items[randIndex].pass == false && itemSO.items[randIndex].used == false)
+            var randIndex = Random.Range(0, itemSO.items.Length);
+            if (itemSO.items[randIndex].pass == false && itemSO.items[randIndex].used == false)
             {
                 CostManager.passedCards.Add(itemSO.items[randIndex]);
                 itemSO.items[randIndex].pass = true;
@@ -178,9 +201,9 @@ public class NightCardManager : MonoBehaviour
             }
         }
         clearCards();
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            if(selectedCards[i] != null)
+            if (selectedCards[i] != null)
             {
                 Destroy(selectedCards[i].gameObject);
             }
@@ -191,7 +214,7 @@ public class NightCardManager : MonoBehaviour
         Destroy(target2);
         Destroy(target3);
 
-        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        for (int i = 0; i < itemSO.items.Length - 1; i++)
         {
             itemSO.items[i].used = originUsed[i];
         }

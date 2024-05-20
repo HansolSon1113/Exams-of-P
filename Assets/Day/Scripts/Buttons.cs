@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -17,7 +18,7 @@ public class Buttons : MonoBehaviour
         DrawButton = GameObject.Find("Draw Button");
     }
 
-    private void Day2NightCircle() {
+    public void Day2NightCircle() {
         BlackSqaure.SetActive(true);
         MaskObject.SetActive(true);
         NightButton.GetComponent<BoxCollider2D>().enabled = false;
@@ -30,14 +31,12 @@ public class Buttons : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(gameObject.name == "Night Button")
+        if (gameObject.name == "Night Button")
         {
-            Time.timeScale = 1f;
             Audio.Inst.playSceneChange();
-            CardManager.Inst.END();
             Day2NightCircle();
         }
-        if(gameObject.name == "Draw Button")
+        else if (gameObject.name == "Draw Button")
         {
             Audio.Inst.playDraw();
             CardManager.Inst.draw();
