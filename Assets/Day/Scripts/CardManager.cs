@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class CardManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class CardManager : MonoBehaviour
     [SerializeField] List<Card> cards;
     [SerializeField] Transform leftAlignment;
     [SerializeField] Transform rightAlignment;
+    [SerializeField] GameObject BlackSqaure;
+    [SerializeField] GameObject MaskObject;
+    public GameObject endPanel;
     [SerializeField] GameObject MP;
     public GameObject burstPanel;
     public GameObject target;
@@ -40,11 +44,20 @@ public class CardManager : MonoBehaviour
             END();
             clearCards(null);
             Audio.Inst.playSceneChange();
-            GameObject.Find("Draw Button").GetComponent<Buttons>().Day2NightCircle();
+            Day2NightCircle();
         }
         else{
             AddCard();
         }
+    }
+
+    private void Day2NightCircle() {
+        BlackSqaure.SetActive(true);
+        MaskObject.SetActive(true);
+        MaskObject.transform.DOScale(new Vector3(0,0,1), 3f).OnComplete(() =>
+        {
+            SceneManager.LoadScene("Night");
+        });
     }
 
     //donotDestroy(카드)를 제외한 모든 카드 삭제
