@@ -17,7 +17,6 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform rightAlignment;
     [SerializeField] GameObject BlackSqaure;
     [SerializeField] GameObject MaskObject;
-    public GameObject endPanel;
     [SerializeField] GameObject MP;
     public GameObject burstPanel;
     public GameObject target;
@@ -147,7 +146,6 @@ public class CardManager : MonoBehaviour
                         break;
                 }
                 CostManager.drawedCardCount++;
-                Debug.Log(CostManager.drawedCardCount);
             }
             if(CostManager.MP - itemSO.items[randIndex].cost <= 100)
                 CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
@@ -161,7 +159,7 @@ public class CardManager : MonoBehaviour
             clearCards(null);
             Audio.Inst.playBurnout();
             Time.timeScale = 0f;
-            SceneManager.LoadScene("Ending");
+            SceneManager.LoadScene("Night");
         }
     }
 

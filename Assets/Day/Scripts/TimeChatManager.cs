@@ -52,12 +52,16 @@ public class TimeChatManager : MonoBehaviour
             str.Add("얼마 남았을까요??\n땡! " + leftTime + "시간입니다");
             str.Add("째깍 째깍\n" + leftTime + "시간 남았습니다~~");
         }
-        else
+        else if(time >= 18 && time <= 24)
         {
             str.Add("이제\n" + leftTime + "시간 밖에 남지 않았다고");
-            str.Add("뭐하는 거야!!\n" + CardManager.Inst.usedTime + "시간이라고");
+            str.Add("뭐하는 거야!!\n" + leftTime + "시간 남았다고");
             str.Add("이제 그만해!!\n이제 " + CardManager.Inst.usedTime + "시간이야");
             str.Add("감당 가능하겠어?\n" + CardManager.Inst.usedTime + "시간이야");
+        }
+        else
+        {
+            return "시간 초과!";
         }
 
         string res = str[Random.Range(0, 4)];

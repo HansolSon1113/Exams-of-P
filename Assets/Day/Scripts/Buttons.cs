@@ -27,7 +27,7 @@ public class Buttons : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (gameObject.name == "Night Button Circle")
+        if (gameObject.name == "Night Button")
         {
             Audio.Inst.playSceneChange();
             Day2NightCircle();

@@ -1050,6 +1050,8 @@ MonoBehaviour:
   cards: []
   leftAlignment: {fileID: 977282215}
   rightAlignment: {fileID: 550064565}
+  BlackSqaure: {fileID: 453632278}
+  MaskObject: {fileID: 1889769314}
   MP: {fileID: 1356681106}
   burstPanel: {fileID: 542530495}
   target: {fileID: 5232245971602971345, guid: d392e9e9e11624123bd9f576b75087d8, type: 3}
@@ -1214,7 +1216,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.025531054, y: 0.01608789}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1225,7 +1227,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.5682216, y: 2.423051}
   m_EdgeRadius: 0
 --- !u!1 &1245064891
 GameObject:
