@@ -26,6 +26,7 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        usedTime = 0;
         Audio.Inst.playDayBackground();
         MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1);
         if (MP.transform.localScale.x <= 0f)
