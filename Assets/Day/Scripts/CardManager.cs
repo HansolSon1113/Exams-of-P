@@ -27,16 +27,17 @@ public class CardManager : MonoBehaviour
     void Start()
     {
         Audio.Inst.playDayBackground();
-        MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1);
-        if(MP.transform.localScale.x <= 0f)
+        MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1);
+        if (MP.transform.localScale.x <= 0f)
         {
             Time.timeScale = 0f;
             SceneManager.LoadScene("Ending");
         }
     }
 
-    public void draw(){
-        if(cardCount == 7 || usedTime > 24f - CostManager.startTime)
+    public void draw()
+    {
+        if (cardCount == 7 || usedTime > 24f - CostManager.startTime || CostManager.drawedCardCount > itemSO.items.Length - 1)
         {
             clearCards(null);
             burstPanel.SetActive(false);
@@ -45,25 +46,28 @@ public class CardManager : MonoBehaviour
             Audio.Inst.playSceneChange();
             Day2NightCircle();
         }
-        else{
+        else
+        {
             AddCard();
         }
     }
 
-    private void Day2NightCircle() {
+    private void Day2NightCircle()
+    {
         BlackSqaure.SetActive(true);
         MaskObject.SetActive(true);
-        MaskObject.transform.DOScale(new Vector3(0,0,1), 3f).OnComplete(() =>
+        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).OnComplete(() =>
         {
             SceneManager.LoadScene("Night");
         });
     }
 
     //donotDestroy(카드)를 제외한 모든 카드 삭제
-    public void clearCards(Card donotDestroy){
-        for(int i = 0; i < cards.Count; i++)
+    public void clearCards(Card donotDestroy)
+    {
+        for (int i = 0; i < cards.Count; i++)
         {
-            if(cards[i] != donotDestroy)
+            if (cards[i] != donotDestroy)
                 Destroy(cards[i].gameObject);
         }
         cards.Clear();
@@ -71,9 +75,9 @@ public class CardManager : MonoBehaviour
 
     public void isUsed(Card card)
     {
-        for(int i = 0; i < itemSO.items.Length; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
-            if(card.item.name == itemSO.items[i].name)
+            if (card.item.name == itemSO.items[i].name)
             {
                 itemSO.items[i].used = true;
             }
@@ -82,9 +86,9 @@ public class CardManager : MonoBehaviour
 
     public void unUsed(Card card)
     {
-        for(int i = 0; i < itemSO.items.Length; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
-            if(card.item.name == itemSO.items[i].name)
+            if (card.item.name == itemSO.items[i].name)
             {
                 itemSO.items[i].used = false;
             }
@@ -93,85 +97,76 @@ public class CardManager : MonoBehaviour
 
     void AddCard()
     {
-        if(CostManager.drawedCardCount < itemSO.items.Length-1)
+        int randIndex;
+        do
         {
-            int randIndex;
-            do{
-                randIndex = Random.Range(0, itemSO.items.Length-1);
-            } while(itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4);
-            if(itemSO.items[randIndex].pass == true)
-            {
-                passCount++;
-            }
-            cardCount++;
-
-            if((cardCount == 5 && passCount < 1 || cardCount == 6 && passCount < 2 || cardCount == 7 && passCount < 3))
-            {
-                do{
-                    randIndex = Random.Range(0, itemSO.items.Length-1);
-                } while(!CostManager.passedCards.Contains(itemSO.items[randIndex]));
-                passCount++;
-            }
-            if(usedTime <= 24f - CostManager.startTime)
-            {
-                usedTime += itemSO.items[randIndex].time;
-                var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
-                var card = cardObject.GetComponent<Card>();
-                card.Setup(itemSO.items[randIndex]);
-                cards.Add(card);
-                isUsed(card);
-                if(usedTime > 24f - CostManager.startTime)
-                {
-                    Audio.Inst.playBurst();
-                    burstPanel.SetActive(true);
-                    unUsed(card);
-                    CostManager.drawedCardCount--;
-                }
-
-                SetOriginOrder();
-                CardAlignment();
-            
-                switch(itemSO.items[randIndex].type)
-                {
-                    case 0:
-                        CostManager.drawedMajor++;
-                        break;
-                    case 1:
-                        CostManager.drawedLib++;
-                        break;
-                    case 2:
-                        CostManager.drawedWork++;
-                        break;
-                    case 3:
-                        CostManager.drawedPlay++;
-                        break;
-                }
-                CostManager.drawedCardCount++;
-            }
-            if(CostManager.MP - itemSO.items[randIndex].cost <= 100)
-                CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
-            else
-                CostManager.MP = 100;
-            MP.transform.localScale = new Vector3(CostManager.MP/10f, 0.5f, 1f);
+            randIndex = Random.Range(0, itemSO.items.Length - 1);
+        } while (itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4);
+        if (itemSO.items[randIndex].pass == true)
+        {
+            passCount++;
         }
+        cardCount++;
+
+        if ((cardCount == 5 && passCount < 1 || cardCount == 6 && passCount < 2 || cardCount == 7 && passCount < 3))
+        {
+            do
+            {
+                randIndex = Random.Range(0, itemSO.items.Length - 1);
+            } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]));
+            passCount++;
+        }
+        if (usedTime <= 24f - CostManager.startTime)
+        {
+            usedTime += itemSO.items[randIndex].time;
+            var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
+            var card = cardObject.GetComponent<Card>();
+            card.Setup(itemSO.items[randIndex]);
+            cards.Add(card);
+            isUsed(card);
+            if (usedTime > 24f - CostManager.startTime)
+            {
+                Audio.Inst.playBurst();
+                burstPanel.SetActive(true);
+                unUsed(card);
+                CostManager.drawedCardCount--;
+            }
+
+            SetOriginOrder();
+            CardAlignment();
+
+            switch (itemSO.items[randIndex].type)
+            {
+                case 0:
+                    CostManager.drawedMajor++;
+                    break;
+                case 1:
+                    CostManager.drawedLib++;
+                    break;
+                case 2:
+                    CostManager.drawedWork++;
+                    break;
+                case 3:
+                    CostManager.drawedPlay++;
+                    break;
+            }
+            CostManager.drawedCardCount++;
+        }
+        if (CostManager.MP - itemSO.items[randIndex].cost <= 100)
+            CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
         else
-        {
-            END();
-            clearCards(null);
-            Audio.Inst.playBurnout();
-            Time.timeScale = 0f;
-            SceneManager.LoadScene("Night");
-        }
+            CostManager.MP = 100;
+        MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1f);
     }
 
     public void END()
     {
         CostManager.passedCards.Clear();
-        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        for (int i = 0; i < itemSO.items.Length - 1; i++)
         {
             itemSO.items[i].pass = false;
         }
-        if(usedTime <= 24f - CostManager.startTime)
+        if (usedTime <= 24f - CostManager.startTime)
         {
             CostManager.startTime = 6f;
         }
@@ -184,7 +179,7 @@ public class CardManager : MonoBehaviour
     public void SetOriginOrder()
     {
         int count = cards.Count;
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             var targetCard = cards[i];
             targetCard?.GetComponent<Order>().SetOriginOrder(i);
@@ -195,7 +190,7 @@ public class CardManager : MonoBehaviour
     {
         List<PRS> originCardPRSs = new List<PRS>();
         originCardPRSs = RoundAlignment(leftAlignment, rightAlignment, cards.Count, 0.5f, Vector3.one * 1f);
-        for(int i = 0; i < cards.Count; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
             targetCard.originPRS = originCardPRSs[i];
@@ -218,30 +213,31 @@ public class CardManager : MonoBehaviour
         float[] objLerps = new float[objCount];
         List<PRS> results = new List<PRS>(objCount);
 
-        switch(objCount)
+        switch (objCount)
         {
             case 1:
-                objLerps = new float[] {0.5f};
+                objLerps = new float[] { 0.5f };
                 break;
             case 2:
-                objLerps = new float[] {0.27f, 0.73f};
+                objLerps = new float[] { 0.27f, 0.73f };
                 break;
             case 3:
-                objLerps = new float[] {0.1f, 0.5f, 0.9f};
+                objLerps = new float[] { 0.1f, 0.5f, 0.9f };
                 break;
             default:
                 float interval = 1f / (objCount - 1);
-                for(int i = 0; i < objCount; i++)
+                for (int i = 0; i < objCount; i++)
                 {
                     objLerps[i] = interval * i;
                 }
                 break;
         }
 
-        for(int i = 0; i < objCount; i++){
+        for (int i = 0; i < objCount; i++)
+        {
             var targetPos = Vector3.Lerp(leftAlignment.position, rightAlignment.position, objLerps[i]);
             var targetRot = Utils.QI;
-            if(objCount >= 4)
+            if (objCount >= 4)
             {
                 float curve = Mathf.Sqrt(Mathf.Pow(height, 2) - Mathf.Pow(objLerps[i] - 0.5f, 2));
                 curve = height >= 0 ? curve : -curve;
@@ -254,26 +250,33 @@ public class CardManager : MonoBehaviour
     }
 
     #region card
-    
-    public void CardMouseOver(Card card) {
-        if (card.item.type != 4) {
+
+    public void CardMouseOver(Card card)
+    {
+        if (card.item.type != 4)
+        {
             EnlargeCard(true, card);
         }
     }
 
-    public void CardMouseExit(Card card) {
-        if (card.item.type != 4) {
+    public void CardMouseExit(Card card)
+    {
+        if (card.item.type != 4)
+        {
             EnlargeCard(false, card);
         }
     }
 
 
-    void EnlargeCard(bool isEnlarge, Card card) {
-        if (isEnlarge == true) {
+    void EnlargeCard(bool isEnlarge, Card card)
+    {
+        if (isEnlarge == true)
+        {
             Vector3 enlargePos = new Vector3(card.transform.position.x, -1.8f, -100f);
             card.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 2f), 0);
         }
-        else {
+        else
+        {
             //card.MoveTransform(card.originPRS, 0);
         }
         card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
