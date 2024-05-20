@@ -32,9 +32,9 @@ public class Timer : MonoBehaviour
         Audio.Inst.playSceneChange();
         MaskObject.transform.DOScale(new Vector3(0,0,0), 3f).OnComplete(() =>
             {
-                dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
-                dayCountText.GetComponent<Renderer>().sortingOrder = 2;
-                dayCountText.text = CostManager.dayCount.ToString() + " 일차";
+                //dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
+                //dayCountText.GetComponent<Renderer>().sortingOrder = 2;
+                //dayCountText.text = CostManager.dayCount.ToString() + " 일차";
                 BlackSqaure.transform.DOScale(new Vector3(18,10,0), 3f).OnComplete(() =>
                 {
                     SceneManager.LoadScene("Day");
