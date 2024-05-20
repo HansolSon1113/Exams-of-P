@@ -973,6 +973,8 @@ MonoBehaviour:
   cards: []
   leftAlignment: {fileID: 977282215}
   rightAlignment: {fileID: 550064565}
+  BlackSqaure: {fileID: 453632278}
+  MaskObject: {fileID: 1889769314}
   endPanel: {fileID: 747284641}
   MP: {fileID: 1356681106}
   burstPanel: {fileID: 1348437645}
@@ -1510,8 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d99cd7fdb702427e821acd4fd0630c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlackSqaure: {fileID: 0}
-  MaskObject: {fileID: 0}
+  BlackSqaure: {fileID: 453632278}
+  MaskObject: {fileID: 1889769314}
 --- !u!212 &1344858426
 SpriteRenderer:
   m_ObjectHideFlags: 0
