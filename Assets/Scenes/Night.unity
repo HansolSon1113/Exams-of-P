@@ -1279,6 +1279,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1778962520}
   - {fileID: 522834054}
   - {fileID: 1652784206}
   m_Father: {fileID: 0}
@@ -1765,8 +1766,8 @@ Transform:
   m_GameObject: {fileID: 1053104954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.26, y: -2.95, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.4, y: -3.1, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1785,6 +1786,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerObj: {fileID: 1944201919}
   nightEndPanel: {fileID: 1112657874}
+  dayCountText: {fileID: 1778962518}
+  BlackSqaure: {fileID: 522834053}
+  MaskObject: {fileID: 1652784205}
 --- !u!114 &1053104959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,8 +1883,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 16.4, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1778962520}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1112657877
@@ -3384,14 +3387,14 @@ RectTransform:
   m_GameObject: {fileID: 1778962517}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.24, z: 1}
+  m_LocalScale: {x: 3.2800002, y: 2.3999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1112657876}
+  m_Father: {fileID: 832476426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.1}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1925004804

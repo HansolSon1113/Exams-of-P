@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] GameObject timerObj;
     [SerializeField] GameObject nightEndPanel;
+    [SerializeField] TMP_Text dayCountText;
+    [SerializeField] GameObject BlackSqaure;
+    [SerializeField] GameObject MaskObject;
 
     private void Start()
     {
@@ -18,8 +24,20 @@ public class Timer : MonoBehaviour
         timerObj.SetActive(false);
         Audio.Inst.playSceneChange();
         NightCardManager.Inst.END();
-        NightCardManager.Inst.nightEndPanel.SetActive(true);
         Time.timeScale = 0;
+        Time.timeScale = 1;
+        Audio.Inst.playSceneChange();
+        CostManager.dayCount++;
+        BlackSqaure.SetActive(true);
+        MaskObject.SetActive(true);
+        MaskObject.transform.localScale = new Vector3(30,30,1);
+        MaskObject.transform.position = new Vector3(7.4f, -3.1f, 0);
+        dayCountText.text = CostManager.dayCount.ToString() + " 일차";
+        Audio.Inst.playSceneChange();
+        MaskObject.transform.DOScale(new Vector3(0,0,0), 3f).OnComplete(() =>
+            {
+                SceneManager.LoadScene("Day");
+            });
     }
 
     private void timer()
