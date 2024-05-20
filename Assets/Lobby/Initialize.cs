@@ -8,6 +8,7 @@ public class Initialize : MonoBehaviour
 {
     [SerializeField] ItemSO itemSO;
     [SerializeField] GameObject BlackSqaure;
+    GameObject StartButton;
 
     void Start(){
         QualitySettings.vSyncCount = 1;
@@ -15,11 +16,13 @@ public class Initialize : MonoBehaviour
         DG.Tweening.DOTween.Init();
         Audio.Inst.playTitleBackground();
         BlackSqaure.SetActive(false);
+        StartButton = GameObject.Find("Start Button");
     }
 
     void OnMouseDown()
     {
         Audio.Inst.playSettings();
+        StartButton.GetComponent<BoxCollider2D>().enabled = false;
         StartCoroutine(FadeOutAndStartGame());
     }
 

@@ -9,14 +9,19 @@ public class Buttons : MonoBehaviour
 {
     [SerializeField] GameObject BlackSqaure;
     [SerializeField] GameObject MaskObject;
+    GameObject NightButton;
+    GameObject DrawButton;
 
     void Start() {
-
+        NightButton = GameObject.Find("Night Button");
+        DrawButton = GameObject.Find("Draw Button");
     }
 
     private void Day2NightCircle() {
         BlackSqaure.SetActive(true);
         MaskObject.SetActive(true);
+        NightButton.GetComponent<BoxCollider2D>().enabled = false;
+        DrawButton.GetComponent<BoxCollider2D>().enabled = false;
         MaskObject.transform.DOScale(new Vector3(0,0,1), 3f).OnComplete(() =>
         {
             SceneManager.LoadScene("Night");
