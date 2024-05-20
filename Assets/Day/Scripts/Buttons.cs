@@ -12,8 +12,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] GameObject MaskObject;
 
     void Start() {
-        BlackSqaure.SetActive(false);
-        MaskObject.SetActive(false);
+
     }
 
     public void Day2NightCircle() {

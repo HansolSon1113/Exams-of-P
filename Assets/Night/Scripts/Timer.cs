@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D.Animation;
 
 public class Timer : MonoBehaviour
 {
@@ -31,7 +32,13 @@ public class Timer : MonoBehaviour
         Audio.Inst.playSceneChange();
         MaskObject.transform.DOScale(new Vector3(0,0,0), 3f).OnComplete(() =>
             {
-                SceneManager.LoadScene("Day");
+                dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
+                dayCountText.GetComponent<Renderer>().sortingOrder = 2;
+                dayCountText.text = CostManager.dayCount.ToString() + " 일차";
+                BlackSqaure.transform.DOScale(new Vector3(18,10,0), 3f).OnComplete(() =>
+                {
+                    SceneManager.LoadScene("Day");
+                });
             });
     }
 
