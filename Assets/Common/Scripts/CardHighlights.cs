@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+#if UNITY_EDITOR
 using UnityEditor.SearchService;
+#endif
 using UnityEngine.SceneManagement;
 
 public class CardHighlights : MonoBehaviour
