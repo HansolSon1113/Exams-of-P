@@ -22,7 +22,7 @@ public class TimeChatManager : MonoBehaviour
             CostManager.chatOrder = 110;
             chatBox?.GetComponent<Order>().SetOriginOrder(100);
         }
-        chatBox.transform.DOScale(new Vector3(0.4f, 0.4f, 1f), 0.6f).SetEase(Ease.OutBounce);
+        chatBox.transform.DOScale(new Vector3(0.3f, 0.3f, 1f), 0.6f).SetEase(Ease.OutBounce);
         chatBox.transform.DORotate(new Vector3(0, 0, 0), 0.2f).SetEase(Ease.OutBack);
         Invoke("destroy", 2f);
     }
@@ -96,6 +96,6 @@ public class TimeChatManager : MonoBehaviour
 
     private void setBox(int width)
     {
-        chatSprite.size += new Vector2(width + 0.5f, 0);
+        chatSprite.size += new Vector2(width + 0.3f, 0);
     }
 }
