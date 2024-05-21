@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class NormalEnding : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class NormalEnding : MonoBehaviour
     public TMP_Text lib;
     public TMP_Text work;
     public TMP_Text play;
-    public TMP_Text majorGrade;
-    public TMP_Text libGrade;
+    public Image majorGrade;
+    public Image libGrade;
+    public List<Sprite> sprites;
     [SerializeField] SpriteRenderer overPanel;
     [SerializeField] SpriteRenderer normalCutScene;
     [SerializeField] SpriteRenderer burnoutCutScene;
@@ -39,74 +41,16 @@ public class NormalEnding : MonoBehaviour
                 Audio.Inst.playNormalEnding();
             });
         });
-        major.text = "전공: " + CostManager.drawedMajor;
-        lib.text = "교양: " + CostManager.drawedLib;
-        work.text = "알바: " + CostManager.drawedWork;
-        play.text = "여가: " + CostManager.drawedPlay;
+        major.text = CostManager.drawedMajor.ToString();
+        lib.text = CostManager.drawedLib.ToString();
+        work.text = CostManager.drawedWork.ToString();
+        play.text = CostManager.drawedPlay.ToString();
         setGrade();
     }
 
     private void setGrade()
     {
-        switch (CostManager.drawedMajor)
-        {
-            case 8:
-                majorGrade.text = "A+";
-                break;
-            case 7:
-                majorGrade.text = "A";
-                break;
-            case 6:
-                majorGrade.text = "B+";
-                break;
-            case 5:
-                majorGrade.text = "B";
-                break;
-            case 4:
-                majorGrade.text = "C+";
-                break;
-            case 3:
-                majorGrade.text = "C";
-                break;
-            case 2:
-                majorGrade.text = "D+";
-                break;
-            case 1:
-                majorGrade.text = "D";
-                break;
-            case 0:
-                majorGrade.text = "F";
-                break;
-        }
-        switch (CostManager.drawedLib)
-        {
-            case 8:
-                libGrade.text = "A+";
-                break;
-            case 7:
-                libGrade.text = "A";
-                break;
-            case 6:
-                libGrade.text = "B+";
-                break;
-            case 5:
-                libGrade.text = "B";
-                break;
-            case 4:
-                libGrade.text = "C+";
-                break;
-            case 3:
-                libGrade.text = "C";
-                break;
-            case 2:
-                libGrade.text = "D+";
-                break;
-            case 1:
-                libGrade.text = "D";
-                break;
-            case 0:
-                libGrade.text = "F";
-                break;
-        }
+        majorGrade.sprite = sprites[CostManager.drawedMajor];
+        libGrade.sprite = sprites[CostManager.drawedLib];
     }
 }
