@@ -45,6 +45,7 @@ public class CardManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Clock.Inst.showChatBox();
+        yield return new WaitForSeconds(delay);
         ShowMP.Inst.showMPChat();
     }
 

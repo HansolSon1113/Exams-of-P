@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 282769659}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.99, y: 2.1599998, z: 0}
+  m_LocalPosition: {x: -0.99, y: 1.75, z: 0}
   m_LocalScale: {x: 5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -696,6 +696,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7880434111155524487, guid: 8785ad5ebc2844625a40a38cd0628385, type: 3}
   m_PrefabInstance: {fileID: 550064564}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &579990788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 579990791}
+  - component: {fileID: 579990790}
+  - component: {fileID: 579990789}
+  m_Layer: 0
+  m_Name: Bird
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &579990789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579990788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fc228c4eecb41c4956d667e9bb4821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MPChatField: {fileID: 3030682776090211566, guid: 12285d3927b9048dc8d4d5d93b0eb888, type: 3}
+  MPChatSpawnPosition: {fileID: 282769660}
+  isShowing: 0
+--- !u!61 &579990790
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579990788}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.13602191, y: 2.167281}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.4483929, y: 2.2514005}
+  m_EdgeRadius: 0
+--- !u!4 &579990791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579990788}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.26292264, y: 1.3631421, z: -9.363897}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598018496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1509,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1356681108}
   - component: {fileID: 1356681107}
-  - component: {fileID: 1356681109}
   - component: {fileID: 1356681110}
   m_Layer: 0
   m_Name: MP
@@ -1492,21 +1584,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1356681109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356681106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27fc228c4eecb41c4956d667e9bb4821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MPChatField: {fileID: 3030682776090211566, guid: 12285d3927b9048dc8d4d5d93b0eb888, type: 3}
-  MPChatSpawnPosition: {fileID: 282769660}
-  isShowing: 0
 --- !u!61 &1356681110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2103,3 +2180,4 @@ SceneRoots:
   - {fileID: 1667349949}
   - {fileID: 708903531}
   - {fileID: 598018500}
+  - {fileID: 579990791}

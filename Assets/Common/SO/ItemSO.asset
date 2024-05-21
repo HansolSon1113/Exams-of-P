@@ -76,7 +76,7 @@ MonoBehaviour:
     sprite: {fileID: -596066148, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
     used: 0
-    pass: 1
+    pass: 0
   - name: "\uB9C8\uBC95\uC758\uC774\uD574\uC640\uAC10\uC0C1"
     type: 1
     cost: 2
@@ -194,6 +194,86 @@ MonoBehaviour:
     cost: 0
     time: 0
     sprite: {fileID: 0}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Liberal5
+    type: 1
+    cost: 2
+    time: 2
+    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Liberal6
+    type: 1
+    cost: 2
+    time: 2
+    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Liberal7
+    type: 1
+    cost: 2
+    time: 2
+    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Liberal8
+    type: 1
+    cost: 2
+    time: 2
+    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Play7
+    type: 3
+    cost: -4
+    time: 3
+    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Play8
+    type: 3
+    cost: -4
+    time: 3
+    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Play9
+    type: 3
+    cost: -4
+    time: 3
+    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Play10
+    type: 3
+    cost: -4
+    time: 3
+    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Play11
+    type: 3
+    cost: -4
+    time: 3
+    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    percent: 0
+    used: 0
+    pass: 0
+  - name: Play12
+    type: 3
+    cost: -4
+    time: 3
+    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
     percent: 0
     used: 0
     pass: 0
