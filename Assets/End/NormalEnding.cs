@@ -13,9 +13,21 @@ public class NormalEnding : MonoBehaviour
     public TMP_Text majorGrade;
     public TMP_Text libGrade;
     [SerializeField] SpriteRenderer overPanel;
-    [SerializeField] SpriteRenderer cutScene;
+    [SerializeField] SpriteRenderer normalCutScene;
+    [SerializeField] SpriteRenderer burnoutCutScene;
     void Start()
     {
+        SpriteRenderer cutScene;
+        if(CostManager.MP <= 0)
+        {
+            cutScene = burnoutCutScene;
+            normalCutScene.DOFade(0f, 0f);
+        }
+        else
+        {
+            cutScene = normalCutScene;
+            burnoutCutScene.DOFade(0f, 0f);
+        }
         Time.timeScale = 1f;
         overPanel.DOFade(0f, 1.5f);
         Audio.Inst.playNormalEndingCut();

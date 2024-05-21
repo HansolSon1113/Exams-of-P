@@ -17,23 +17,11 @@ public class Buttons : MonoBehaviour
         DrawButton = GameObject.Find("Draw Button");
     }
 
-    public void Day2NightCircle() {
-        BlackSqaure.SetActive(true);
-        MaskObject.SetActive(true);
-        NightButton.GetComponent<BoxCollider2D>().enabled = false;
-        DrawButton.GetComponent<BoxCollider2D>().enabled = false;
-        MaskObject.transform.DOScale(new Vector3(0,0,1), 3f).OnComplete(() =>
-        {
-            SceneManager.LoadScene("Night");
-        });
-    }
-
     private void OnMouseDown()
     {
         if (gameObject.name == "Night Button")
         {
-            Audio.Inst.playSceneChange();
-            Day2NightCircle();
+            CardManager.Inst.Day2NightCircle();
         }
         else if (gameObject.name == "Draw Button")
         {

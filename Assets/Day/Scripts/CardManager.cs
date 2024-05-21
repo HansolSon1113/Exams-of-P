@@ -20,6 +20,7 @@ public class CardManager : MonoBehaviour
     [SerializeField] GameObject MP;
     [SerializeField] GameObject drawButton;
     public GameObject burstPanel;
+    public GameObject burnoutPanel;
     public GameObject target;
     private int passCount = 0;
     private int cardCount = 0;
@@ -32,10 +33,11 @@ public class CardManager : MonoBehaviour
         MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1);
         StartCoroutine(chatDelay(2f));
 
-        if (MP.transform.localScale.x <= 0f)
+        if (CostManager.MP <= 0)
         {
-            Time.timeScale = 0f;
-            SceneManager.LoadScene("Normal Ending");
+            burstPanel.SetActive(false);
+            Day2NightCircle();
+            return;
         }
     }
 
@@ -48,26 +50,24 @@ public class CardManager : MonoBehaviour
 
     public void draw()
     {
-        if (cardCount == 7 || usedTime > 24f - CostManager.startTime || CostManager.drawedCardCount > itemSO.items.Length - 1)
-        {
-            /*clearCards(null);
-            burstPanel.SetActive(false);
-            END();
-            clearCards(null);
-            Audio.Inst.playSceneChange();
-            Day2NightCircle();*/
-        }
-        else
+        if (cardCount <= 7 && usedTime <= 24f - CostManager.startTime && CostManager.drawedCardCount <= itemSO.items.Length)
         {
             AddCard();
         }
+        else
+        {
+            END();
+            Day2NightCircle();
+        }
     }
 
-    private void Day2NightCircle()
+    public void Day2NightCircle()
     {
+        END();
         BlackSqaure.SetActive(true);
         MaskObject.SetActive(true);
-        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).OnComplete(() =>
+        Audio.Inst.playSceneChange();
+        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).SetEase(Ease.OutQuart).OnComplete(() =>
         {
             SceneManager.LoadScene("Night");
         });
@@ -106,6 +106,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
+
     void AddCard()
     {
         int randIndex;
@@ -136,8 +137,6 @@ public class CardManager : MonoBehaviour
             card.Setup(itemSO.items[randIndex]);
             cards.Add(card);
             isUsed(card);
-
-
             SetOriginOrder();
             CardAlignment();
             if (CostManager.MP - itemSO.items[randIndex].cost * itemSO.items[randIndex].time <= 100)
@@ -145,22 +144,51 @@ public class CardManager : MonoBehaviour
             else
                 CostManager.MP = 100;
             MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1f);
+            if (CostManager.MP <= 0)
+            {
+                clearCards(null);
+                burnoutPanel.SetActive(true);
+                burnoutPanel.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 3f).SetEase(Ease.OutBounce);
+                burnoutPanel.transform.DOMove(new Vector3(0, 0, 0), 3f).SetEase(Ease.OutBounce).OnComplete(() =>
+                {
+                    burnoutPanel.transform.DOScale(new Vector3(8, 8, 1), 1f).SetEase(Ease.InBounce).OnComplete(() =>
+                    {
+                        burnoutPanel.SetActive(false);
+                        SceneManager.LoadScene("Normal Ending");
+                        return;
+                    });
+                });
+            }
             if (usedTime > 24f - CostManager.startTime)
             {
                 Audio.Inst.playBurst();
                 clearCards(null);
                 drawButton.SetActive(false);
                 burstPanel.SetActive(true);
-                burstPanel.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 3f).SetEase(Ease.OutBounce);
-                burstPanel.transform.DOMove(new Vector3(0, 0, 0), 3f).SetEase(Ease.OutBounce).OnComplete(() =>
+                burstPanel.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 2f).SetEase(Ease.OutBounce);
+                burstPanel.transform.DOMove(new Vector3(0, 0, 0), 2f).SetEase(Ease.OutBounce).OnComplete(() =>
                 {
-                    burstPanel.transform.DOScale(new Vector3(8, 8, 1), 1f).SetEase(Ease.InBack).OnComplete(() =>
+                    burstPanel.transform.DOScale(new Vector3(10, 10, 1), 2f).SetEase(Ease.InBounce).OnComplete(() =>
                     {
+                        CostManager.drawedCardCount--;
+                        switch (itemSO.items[randIndex].type)
+                        {
+                            case 0:
+                                CostManager.drawedMajor--;
+                                break;
+                            case 1:
+                                CostManager.drawedLib--;
+                                break;
+                            case 2:
+                                CostManager.drawedWork--;
+                                break;
+                            case 3:
+                                CostManager.drawedPlay--;
+                                break;
+                        }
                         burstPanel.SetActive(false);
-                        END();
                         unUsed(card);
                         Day2NightCircle();
-                        return;
                     });
                 });
             }

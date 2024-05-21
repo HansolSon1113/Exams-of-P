@@ -41,7 +41,7 @@ public class NightCardManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         Audio.Inst.playNightBackground();
-        if (CostManager.dayCount >= 7 && CostManager.MP > 0)
+        if (CostManager.dayCount >= 7 || CostManager.MP <= 0)
         {
             Audio.Inst.playSceneChange();
             if (CostManager.drawedWork >= 4)
@@ -92,7 +92,7 @@ public class NightCardManager : MonoBehaviour
     {
         ChangeScene.SetActive(true);
         Audio.Inst.playSceneChange();
-        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).OnComplete(() =>
+        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 1.5f).SetEase(Ease.OutQuart).OnComplete(() =>
         {
             ChangeScene.SetActive(false);
             nightEndPanel.SetActive(true);
