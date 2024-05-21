@@ -227,6 +227,8 @@ public class CardManager : MonoBehaviour
         {
             CostManager.startTime = 8f;
         }
+        CostManager.isMPChatUsed = false;
+        CostManager.isTimeChatUsed = false;
     }
 
     public void SetOriginOrder()

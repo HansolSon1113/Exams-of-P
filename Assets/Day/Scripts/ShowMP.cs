@@ -13,6 +13,8 @@ public class ShowMP : MonoBehaviour
     private void OnMouseDown()
     {
         showMPChat();
+        if(!CostManager.isMPChatUsed)
+            CostManager.isMPChatUsed = true;
     }
 
     public void showMPChat()

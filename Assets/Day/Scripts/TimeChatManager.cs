@@ -12,7 +12,7 @@ public class TimeChatManager : MonoBehaviour
     private void Start()
     {
         chatText.text = setString();
-        if(ShowMP.Inst.isShowing)
+        if (ShowMP.Inst.isShowing)
         {
             chatBox?.GetComponent<Order>().SetOriginOrder(CostManager.chatOrder);
             CostManager.chatOrder += 10;
@@ -36,35 +36,39 @@ public class TimeChatManager : MonoBehaviour
     private string setString()
     {
         float time = CardManager.Inst.usedTime + CostManager.startTime;
-        float leftTime = 24f - time;
         List<string> str = new List<string>();
-        if(time <= 11f)
+        if (!CostManager.isTimeChatUsed)
         {
-            str.Add(CardManager.Inst.usedTime + "시간 밖에 안 됐는데..\n왜 물어보는거야?");
-            str.Add("이제 겨우\n" + time + "시 밖에 지나지 않았다고");
-            str.Add("그만 봐\n" + leftTime + "시간 남았다고");
-            str.Add("째깍 째깍\n" + leftTime + "시간 남았습니다~~");
-        }
-        else if (time >= 12 && time <= 17)
-        {
-            str.Add("힘들어 하지마?\n이제 겨우 " + CardManager.Inst.usedTime + "시간이야");
-            str.Add("너무 힘들어?\n아쉽게도 지금 " + CardManager.Inst.usedTime + "시간이야");
-            str.Add("얼마 남았을까요??\n땡! " + leftTime + "시간입니다");
-            str.Add("째깍 째깍\n" + leftTime + "시간 남았습니다~~");
-        }
-        else if(time >= 18 && time <= 24)
-        {
-            str.Add("이제\n" + leftTime + "시간 밖에 남지 않았다고");
-            str.Add("뭐하는 거야!!\n" + leftTime + "시간 남았다고");
-            str.Add("이제 그만해!!\n이제 " + CardManager.Inst.usedTime + "시간이야");
-            str.Add("감당 가능하겠어?\n" + CardManager.Inst.usedTime + "시간이야");
+            str.Add("지금은 " + time + "시야.\n내가 아니면 안되겠구만.");
         }
         else
         {
-            return "시간 초과!";
+            if (time <= 11f)
+            {
+                str.Add("...시계 숫자도 못 읽는거야?\n흥, " + time + "시라고.");
+                str.Add("성실한거야? 멍청한거야?\n" + time + "시라고 말만 해둘게.");
+                str.Add("몇 번을 말해줘야 해? " + time + "시라고!");
+            }
+            else if (time >= 12 && time <= 17)
+            {
+                str.Add("와~ 꼴이 엉망진창인데?\n벌써 시간이 " + CardManager.Inst.usedTime + "신데...");
+                str.Add("야! 시끄러워! 몇 신지 알아?\n" + time + "시라고!");
+                str.Add(time + "시라는 시간을 보고도 웃음이 나오나보네.");
+                str.Add(time + "시.\n이렇게 말해주는 것도 시간낭비야.");
+            }
+            else if (time >= 18 && time <= 24)
+            {
+                str.Add(time + "시...\n흥, 시간 관리 못하는 사람이랑은 얘기하고 싶지 않은데~");
+                str.Add("내 시계는 정확해.\n" + time + "시야.");
+                str.Add("시간은 금보다 귀해. 넌 이해 못하겠지만.\n" + time + "시라는 걸 알아둬.");
+                str.Add("벌써 " + time + "시네~\n시간낭비는 너의 특기인가봐?");
+            }
+            else
+            {
+                return "시간 초과!";
+            }
         }
-
-        string res = str[Random.Range(0, 4)];
+        string res = str[Random.Range(0, str.Count)];
         if (!string.IsNullOrWhiteSpace(res))
         {
             string[] lines = res.Split('\n');

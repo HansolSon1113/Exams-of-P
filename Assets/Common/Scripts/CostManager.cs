@@ -14,4 +14,6 @@ public static class CostManager
     public static int MP;
     public static int chatOrder = 110;
     public static List<Item> passedCards;
+    public static bool isMPChatUsed;
+    public static bool isTimeChatUsed;
 }
