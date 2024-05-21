@@ -29,11 +29,20 @@ public class CardManager : MonoBehaviour
         usedTime = 0;
         Audio.Inst.playDayBackground();
         MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1);
+        StartCoroutine(chatDelay(2f));
+
         if (MP.transform.localScale.x <= 0f)
         {
             Time.timeScale = 0f;
-            SceneManager.LoadScene("Ending");
+            SceneManager.LoadScene("Normal Ending");
         }
+    }
+
+    private IEnumerator chatDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Clock.Inst.showChatBox();
+        ShowMP.Inst.showMPChat();
     }
 
     public void draw()
@@ -126,163 +135,169 @@ public class CardManager : MonoBehaviour
             card.Setup(itemSO.items[randIndex]);
             cards.Add(card);
             isUsed(card);
+
+
+            SetOriginOrder();
+            CardAlignment();
+            if (CostManager.MP - itemSO.items[randIndex].cost <= 100)
+                CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
+            else
+                CostManager.MP = 100;
+            MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1f);
             if (usedTime > 24f - CostManager.startTime)
             {
                 Audio.Inst.playBurst();
                 burstPanel.SetActive(true);
-                unUsed(card);
-                CostManager.drawedCardCount--;
-                SceneManager.LoadScene("Night");
+                burstPanel.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 3f).SetEase(Ease.OutBounce);
+                burstPanel.transform.DOMove(new Vector3(0, 0, 0), 3f).SetEase(Ease.OutBounce).OnComplete(() =>
+                {
+                    END();
+                    unUsed(card);
+                    Invoke("Day2NightCircle", 3f);
+                    burstPanel.SetActive(false);
+                    return;
+                });
             }
-
-            SetOriginOrder();
-            CardAlignment();
-
-            switch (itemSO.items[randIndex].type)
-            {
-                case 0:
-                    CostManager.drawedMajor++;
-                    break;
-                case 1:
-                    CostManager.drawedLib++;
-                    break;
-                case 2:
-                    CostManager.drawedWork++;
-                    break;
-                case 3:
-                    CostManager.drawedPlay++;
-                    break;
-            }
-            CostManager.drawedCardCount++;
         }
-        if (CostManager.MP - itemSO.items[randIndex].cost <= 100)
-            CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
-        else
-            CostManager.MP = 100;
-        MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1f);
+        switch (itemSO.items[randIndex].type)
+        {
+            case 0:
+                CostManager.drawedMajor++;
+                break;
+            case 1:
+                CostManager.drawedLib++;
+                break;
+            case 2:
+                CostManager.drawedWork++;
+                break;
+            case 3:
+                CostManager.drawedPlay++;
+                break;
+        }
+CostManager.drawedCardCount++;
     }
 
     public void END()
+{
+    CostManager.passedCards.Clear();
+    for (int i = 0; i < itemSO.items.Length - 1; i++)
     {
-        CostManager.passedCards.Clear();
-        for (int i = 0; i < itemSO.items.Length - 1; i++)
-        {
-            itemSO.items[i].pass = false;
-        }
-        if (usedTime <= 24f - CostManager.startTime)
-        {
-            CostManager.startTime = 6f;
-        }
-        else
-        {
-            CostManager.startTime = 8f;
-        }
+        itemSO.items[i].pass = false;
     }
-
-    public void SetOriginOrder()
+    if (usedTime <= 24f - CostManager.startTime)
     {
-        int count = cards.Count;
-        for (int i = 0; i < count; i++)
-        {
-            var targetCard = cards[i];
-            targetCard?.GetComponent<Order>().SetOriginOrder(i);
-        }
+        CostManager.startTime = 6f;
     }
-
-    void CardAlignment()
+    else
     {
-        List<PRS> originCardPRSs = new List<PRS>();
-        originCardPRSs = RoundAlignment(leftAlignment, rightAlignment, cards.Count, 0.5f, Vector3.one * 1f);
-        for (int i = 0; i < cards.Count; i++)
-        {
-            var targetCard = cards[i];
-            targetCard.originPRS = originCardPRSs[i];
-            targetCard.MoveTransform(targetCard.originPRS, 0.7f);
-        }
+        CostManager.startTime = 8f;
     }
+}
 
-    //카드 한개 삭제
-    /*
-    public void willDestroyCard(Card card)
+public void SetOriginOrder()
+{
+    int count = cards.Count;
+    for (int i = 0; i < count; i++)
     {
-        cards.Remove(card);
-        SetOriginOrder();
-        CardAlignment();
+        var targetCard = cards[i];
+        targetCard?.GetComponent<Order>().SetOriginOrder(i);
     }
-    */
+}
 
-    List<PRS> RoundAlignment(Transform leftAlignment, Transform rightAlignment, int objCount, float height, Vector3 scale)
+void CardAlignment()
+{
+    List<PRS> originCardPRSs = new List<PRS>();
+    originCardPRSs = RoundAlignment(leftAlignment, rightAlignment, cards.Count, 0.5f, Vector3.one * 1f);
+    for (int i = 0; i < cards.Count; i++)
     {
-        float[] objLerps = new float[objCount];
-        List<PRS> results = new List<PRS>(objCount);
+        var targetCard = cards[i];
+        targetCard.originPRS = originCardPRSs[i];
+        targetCard.MoveTransform(targetCard.originPRS, 0.7f);
+    }
+}
 
-        switch (objCount)
-        {
-            case 1:
-                objLerps = new float[] { 0.5f };
-                break;
-            case 2:
-                objLerps = new float[] { 0.27f, 0.73f };
-                break;
-            case 3:
-                objLerps = new float[] { 0.1f, 0.5f, 0.9f };
-                break;
-            default:
-                float interval = 1f / (objCount - 1);
-                for (int i = 0; i < objCount; i++)
-                {
-                    objLerps[i] = interval * i;
-                }
-                break;
-        }
+//카드 한개 삭제
+/*
+public void willDestroyCard(Card card)
+{
+    cards.Remove(card);
+    SetOriginOrder();
+    CardAlignment();
+}
+*/
 
-        for (int i = 0; i < objCount; i++)
-        {
-            var targetPos = Vector3.Lerp(leftAlignment.position, rightAlignment.position, objLerps[i]);
-            var targetRot = Utils.QI;
-            if (objCount >= 4)
+List<PRS> RoundAlignment(Transform leftAlignment, Transform rightAlignment, int objCount, float height, Vector3 scale)
+{
+    float[] objLerps = new float[objCount];
+    List<PRS> results = new List<PRS>(objCount);
+
+    switch (objCount)
+    {
+        case 1:
+            objLerps = new float[] { 0.5f };
+            break;
+        case 2:
+            objLerps = new float[] { 0.27f, 0.73f };
+            break;
+        case 3:
+            objLerps = new float[] { 0.1f, 0.5f, 0.9f };
+            break;
+        default:
+            float interval = 1f / (objCount - 1);
+            for (int i = 0; i < objCount; i++)
             {
-                float curve = Mathf.Sqrt(Mathf.Pow(height, 2) - Mathf.Pow(objLerps[i] - 0.5f, 2));
-                curve = height >= 0 ? curve : -curve;
-                targetPos.y += curve;
-                targetRot = Quaternion.Slerp(leftAlignment.rotation, rightAlignment.rotation, objLerps[i]);
+                objLerps[i] = interval * i;
             }
-            results.Add(new PRS(targetPos, targetRot, scale));
-        }
-        return results;
+            break;
     }
 
-    #region card
-
-    public void CardMouseOver(Card card)
+    for (int i = 0; i < objCount; i++)
     {
-        if (card.item.type != 4)
+        var targetPos = Vector3.Lerp(leftAlignment.position, rightAlignment.position, objLerps[i]);
+        var targetRot = Utils.QI;
+        if (objCount >= 4)
         {
-            EnlargeCard(true, card);
+            float curve = Mathf.Sqrt(Mathf.Pow(height, 2) - Mathf.Pow(objLerps[i] - 0.5f, 2));
+            curve = height >= 0 ? curve : -curve;
+            targetPos.y += curve;
+            targetRot = Quaternion.Slerp(leftAlignment.rotation, rightAlignment.rotation, objLerps[i]);
         }
+        results.Add(new PRS(targetPos, targetRot, scale));
     }
+    return results;
+}
 
-    public void CardMouseExit(Card card)
+#region card
+
+public void CardMouseOver(Card card)
+{
+    if (card.item.type != 4)
     {
-        if (card.item.type != 4)
-        {
-            EnlargeCard(false, card);
-        }
+        EnlargeCard(true, card);
     }
+}
 
-
-    void EnlargeCard(bool isEnlarge, Card card)
+public void CardMouseExit(Card card)
+{
+    if (card.item.type != 4)
     {
-        if (isEnlarge == true)
-        {
-            Vector3 enlargePos = new Vector3(card.transform.position.x, -1.8f, -100f);
-            card.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 2f), 0);
-        }
-        else
-        {
-            //card.MoveTransform(card.originPRS, 0);
-        }
-        card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
+        EnlargeCard(false, card);
     }
+}
+
+
+void EnlargeCard(bool isEnlarge, Card card)
+{
+    if (isEnlarge == true)
+    {
+        Vector3 enlargePos = new Vector3(card.transform.position.x, -1.8f, -100f);
+        card.MoveTransform(new PRS(enlargePos, Utils.QI, Vector3.one * 2f), 0);
+    }
+    else
+    {
+        //card.MoveTransform(card.originPRS, 0);
+    }
+    card.GetComponent<Order>().SetMostFrontOrder(isEnlarge);
+}
     #endregion
 }

@@ -62,6 +62,11 @@ public class Clock : MonoBehaviour
 
     private void OnMouseDown()
     {
+        showChatBox();
+    }
+
+    public void showChatBox()
+    {
         if(isShowing == false)
         {
             isShowing = true;

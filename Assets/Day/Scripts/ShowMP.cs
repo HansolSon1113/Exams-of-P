@@ -12,6 +12,11 @@ public class ShowMP : MonoBehaviour
     public bool isShowing = false;
     private void OnMouseDown()
     {
+
+    }
+
+    public void showMPChat()
+    {
         if(isShowing == false)
         {
             isShowing = true;
