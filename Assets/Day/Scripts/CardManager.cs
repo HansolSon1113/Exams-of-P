@@ -241,7 +241,7 @@ public class CardManager : MonoBehaviour
     void CardAlignment()
     {
         List<PRS> originCardPRSs = new List<PRS>();
-        originCardPRSs = RoundAlignment(leftAlignment, rightAlignment, cards.Count, 0.5f, Vector3.one * 1f);
+        originCardPRSs = RoundAlignment(leftAlignment, rightAlignment, cards.Count, 0.5f, Vector3.one * 0.7f);
         for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
