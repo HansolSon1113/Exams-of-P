@@ -993,6 +993,7 @@ MonoBehaviour:
   BlackSqaure: {fileID: 453632278}
   MaskObject: {fileID: 1889769314}
   MP: {fileID: 1356681106}
+  drawButton: {fileID: 1056039692}
   burstPanel: {fileID: 1178839513}
   target: {fileID: 5232245971602971345, guid: d392e9e9e11624123bd9f576b75087d8, type: 3}
   usedTime: 0
