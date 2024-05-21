@@ -35,7 +35,7 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: 1162491307, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uBE44\uD589\uC220"
     type: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: -1108886442, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uBC29\uC5B4\uC220"
     type: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: 93414328, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uB9C8\uBC95\uC0DD\uBB3C\uD559"
     type: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
     time: 3
     sprite: {fileID: 506245067, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uCE74\uD398\uB2E4\uB140\uC624\uAE30"
     type: 3

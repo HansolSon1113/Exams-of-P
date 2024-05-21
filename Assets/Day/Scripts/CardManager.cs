@@ -68,7 +68,7 @@ public class CardManager : MonoBehaviour
         BlackSqaure.SetActive(true);
         MaskObject.SetActive(true);
         Audio.Inst.playSceneChange();
-        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 3f).SetEase(Ease.OutQuart).OnComplete(() =>
+        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 1f).SetEase(Ease.OutQuart).OnComplete(() =>
         {
             SceneManager.LoadScene("Night");
         });
@@ -152,12 +152,16 @@ public class CardManager : MonoBehaviour
                 burnoutPanel.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 3f).SetEase(Ease.OutBounce);
                 burnoutPanel.transform.DOMove(new Vector3(0, 0, 0), 3f).SetEase(Ease.OutBounce).OnComplete(() =>
                 {
-                    burnoutPanel.transform.DOScale(new Vector3(8, 8, 1), 1f).SetEase(Ease.InBounce).OnComplete(() =>
+                    burnoutPanel.SetActive(false);
+                    END();
+                    BlackSqaure.SetActive(true);
+                    MaskObject.SetActive(true);
+                    Audio.Inst.playSceneChange();
+                    MaskObject.transform.DOScale(new Vector3(0, 0, 1), 1f).SetEase(Ease.OutQuart).OnComplete(() =>
                     {
-                        burnoutPanel.SetActive(false);
                         SceneManager.LoadScene("Normal Ending");
-                        return;
                     });
+                    return;
                 });
             }
             if (usedTime > 24f - CostManager.startTime)
@@ -169,28 +173,25 @@ public class CardManager : MonoBehaviour
                 burstPanel.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 2f).SetEase(Ease.OutBounce);
                 burstPanel.transform.DOMove(new Vector3(0, 0, 0), 2f).SetEase(Ease.OutBounce).OnComplete(() =>
                 {
-                    burstPanel.transform.DOScale(new Vector3(10, 10, 1), 2f).SetEase(Ease.InBounce).OnComplete(() =>
+                    CostManager.drawedCardCount--;
+                    switch (itemSO.items[randIndex].type)
                     {
-                        CostManager.drawedCardCount--;
-                        switch (itemSO.items[randIndex].type)
-                        {
-                            case 0:
-                                CostManager.drawedMajor--;
-                                break;
-                            case 1:
-                                CostManager.drawedLib--;
-                                break;
-                            case 2:
-                                CostManager.drawedWork--;
-                                break;
-                            case 3:
-                                CostManager.drawedPlay--;
-                                break;
-                        }
-                        burstPanel.SetActive(false);
-                        unUsed(card);
-                        Day2NightCircle();
-                    });
+                        case 0:
+                            CostManager.drawedMajor--;
+                            break;
+                        case 1:
+                            CostManager.drawedLib--;
+                            break;
+                        case 2:
+                            CostManager.drawedWork--;
+                            break;
+                        case 3:
+                            CostManager.drawedPlay--;
+                            break;
+                    }
+                    burstPanel.SetActive(false);
+                    unUsed(card);
+                    Day2NightCircle();
                 });
             }
         }

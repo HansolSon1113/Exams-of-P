@@ -56,16 +56,16 @@ public class TimeChatManager : MonoBehaviour
                 str.Add(time + "시라는 시간을 보고도 웃음이 나오나보네.");
                 str.Add(time + "시.\n이렇게 말해주는 것도 시간낭비야.");
             }
-            else if (time >= 18 && time <= 24)
+            else if (time >= 18)
             {
+                if(time >= 24)
+                {
+                    time -= 24;
+                }
                 str.Add(time + "시...\n흥, 시간 관리 못하는 사람이랑은 얘기하고 싶지 않은데~");
                 str.Add("내 시계는 정확해.\n" + time + "시야.");
                 str.Add("시간은 금보다 귀해. 넌 이해 못하겠지만.\n" + time + "시라는 걸 알아둬.");
                 str.Add("벌써 " + time + "시네~\n시간낭비는 너의 특기인가봐?");
-            }
-            else
-            {
-                return "시간 초과!";
             }
         }
         string res = str[Random.Range(0, str.Count)];

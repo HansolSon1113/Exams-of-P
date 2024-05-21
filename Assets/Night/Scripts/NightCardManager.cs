@@ -88,17 +88,6 @@ public class NightCardManager : MonoBehaviour
         }
     }
 
-    public void Night2Day_Circle()
-    {
-        ChangeScene.SetActive(true);
-        Audio.Inst.playSceneChange();
-        MaskObject.transform.DOScale(new Vector3(0, 0, 1), 1.5f).SetEase(Ease.OutQuart).OnComplete(() =>
-        {
-            ChangeScene.SetActive(false);
-            nightEndPanel.SetActive(true);
-        });
-    }
-
     private void Update()
     {
         if (NightCardManager.Inst.isLeftScrollEnabled)
