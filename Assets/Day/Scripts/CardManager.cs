@@ -117,6 +117,7 @@ public class CardManager : MonoBehaviour
             } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]));
             passCount++;
         }
+        // 버스트 관련 수정 예정
         if (usedTime <= 24f - CostManager.startTime)
         {
             usedTime += itemSO.items[randIndex].time;
@@ -131,6 +132,7 @@ public class CardManager : MonoBehaviour
                 burstPanel.SetActive(true);
                 unUsed(card);
                 CostManager.drawedCardCount--;
+                SceneManager.LoadScene("Night");
             }
 
             SetOriginOrder();
