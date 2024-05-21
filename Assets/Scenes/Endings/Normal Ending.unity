@@ -1325,7 +1325,7 @@ GameObject:
   - component: {fileID: 1796035611}
   - component: {fileID: 1796035610}
   m_Layer: 0
-  m_Name: NormalEndingCut
+  m_Name: EndingCut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

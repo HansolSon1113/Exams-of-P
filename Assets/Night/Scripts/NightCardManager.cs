@@ -41,15 +41,27 @@ public class NightCardManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         Audio.Inst.playNightBackground();
-        if (CostManager.dayCount >= 7)
+        if (CostManager.dayCount >= 7 && CostManager.MP > 0)
         {
             Audio.Inst.playSceneChange();
-            overPanel.DOFade(1f, 1.5f).OnComplete(() =>
+            if (CostManager.drawedWork >= 4)
             {
-                Time.timeScale = 0f;
-                SceneManager.LoadScene("Normal Ending");
-            });
+                overPanel.DOFade(1f, 1.5f).OnComplete(() =>
+                {
+                    Time.timeScale = 0f;
+                    SceneManager.LoadScene("Normal Ending");
+                });
+            }
+            else
+            {
+                overPanel.DOFade(1f, 1.5f).OnComplete(() =>
+                {
+                    Time.timeScale = 0f;
+                    SceneManager.LoadScene("Fire Ending");
+                });
+            }
         }
+
         for (int i = 0; i < 3; i++)
         {
             selectedCards.Add(null);
@@ -60,12 +72,14 @@ public class NightCardManager : MonoBehaviour
         }
     }
 
-    public void showCards(int type, bool imediate){
+    public void showCards(int type, bool imediate)
+    {
         isLeftScrollEnabled = false;
         clearCards();
         AddCard(type, imediate);
         currentType = type;
-        if(cards[cards.Count-1].originPRS.pos.x > 8){
+        if (cards[cards.Count - 1].originPRS.pos.x > 8)
+        {
             isRightScrollEnabled = true;
         }
         else
@@ -87,7 +101,8 @@ public class NightCardManager : MonoBehaviour
 
     private void Update()
     {
-        if(NightCardManager.Inst.isLeftScrollEnabled){
+        if (NightCardManager.Inst.isLeftScrollEnabled)
+        {
             leftScroller.SetActive(true);
         }
         else
@@ -95,7 +110,8 @@ public class NightCardManager : MonoBehaviour
             leftScroller.SetActive(false);
         }
 
-        if(NightCardManager.Inst.isRightScrollEnabled){
+        if (NightCardManager.Inst.isRightScrollEnabled)
+        {
             rightScroller.SetActive(true);
         }
         else
@@ -122,15 +138,18 @@ public class NightCardManager : MonoBehaviour
             }
             hidCard(targetCard.originPRS, targetCard);
         }
-        if(cards.Count > 6){
-            if(cards[cards.Count-1].originPRS.pos.x <= 8){
+        if (cards.Count > 6)
+        {
+            if (cards[cards.Count - 1].originPRS.pos.x <= 8)
+            {
                 isRightScrollEnabled = false;
             }
             else
             {
                 isRightScrollEnabled = true;
             }
-            if(cards[0].originPRS.pos.x >= -8){
+            if (cards[0].originPRS.pos.x >= -8)
+            {
                 isLeftScrollEnabled = false;
             }
             else
@@ -138,14 +157,16 @@ public class NightCardManager : MonoBehaviour
                 isLeftScrollEnabled = true;
             }
         }
-        else{
+        else
+        {
             isLeftScrollEnabled = false;
             isRightScrollEnabled = false;
         }
     }
 
     //selectedCards 제외하고 삭제
-    public void clearCards(){
+    public void clearCards()
+    {
         foreach (var card in cards)
         {
             if (!selectedCards.Contains(card))
@@ -221,9 +242,12 @@ public class NightCardManager : MonoBehaviour
     }
 
     //빈칸 추가
-    private void addBlank(){
-        for(int i = 0;i < itemSO.items.Length; i++){
-            if(itemSO.items[i].type == 4) {
+    private void addBlank()
+    {
+        for (int i = 0; i < itemSO.items.Length; i++)
+        {
+            if (itemSO.items[i].type == 4)
+            {
                 var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
                 var card = cardObject.GetComponent<Card>();
                 card.Setup(itemSO.items[i]);
@@ -236,9 +260,9 @@ public class NightCardManager : MonoBehaviour
     //사용된 카드
     public void isUsed(Card card)
     {
-        for(int i = 0; i < itemSO.items.Length; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
-            if(card.item.name == itemSO.items[i].name)
+            if (card.item.name == itemSO.items[i].name)
             {
                 itemSO.items[i].used = true;
             }
@@ -247,9 +271,9 @@ public class NightCardManager : MonoBehaviour
 
     public void unUsed(Card card)
     {
-        for(int i = 0; i < itemSO.items.Length; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
-            if(card.item.name == itemSO.items[i].name)
+            if (card.item.name == itemSO.items[i].name)
             {
                 itemSO.items[i].used = false;
             }
@@ -259,9 +283,9 @@ public class NightCardManager : MonoBehaviour
     //카드 추가(itemSO에 직접 접근)
     public void AddCard(int type, bool imediate)
     {
-        for(int i = 0; i < itemSO.items.Length; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
-            if(itemSO.items[i].type == type && itemSO.items[i].used == false)
+            if (itemSO.items[i].type == type && itemSO.items[i].used == false)
             {
                 if (cardManager != null && cardManager.position != null)
                 {
@@ -271,12 +295,13 @@ public class NightCardManager : MonoBehaviour
                     cards.Add(card);
                 }
             }
-            else if(itemSO.items[i].type == type && itemSO.items[i].used == true)
+            else if (itemSO.items[i].type == type && itemSO.items[i].used == true)
             {
                 addBlank();
             }
         }
-        while(cards.Count%6 != 0){
+        while (cards.Count % 6 != 0)
+        {
             addBlank();
         }
         SetOriginOrder();
@@ -287,7 +312,7 @@ public class NightCardManager : MonoBehaviour
     public void SetOriginOrder()
     {
         int count = cards.Count;
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
             var targetCard = cards[i];
             targetCard?.GetComponent<Order>().SetOriginOrder(i);
@@ -297,13 +322,13 @@ public class NightCardManager : MonoBehaviour
     //카드 정렬
     public void CardAlignment(bool imediate)
     {
-        for(int i = 0; i < cards.Count; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
             var targetCard = cards[i];
             Vector3 alignment;
             alignment = new Vector3(-6.3f + i * 2.45f, 1, 0);
             targetCard.originPRS = new PRS(alignment, Utils.QI, Vector3.one * 0.7f);
-            if(imediate)
+            if (imediate)
             {
                 targetCard.transform.position = targetCard.originPRS.pos;
                 targetCard.transform.localScale = targetCard.originPRS.scale;
@@ -314,18 +339,21 @@ public class NightCardManager : MonoBehaviour
             }
             hidCard(targetCard.originPRS, targetCard);
         }
-        if(scrollCount != 0)
+        if (scrollCount != 0)
         {
             ScrollCards(scrollCount * -14.7f, true);
         }
-    }    
+    }
 
     //화면 밖 카드 숨기기
-    private void hidCard(PRS originPRS, Card targetCard){
-        if(targetCard.originPRS.pos.x >= 8 || targetCard.originPRS.pos.x <= -8){
+    private void hidCard(PRS originPRS, Card targetCard)
+    {
+        if (targetCard.originPRS.pos.x >= 8 || targetCard.originPRS.pos.x <= -8)
+        {
             targetCard.gameObject.SetActive(false);
-            }
-        else{
+        }
+        else
+        {
             targetCard.gameObject.SetActive(true);
         }
     }

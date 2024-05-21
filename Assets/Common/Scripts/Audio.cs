@@ -90,7 +90,7 @@ public class Audio : MonoBehaviour
         audioSource.Play();
     }
 
-    public void playFiredEnding()
+    public void playFireEnding()
     {
         audioSource.clip = FiredEnding;
         audioSource.Play();
