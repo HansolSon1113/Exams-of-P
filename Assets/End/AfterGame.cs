@@ -5,22 +5,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class AfterGame : MonoBehaviour
 {
     [SerializeField] ItemSO itemSO;
     [SerializeField] GameObject BlackSquare;
     [SerializeField] GameObject MaskObject;
+    GameObject TitleButton;
+    GameObject RestartButton;
 
     private void Start() {
         BlackSquare.SetActive(false);
         MaskObject.SetActive(false);
+        TitleButton = GameObject.Find("Title Button");
+        RestartButton = GameObject.Find("Restart Button");
         MaskObject.transform.localScale = new Vector3(30,30,0);
+
     }
 
     private void OnMouseDown() {
         if (gameObject.name == "Title Button") {
-            MaskObject.transform.position = new Vector3(7.62f, -2.5f, 0);
+            MaskObject.transform.position = TitleButton.transform.position;
             MaskObject.SetActive(true);
             BlackSquare.SetActive(true);
             MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
@@ -29,7 +35,7 @@ public class AfterGame : MonoBehaviour
             });
         }
         if (gameObject.name == "Restart Button") {
-            MaskObject.transform.position = new Vector3(7.62f, -3.8f, 0);
+            MaskObject.transform.position = RestartButton.transform.position;
             MaskObject.SetActive(true);
             BlackSquare.SetActive(true);
             MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
