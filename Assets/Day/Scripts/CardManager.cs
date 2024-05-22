@@ -25,7 +25,9 @@ public class CardManager : MonoBehaviour
     public GameObject timeCharacter2;
     private int passCount = 0;
     private int cardCount = 0;
+    private int drawedCount = 0;
     public float usedTime;
+    private List<Item> drawList = new List<Item>();
 
     void Start()
     {
@@ -38,6 +40,29 @@ public class CardManager : MonoBehaviour
             burstPanel.SetActive(false);
             Day2NightCircle();
             return;
+        }
+
+        while (drawList.Count < 7)
+        {
+            int randIndex;
+            do
+            {
+                randIndex = Random.Range(0, itemSO.items.Length - 1);
+            } while (itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4);
+            if (itemSO.items[randIndex].pass == true)
+            {
+                passCount++;
+            }
+            if ((drawList.Count == 4 && passCount < 1 || drawList.Count == 5 && passCount < 2 || drawList.Count == 6 && passCount < 3))
+            {
+                do
+                {
+                    randIndex = Random.Range(0, itemSO.items.Length - 1);
+                } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]));
+                passCount++;
+            }
+            drawList.Add(itemSO.items[randIndex]);
+            isUsed(itemSO.items[randIndex]);
         }
     }
 
@@ -85,11 +110,11 @@ public class CardManager : MonoBehaviour
         cards.Clear();
     }
 
-    public void isUsed(Card card)
+    public void isUsed(Item card)
     {
         for (int i = 0; i < itemSO.items.Length; i++)
         {
-            if (card.item.name == itemSO.items[i].name)
+            if (card.name == itemSO.items[i].name)
             {
                 itemSO.items[i].used = true;
             }
@@ -110,38 +135,20 @@ public class CardManager : MonoBehaviour
 
     void AddCard()
     {
-        int randIndex;
-        do
-        {
-            randIndex = Random.Range(0, itemSO.items.Length - 1);
-        } while (itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4);
-        if (itemSO.items[randIndex].pass == true)
-        {
-            passCount++;
-        }
         cardCount++;
-
-        if ((cardCount == 5 && passCount < 1 || cardCount == 6 && passCount < 2 || cardCount == 7 && passCount < 3))
-        {
-            do
-            {
-                randIndex = Random.Range(0, itemSO.items.Length - 1);
-            } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]));
-            passCount++;
-        }
+        drawedCount++;
         // 버스트 관련 수정 예정
         if (usedTime <= 24f - CostManager.startTime)
         {
-            usedTime += itemSO.items[randIndex].time;
+            usedTime += drawList[drawedCount].time;
             var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
             var card = cardObject.GetComponent<Card>();
-            card.Setup(itemSO.items[randIndex]);
+            card.Setup(drawList[drawedCount]);
             cards.Add(card);
-            isUsed(card);
             SetOriginOrder();
             CardAlignment();
-            if (CostManager.MP - itemSO.items[randIndex].cost * itemSO.items[randIndex].time <= 100)
-                CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
+            if (CostManager.MP - drawList[drawedCount].cost * drawList[drawedCount].time <= 100)
+                CostManager.MP -= drawList[drawedCount].cost * drawList[drawedCount].time;
             else
                 CostManager.MP = 100;
             if (CostManager.MP <= 0)
@@ -175,7 +182,7 @@ public class CardManager : MonoBehaviour
                 burstPanel.transform.DOMove(new Vector3(0, 0, 0), 2f).SetEase(Ease.OutBounce).OnComplete(() =>
                 {
                     CostManager.drawedCardCount--;
-                    switch (itemSO.items[randIndex].type)
+                    switch (drawList[drawedCount].type)
                     {
                         case 0:
                             CostManager.drawedMajor--;
@@ -196,7 +203,7 @@ public class CardManager : MonoBehaviour
                 });
             }
         }
-        switch (itemSO.items[randIndex].type)
+        switch (drawList[drawedCount].type)
         {
             case 0:
                 CostManager.drawedMajor++;
