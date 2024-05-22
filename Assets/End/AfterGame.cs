@@ -1,20 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class AfterGame : MonoBehaviour
 {
     [SerializeField] ItemSO itemSO;
+    [SerializeField] GameObject BlackSquare;
+    [SerializeField] GameObject MaskObject;
+
+    private void Start() {
+        BlackSquare.SetActive(false);
+        MaskObject.SetActive(false);
+        MaskObject.transform.localScale = new Vector3(30,30,0);
+    }
 
     private void OnMouseDown() {
         if (gameObject.name == "Title Button") {
-            SceneManager.LoadScene("Lobby");
-            // 애니메이션 추가
+            MaskObject.transform.position = new Vector3(7.62f, -2.5f, 0);
+            MaskObject.SetActive(true);
+            BlackSquare.SetActive(true);
+            MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
+            {
+                SceneManager.LoadScene("Lobby");
+            });
         }
         if (gameObject.name == "Restart Button") {
-            // 애니메이션 추가
-            gameStart();
+            MaskObject.transform.position = new Vector3(7.62f, -3.8f, 0);
+            MaskObject.SetActive(true);
+            BlackSquare.SetActive(true);
+            MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
+            {
+                gameStart();
+            });
         }
     }
         public void gameStart(){

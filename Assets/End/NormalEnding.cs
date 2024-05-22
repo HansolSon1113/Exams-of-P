@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class NormalEnding : MonoBehaviour
 {
@@ -17,8 +18,12 @@ public class NormalEnding : MonoBehaviour
     [SerializeField] SpriteRenderer overPanel;
     [SerializeField] SpriteRenderer normalCutScene;
     [SerializeField] SpriteRenderer burnoutCutScene;
+    [SerializeField] GameObject TitleButton;
+    [SerializeField] GameObject RestartButton;
     void Start()
     {
+        TitleButton.SetActive(false);
+        RestartButton.SetActive(false);
         StartCoroutine(RunEndingSequence());
     }
 
@@ -80,6 +85,10 @@ public class NormalEnding : MonoBehaviour
         Audio.Inst.playEndingStamp();
         libGrade.sprite = sprites[CostManager.drawedLib];
         libGrade.DOColor(new Color(1, 1, 1, 1), 0f);
+        yield return StartCoroutine(Delay(0.5f));
+        TitleButton.SetActive(true);
+        yield return StartCoroutine(Delay(0.5f));
+        RestartButton.SetActive(true);
         yield break;
     }
 }
