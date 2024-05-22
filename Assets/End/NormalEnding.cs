@@ -55,13 +55,13 @@ public class NormalEnding : MonoBehaviour
         Time.timeScale = 1;
         cutScene.DOFade(1f, 1.5f).OnComplete(() =>
         {
-            cutScene.DOFade(1, 2f).OnComplete(() =>
+            cutScene.DOFade(1, 4f).OnComplete(() =>
             {
                 cutScene.DOFade(0, 1.5f);
                 Audio.Inst.playNormalEnding();
             });
         });
-        yield return StartCoroutine(Delay(5f));
+        yield return StartCoroutine(Delay(7f));
         Audio.Inst.playEndingWrite();
         major.SetActive(true);
         major.GetComponent<TMP_Text>().text = CostManager.drawedMajor.ToString();
