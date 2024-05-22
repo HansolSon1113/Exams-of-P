@@ -17,7 +17,6 @@ public class CardManager : MonoBehaviour
     [SerializeField] Transform rightAlignment;
     [SerializeField] GameObject BlackSqaure;
     [SerializeField] GameObject MaskObject;
-    [SerializeField] GameObject MP;
     [SerializeField] GameObject drawButton;
     public GameObject burstPanel;
     public GameObject burnoutPanel;
@@ -30,7 +29,6 @@ public class CardManager : MonoBehaviour
     {
         usedTime = 0;
         Audio.Inst.playDayBackground();
-        MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1);
         StartCoroutine(chatDelay(2f));
 
         if (CostManager.MP <= 0)
@@ -144,7 +142,6 @@ public class CardManager : MonoBehaviour
                 CostManager.MP -= itemSO.items[randIndex].cost * itemSO.items[randIndex].time;
             else
                 CostManager.MP = 100;
-            MP.transform.localScale = new Vector3(CostManager.MP / 10f, 0.5f, 1f);
             if (CostManager.MP <= 0)
             {
                 clearCards(null);
