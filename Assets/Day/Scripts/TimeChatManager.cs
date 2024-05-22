@@ -43,6 +43,10 @@ public class TimeChatManager : MonoBehaviour
         }
         else
         {
+            if (time >= 24)
+            {
+                time -= 24;
+            }
             if (time <= 11f)
             {
                 str.Add("...시계 숫자도 못 읽는거야?\n흥, " + time + "시라고.");
@@ -58,10 +62,6 @@ public class TimeChatManager : MonoBehaviour
             }
             else if (time >= 18)
             {
-                if(time >= 24)
-                {
-                    time -= 24;
-                }
                 str.Add(time + "시...\n흥, 시간 관리 못하는 사람이랑은 얘기하고 싶지 않은데~");
                 str.Add("내 시계는 정확해.\n" + time + "시야.");
                 str.Add("시간은 금보다 귀해. 넌 이해 못하겠지만.\n" + time + "시라는 걸 알아둬.");
