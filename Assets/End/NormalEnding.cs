@@ -20,7 +20,7 @@ public class NormalEnding : MonoBehaviour
     void Start()
     {
         SpriteRenderer cutScene;
-        if(CostManager.MP <= 0)
+        if (CostManager.MP <= 0)
         {
             cutScene = burnoutCutScene;
             normalCutScene.DOFade(0f, 0f);
@@ -41,16 +41,39 @@ public class NormalEnding : MonoBehaviour
                 Audio.Inst.playNormalEnding();
             });
         });
+        StartCoroutine(delay());
+        Audio.Inst.playEndingWrite();
+        major.setActive(true);
         major.text = CostManager.drawedMajor.ToString();
+        StartCoroutine(delay());
+        Audio.Inst.playEndingWrite();
+        lib.setActive(true);
         lib.text = CostManager.drawedLib.ToString();
+        StartCoroutine(delay());
+        Audio.Inst.playEndingWrite();
+        work.setActive(true);
         work.text = CostManager.drawedWork.ToString();
+        StartCoroutine(delay());
+        Audio.Inst.playEndingWrite();
+        play.setActive(true);
         play.text = CostManager.drawedPlay.ToString();
         setGrade();
     }
 
+    private IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1.5f);
+    }
+
     private void setGrade()
     {
+        delay();
+        Audio.Inst.playEndingStamp();
         majorGrade.sprite = sprites[CostManager.drawedMajor];
+        majorGrade.DOColor(new Color(1, 1, 1, 1), 0f);
+        delay();
+        Audio.Inst.playEndingStamp();
         libGrade.sprite = sprites[CostManager.drawedLib];
+        libGrade.DOColor(new Color(1, 1, 1, 1), 0f);
     }
 }

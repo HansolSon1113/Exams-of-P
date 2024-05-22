@@ -22,6 +22,7 @@ public class Audio : MonoBehaviour
     public AudioClip NormalEndingCut;
     public AudioClip TitleBackground;
     public AudioClip EndingStamp;
+    public AudioClip EndingWrite;
     public float volume = 1f;
 
     void Start()
@@ -117,5 +118,10 @@ public class Audio : MonoBehaviour
     public void playEndingStamp()
     {
         audioSource.PlayOneShot(EndingStamp);
+    }
+
+    public void playEndingWrite()
+    {
+        audioSource.PlayOneShot(EndingWrite);
     }
 }
