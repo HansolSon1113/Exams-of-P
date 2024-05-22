@@ -29,6 +29,7 @@ public class AfterGame : MonoBehaviour
             MaskObject.transform.position = TitleButton.transform.position;
             MaskObject.SetActive(true);
             BlackSquare.SetActive(true);
+            Audio.Inst.playSettings();
             MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
             {
                 SceneManager.LoadScene("Lobby");
@@ -38,6 +39,7 @@ public class AfterGame : MonoBehaviour
             MaskObject.transform.position = RestartButton.transform.position;
             MaskObject.SetActive(true);
             BlackSquare.SetActive(true);
+            Audio.Inst.playSettings();
             MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
             {
                 gameStart();
