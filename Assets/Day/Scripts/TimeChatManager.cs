@@ -51,7 +51,7 @@ public class TimeChatManager : MonoBehaviour
             }
             else if (time >= 12 && time <= 17)
             {
-                str.Add("와~ 꼴이 엉망진창인데?\n벌써 시간이 " + CardManager.Inst.usedTime + "신데...");
+                str.Add("와~ 꼴이 엉망진창인데?\n벌써 시간이 " + time + "신데...");
                 str.Add("야! 시끄러워! 몇 신지 알아?\n" + time + "시라고!");
                 str.Add(time + "시라는 시간을 보고도 웃음이 나오나보네.");
                 str.Add(time + "시.\n이렇게 말해주는 것도 시간낭비야.");
