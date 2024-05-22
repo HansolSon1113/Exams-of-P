@@ -30,20 +30,29 @@ public class NormalEnding : MonoBehaviour
 
     private IEnumerator RunEndingSequence()
     {
+        int audioType = 0;
         SpriteRenderer cutScene;
         if (CostManager.MP <= 0)
         {
             cutScene = burnoutCutScene;
             normalCutScene.DOFade(0f, 0f);
+            audioType = 1;
         }
         else
         {
             cutScene = normalCutScene;
             burnoutCutScene.DOFade(0f, 0f);
         }
-        Time.timeScale = 1f;
         overPanel.DOFade(0f, 1.5f);
-        Audio.Inst.playNormalEndingCut();
+        if(audioType == 1)
+        {
+            Audio.Inst.playBurnOutCut();
+        }
+        else
+        {
+            Audio.Inst.playNormalEndingCut();
+        }
+        Time.timeScale = 1;
         cutScene.DOFade(1f, 1.5f).OnComplete(() =>
         {
             cutScene.DOFade(1, 2f).OnComplete(() =>
