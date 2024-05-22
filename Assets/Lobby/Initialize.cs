@@ -16,12 +16,14 @@ public class Initialize : MonoBehaviour
         DG.Tweening.DOTween.Init();
         Audio.Inst.playTitleBackground();
         BlackSqaure.SetActive(true);
+        StartButton = GameObject.Find("Start Button");
+        StartButton.GetComponent<BoxCollider2D>().enabled = false;
         BlackSqaure.GetComponent<SpriteRenderer>().DOFade(0f,1f).OnComplete(() =>
         {
             BlackSqaure.SetActive(false);
             BlackSqaure.GetComponent<SpriteRenderer>().DOFade(1f, 0.00001f);
+            StartButton.GetComponent<BoxCollider2D>().enabled = true;
         });
-        StartButton = GameObject.Find("Start Button");
     }
 
     void OnMouseDown()
