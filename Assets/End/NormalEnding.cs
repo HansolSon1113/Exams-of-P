@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class NormalEnding : MonoBehaviour
 {
-    public TMP_Text major;
-    public TMP_Text lib;
-    public TMP_Text work;
-    public TMP_Text play;
+    public GameObject major;
+    public GameObject lib;
+    public GameObject work;
+    public GameObject play;
     public Image majorGrade;
     public Image libGrade;
     public List<Sprite> sprites;
@@ -18,6 +18,11 @@ public class NormalEnding : MonoBehaviour
     [SerializeField] SpriteRenderer normalCutScene;
     [SerializeField] SpriteRenderer burnoutCutScene;
     void Start()
+    {
+        StartCoroutine(RunEndingSequence());
+    }
+
+    private IEnumerator RunEndingSequence()
     {
         SpriteRenderer cutScene;
         if (CostManager.MP <= 0)
@@ -41,39 +46,40 @@ public class NormalEnding : MonoBehaviour
                 Audio.Inst.playNormalEnding();
             });
         });
-        StartCoroutine(delay());
+        yield return StartCoroutine(Delay(5f));
         Audio.Inst.playEndingWrite();
-        major.setActive(true);
-        major.text = CostManager.drawedMajor.ToString();
-        StartCoroutine(delay());
+        major.SetActive(true);
+        major.GetComponent<TMP_Text>().text = CostManager.drawedMajor.ToString();
+        yield return StartCoroutine(Delay(1f));
         Audio.Inst.playEndingWrite();
-        lib.setActive(true);
-        lib.text = CostManager.drawedLib.ToString();
-        StartCoroutine(delay());
+        lib.SetActive(true);
+        lib.GetComponent<TMP_Text>().text = CostManager.drawedLib.ToString();
+        yield return StartCoroutine(Delay(1f));
         Audio.Inst.playEndingWrite();
-        work.setActive(true);
-        work.text = CostManager.drawedWork.ToString();
-        StartCoroutine(delay());
+        work.SetActive(true);
+        work.GetComponent<TMP_Text>().text = CostManager.drawedWork.ToString();
+        yield return StartCoroutine(Delay(1f));
         Audio.Inst.playEndingWrite();
-        play.setActive(true);
-        play.text = CostManager.drawedPlay.ToString();
-        setGrade();
+        play.SetActive(true);
+        play.GetComponent<TMP_Text>().text = CostManager.drawedPlay.ToString();
+        StartCoroutine(setGrade());
     }
 
-    private IEnumerator delay()
+    private IEnumerator Delay(float seconds)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(seconds);
     }
 
-    private void setGrade()
+    private IEnumerator setGrade()
     {
-        delay();
+        yield return StartCoroutine(Delay(2f));
         Audio.Inst.playEndingStamp();
         majorGrade.sprite = sprites[CostManager.drawedMajor];
         majorGrade.DOColor(new Color(1, 1, 1, 1), 0f);
-        delay();
+        yield return StartCoroutine(Delay(2f));
         Audio.Inst.playEndingStamp();
         libGrade.sprite = sprites[CostManager.drawedLib];
         libGrade.DOColor(new Color(1, 1, 1, 1), 0f);
+        yield break;
     }
 }
