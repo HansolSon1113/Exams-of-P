@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,7 +15,12 @@ public class Initialize : MonoBehaviour
         Application.targetFrameRate = 60;
         DG.Tweening.DOTween.Init();
         Audio.Inst.playTitleBackground();
-        BlackSqaure.SetActive(false);
+        BlackSqaure.SetActive(true);
+        BlackSqaure.GetComponent<SpriteRenderer>().DOFade(0f,1f).OnComplete(() =>
+        {
+            BlackSqaure.SetActive(false);
+            BlackSqaure.GetComponent<SpriteRenderer>().DOFade(1f, 0.00001f);
+        });
         StartButton = GameObject.Find("Start Button");
     }
 
