@@ -629,6 +629,7 @@ MonoBehaviour:
   NormalEndingCut: {fileID: 8300000, guid: 64883cdf13bbe4f81ae7a07351be619d, type: 3}
   TitleBackground: {fileID: 8300000, guid: 1b842e5d4b7614aaf80a5bf5b1591a9c, type: 3}
   EndingStamp: {fileID: 8300000, guid: 60d9c6d08b8554ce9a30efdd4821f7b6, type: 3}
+  EndingWrite: {fileID: 0}
   volume: 1
 --- !u!1 &409972318
 GameObject:
@@ -992,7 +993,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: caebd51ccc09d42df96b96b6b84cd63a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdc82181b8f014c9897bdb581b4917f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
