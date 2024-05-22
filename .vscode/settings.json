@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Exams-of-P.sln",
+    "dotnet.defaultSolution": "Exams of P.sln",
     "workbench.preferredDarkColorTheme": "Default Dark Modern",
     "window.autoDetectColorScheme": true
 }

@@ -20,6 +20,7 @@ public class NormalEnding : MonoBehaviour
     [SerializeField] SpriteRenderer burnoutCutScene;
     [SerializeField] GameObject TitleButton;
     [SerializeField] GameObject RestartButton;
+    [SerializeField] float speed = 1f;
     void Start()
     {
         TitleButton.SetActive(false);
@@ -55,15 +56,15 @@ public class NormalEnding : MonoBehaviour
         Audio.Inst.playEndingWrite();
         major.SetActive(true);
         major.GetComponent<TMP_Text>().text = CostManager.drawedMajor.ToString();
-        yield return StartCoroutine(Delay(1f));
+        yield return StartCoroutine(Delay(0.6f * speed));
         Audio.Inst.playEndingWrite();
         lib.SetActive(true);
         lib.GetComponent<TMP_Text>().text = CostManager.drawedLib.ToString();
-        yield return StartCoroutine(Delay(1f));
+        yield return StartCoroutine(Delay(0.6f * speed));
         Audio.Inst.playEndingWrite();
         work.SetActive(true);
         work.GetComponent<TMP_Text>().text = CostManager.drawedWork.ToString();
-        yield return StartCoroutine(Delay(1f));
+        yield return StartCoroutine(Delay(0.6f * speed));
         Audio.Inst.playEndingWrite();
         play.SetActive(true);
         play.GetComponent<TMP_Text>().text = CostManager.drawedPlay.ToString();
@@ -77,11 +78,11 @@ public class NormalEnding : MonoBehaviour
 
     private IEnumerator setGrade()
     {
-        yield return StartCoroutine(Delay(2f));
+        yield return StartCoroutine(Delay(1.4f * speed));
         Audio.Inst.playEndingStamp();
         majorGrade.sprite = sprites[CostManager.drawedMajor];
         majorGrade.DOColor(new Color(1, 1, 1, 1), 0f);
-        yield return StartCoroutine(Delay(2f));
+        yield return StartCoroutine(Delay(1.4f * speed));
         Audio.Inst.playEndingStamp();
         libGrade.sprite = sprites[CostManager.drawedLib];
         libGrade.DOColor(new Color(1, 1, 1, 1), 0f);
