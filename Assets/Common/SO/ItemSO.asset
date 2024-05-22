@@ -15,7 +15,7 @@ MonoBehaviour:
   items:
   - name: "\uC57D\uCD08\uD559"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: -571289192, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
     pass: 0
   - name: "\uBCC0\uC2E0\uC220"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: -1330784457, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
     pass: 0
   - name: "\uB9C8\uBC95\uC57D\uC81C\uC870"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: -543706177, guid: bdb93dce0dd5e4f1e8b7ea464dd56337, type: 3}
     percent: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
     pass: 0
   - name: "\uBE44\uD589\uC220"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: -1108886442, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
     pass: 0
   - name: "\uBC29\uC5B4\uC220"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: 349470451, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
@@ -55,15 +55,15 @@ MonoBehaviour:
     pass: 0
   - name: "\uC18C\uD658\uC220"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: 93414328, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
     used: 0
-    pass: 1
+    pass: 0
   - name: "\uB9C8\uBC95\uC0DD\uBB3C\uD559"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: 109187141, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     pass: 0
   - name: "\uC218\uBA74\uD559"
     type: 0
-    cost: 2
+    cost: 3
     time: 4
     sprite: {fileID: -596066148, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
     sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
     used: 0
-    pass: 1
+    pass: 0
   - name: "\uB8EC\uBB38\uC790\uD68C\uD654"
     type: 1
     cost: 2
@@ -244,7 +244,7 @@ MonoBehaviour:
     sprite: {fileID: 506245067, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
-    pass: 1
+    pass: 0
   - name: Play11
     type: 3
     cost: -4
