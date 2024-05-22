@@ -14,25 +14,24 @@ public class Dday : MonoBehaviour
     [SerializeField] Sprite DDay;
 
     void Start(){
-        Sprite D_day_image = this.GetComponent<SpriteRenderer>().sprite;
         print(CostManager.dayCount);
         if (CostManager.dayCount == 1)
-            D_day_image = Day7;
+            this.GetComponent<SpriteRenderer>().sprite = Day7;
         else if (CostManager.dayCount == 2)
-            D_day_image = Day6;
+            this.GetComponent<SpriteRenderer>().sprite = Day6;
         else if (CostManager.dayCount == 3)
-            D_day_image = Day5;
+            this.GetComponent<SpriteRenderer>().sprite = Day5;
         else if (CostManager.dayCount == 4)
-            D_day_image = Day4;
+            this.GetComponent<SpriteRenderer>().sprite = Day4;
         else if (CostManager.dayCount == 5)
-            D_day_image = Day3;
+            this.GetComponent<SpriteRenderer>().sprite = Day3;
         else if (CostManager.dayCount == 6)
-            D_day_image = Day2;
+            this.GetComponent<SpriteRenderer>().sprite = Day2;
         else if (CostManager.dayCount == 7)
-            D_day_image = Day1;
+            this.GetComponent<SpriteRenderer>().sprite = Day1;
         else if (CostManager.dayCount == 8)
-            D_day_image = DDay;
+            this.GetComponent<SpriteRenderer>().sprite = DDay;
         else
-            D_day_image = DDay;
+            this.GetComponent<SpriteRenderer>().sprite = DDay;
     }
 }
