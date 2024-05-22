@@ -11,7 +11,6 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject timerObj;
     [SerializeField] GameObject BlackSqaure;
     [SerializeField] GameObject MaskObject;
-    [SerializeField] TMP_Text dayCountText;
     GameObject DayButton;
 
     private void Start()
@@ -34,14 +33,7 @@ public class Timer : MonoBehaviour
         DayButton.GetComponent<BoxCollider2D>().enabled = false;
         MaskObject.transform.DOScale(new Vector3(0,0,0), 1f).OnComplete(() =>
             {
-                dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
-                dayCountText.GetComponent<Renderer>().sortingOrder = 2;
-                // 수정
-                dayCountText.text = CostManager.dayCount.ToString() + " 일차";
-                BlackSqaure.transform.DOScale(new Vector3(18,10,0), 1.5f).OnComplete(() =>
-                {
-                    SceneManager.LoadScene("Day");
-                });
+                SceneManager.LoadScene("Day");
             });
     }
 
@@ -62,14 +54,7 @@ public class Timer : MonoBehaviour
             DayButton.GetComponent<BoxCollider2D>().enabled = false;
             MaskObject.transform.DOScale(new Vector3(0,0,0), 3f).OnComplete(() =>
             {
-                dayCountText.GetComponent<Renderer>().sortingLayerName = "Day2Night";
-                dayCountText.GetComponent<Renderer>().sortingOrder = 2;
-                // 수정
-                dayCountText.text = CostManager.dayCount.ToString() + " 일차";
-                BlackSqaure.transform.DOScale(new Vector3(18,10,0), 3f).OnComplete(() =>
-                {
-                    SceneManager.LoadScene("Day");
-                });
+                SceneManager.LoadScene("Day");
             });
         }
     }
