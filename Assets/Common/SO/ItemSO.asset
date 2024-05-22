@@ -33,7 +33,7 @@ MonoBehaviour:
     type: 0
     cost: 2
     time: 4
-    sprite: {fileID: 1162491307, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
+    sprite: {fileID: -543706177, guid: bdb93dce0dd5e4f1e8b7ea464dd56337, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     sprite: {fileID: 93414328, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
     used: 0
-    pass: 0
+    pass: 1
   - name: "\uB9C8\uBC95\uC0DD\uBB3C\uD559"
     type: 0
     cost: 2
@@ -84,7 +84,7 @@ MonoBehaviour:
     sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
     used: 0
-    pass: 0
+    pass: 1
   - name: "\uB8EC\uBB38\uC790\uD68C\uD654"
     type: 1
     cost: 2
@@ -244,7 +244,7 @@ MonoBehaviour:
     sprite: {fileID: 506245067, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
-    pass: 0
+    pass: 1
   - name: Play11
     type: 3
     cost: -4
