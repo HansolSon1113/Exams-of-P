@@ -21,6 +21,8 @@ public class CardManager : MonoBehaviour
     public GameObject burstPanel;
     public GameObject burnoutPanel;
     public GameObject target;
+    public GameObject timeCharacter1;
+    public GameObject timeCharacter2;
     private int passCount = 0;
     private int cardCount = 0;
     public float usedTime;
@@ -163,6 +165,8 @@ public class CardManager : MonoBehaviour
             }
             if (usedTime > 24f - CostManager.startTime)
             {
+                timeCharacter1.SetActive(false);
+                timeCharacter2.SetActive(true);
                 Audio.Inst.playBurst();
                 clearCards(null);
                 drawButton.SetActive(false);

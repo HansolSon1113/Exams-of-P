@@ -201,7 +201,7 @@ MonoBehaviour:
     type: 1
     cost: 2
     time: 2
-    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    sprite: {fileID: -2031411617, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
     type: 1
     cost: 2
     time: 2
-    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    sprite: {fileID: -1239903077, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
     type: 1
     cost: 2
     time: 2
-    sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
+    sprite: {fileID: -1310891084, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
     type: 3
     cost: -4
     time: 3
-    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    sprite: {fileID: -1108472328, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
     type: 3
     cost: -4
     time: 3
-    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    sprite: {fileID: -221583340, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
     type: 3
     cost: -4
     time: 3
-    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    sprite: {fileID: 506245067, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
     type: 3
     cost: -4
     time: 3
-    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    sprite: {fileID: 332193849, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
     type: 3
     cost: -4
     time: 3
-    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    sprite: {fileID: 2127926104, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
     pass: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
     type: 3
     cost: -4
     time: 3
-    sprite: {fileID: -223958481, guid: f6caa812db9a94ead9dbe1d71bfc162e, type: 3}
+    sprite: {fileID: -1056489587, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
     pass: 0
