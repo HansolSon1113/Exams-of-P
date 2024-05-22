@@ -1528,6 +1528,7 @@ MonoBehaviour:
   burnoutCutScene: {fileID: 1537426627}
   TitleButton: {fileID: 316760509}
   RestartButton: {fileID: 1054094278}
+  speed: 1
 --- !u!4 &1479272382
 Transform:
   m_ObjectHideFlags: 0
@@ -1929,7 +1930,7 @@ MonoBehaviour:
   TitleBackground: {fileID: 8300000, guid: 1b842e5d4b7614aaf80a5bf5b1591a9c, type: 3}
   EndingStamp: {fileID: 8300000, guid: 60d9c6d08b8554ce9a30efdd4821f7b6, type: 3}
   EndingWrite: {fileID: 8300000, guid: 5be3a413a05a34a739a98bffe977d305, type: 3}
-  volume: 1
+  volume: 0.5
 --- !u!82 &1744154958
 AudioSource:
   m_ObjectHideFlags: 0

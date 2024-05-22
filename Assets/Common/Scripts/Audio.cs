@@ -23,7 +23,7 @@ public class Audio : MonoBehaviour
     public AudioClip TitleBackground;
     public AudioClip EndingStamp;
     public AudioClip EndingWrite;
-    public float volume = 1f;
+    public float volume = 0.5f;
 
     void Start()
     {

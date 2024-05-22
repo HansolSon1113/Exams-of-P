@@ -447,8 +447,8 @@ GameObject:
   m_Component:
   - component: {fileID: 409534606}
   - component: {fileID: 409534607}
-  - component: {fileID: 409534609}
   - component: {fileID: 409534608}
+  - component: {fileID: 409534609}
   m_Layer: 0
   m_Name: Card Manager
   m_TagString: Untagged
@@ -629,8 +629,8 @@ MonoBehaviour:
   NormalEndingCut: {fileID: 8300000, guid: 64883cdf13bbe4f81ae7a07351be619d, type: 3}
   TitleBackground: {fileID: 8300000, guid: 1b842e5d4b7614aaf80a5bf5b1591a9c, type: 3}
   EndingStamp: {fileID: 8300000, guid: 60d9c6d08b8554ce9a30efdd4821f7b6, type: 3}
-  EndingWrite: {fileID: 0}
-  volume: 1
+  EndingWrite: {fileID: 8300000, guid: 5be3a413a05a34a739a98bffe977d305, type: 3}
+  volume: 0.5
 --- !u!1 &409972318
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464529161226587083, guid: 07aaee2975e832242a4fbbd7f0b60609, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5592574473998190170, guid: 07aaee2975e832242a4fbbd7f0b60609, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2073,7 +2073,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2169,7 +2169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 1.616, y: 0}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1398527002
