@@ -37,7 +37,6 @@ public class Timer : MonoBehaviour
     private void OnMouseDown()
     {
         CancelInvoke("timer");
-        timerObj.SetActive(false);
         SceneChanger();
     }
 
