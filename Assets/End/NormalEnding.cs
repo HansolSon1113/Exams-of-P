@@ -20,12 +20,23 @@ public class NormalEnding : MonoBehaviour
     [SerializeField] SpriteRenderer burnoutCutScene;
     [SerializeField] GameObject TitleButton;
     [SerializeField] GameObject RestartButton;
+    [SerializeField] GameObject E_background;
+    [SerializeField] GameObject D_character;
+    [SerializeField] GameObject D_effect;
+    [SerializeField] GameObject D_image;
     [SerializeField] float speed = 1f;
     void Start()
     {
         TitleButton.SetActive(false);
         RestartButton.SetActive(false);
         StartCoroutine(RunEndingSequence());
+    }
+
+    private void Images_Fade(float a, float t) {
+        E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
+        D_character.GetComponent<SpriteRenderer>().DOFade(a, t);
+        D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
+        D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
     }
 
     private IEnumerator RunEndingSequence()
@@ -36,6 +47,7 @@ public class NormalEnding : MonoBehaviour
         {
             cutScene = burnoutCutScene;
             normalCutScene.DOFade(0f, 0f);
+            Images_Fade(0f, 0f);
             audioType = 1;
         }
         else
@@ -53,10 +65,13 @@ public class NormalEnding : MonoBehaviour
             Audio.Inst.playNormalEndingCut();
         }
         Time.timeScale = 1;
+        Images_Fade(1f, 1.5f);
         cutScene.DOFade(1f, 1.5f).OnComplete(() =>
         {
+            Images_Fade(1f, 4f);
             cutScene.DOFade(1, 4f).OnComplete(() =>
             {
+                Images_Fade(0f, 1.5f);
                 cutScene.DOFade(0, 1.5f);
                 Audio.Inst.playNormalEnding();
             });
