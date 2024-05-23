@@ -44,7 +44,7 @@ public class NightCardManager : MonoBehaviour
         if (CostManager.dayCount >= 7 || CostManager.MP <= 0)
         {
             Audio.Inst.playSceneChange();
-            if (CostManager.drawedWork >= 4)
+            if (CostManager.drawedWork >= 6)
             {
                 overPanel.DOFade(1f, 1.5f).OnComplete(() =>
                 {

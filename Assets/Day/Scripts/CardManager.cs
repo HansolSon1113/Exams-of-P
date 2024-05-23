@@ -53,28 +53,42 @@ public class CardManager : MonoBehaviour
             }
         }
 
-        while (drawList.Count < 7 && passCount < 3)
+        int maxAttempts = 100;
+        int attempts = 0;
+        while ((drawList.Count < 7 && passCount < 3 && attempts < maxAttempts) && CostManager.drawedCardCount < itemSO.items.Length)
         {
             int randIndex;
             do
             {
-                randIndex = Random.Range(0, itemSO.items.Length - 1);
-            } while (itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4 || drawList.Contains(itemSO.items[randIndex]));
+            randIndex = Random.Range(0, itemSO.items.Length - 1);
+            attempts++;
+            } while ((itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4) || drawList.Contains(itemSO.items[randIndex]));
+
             if (itemSO.items[randIndex].pass == true)
             {
                 passCount++;
             }
-            if (((drawList.Count == 4 && passCount < 1) && pass >= 3) || ((drawList.Count == 5 && passCount < 2) & pass >= 2) || ((drawList.Count == 6 && passCount < 3) && pass >= 1))
+
+            if (((drawList.Count == 4 && passCount < 1) && pass >= 3) || ((drawList.Count == 5 && passCount < 2) && pass >= 2) || ((drawList.Count == 6 && passCount < 3) && pass >= 1))
             {
-                do
-                {
-                    randIndex = Random.Range(0, itemSO.items.Length - 1);
-                } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
-                passCount++;
-                pass--;
+            do
+            {
+                randIndex = Random.Range(0, itemSO.items.Length - 1);
+                attempts++;
+            } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
+
+            passCount++;
+            pass--;
             }
+
             drawList.Add(itemSO.items[randIndex]);
         }
+
+        if (attempts >= maxAttempts)
+        {
+            Debug.LogError("Failed to generate draw list within the maximum number of attempts.");
+        }
+
         for(int i = 0; i < 7; i++)
         {
             Debug.Log(drawList[i].name);
