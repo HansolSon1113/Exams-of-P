@@ -231,7 +231,14 @@ public class CardManager : MonoBehaviour
                     }
                     burstPanel.SetActive(false);
                     unUsed(card);
-                    Day2NightCircle();
+                    END();
+                    BlackSqaure.SetActive(true);
+                    MaskObject.SetActive(true);
+                    Audio.Inst.playSceneChange();
+                    MaskObject.transform.DOScale(new Vector3(0, 0, 1), 1f).SetEase(Ease.OutQuart).OnComplete(() =>
+                    {
+                        SceneManager.LoadScene("Night");
+                    });
                 });
             }
         }
