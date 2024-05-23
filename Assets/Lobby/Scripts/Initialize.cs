@@ -9,6 +9,7 @@ public class Initialize : MonoBehaviour
     [SerializeField] ItemSO itemSO;
     [SerializeField] GameObject BlackSqaure;
     GameObject StartButton;
+    GameObject EndButton;
 
     void Start(){
         QualitySettings.vSyncCount = 1;
@@ -17,12 +18,15 @@ public class Initialize : MonoBehaviour
         Audio.Inst.playTitleBackground();
         BlackSqaure.SetActive(true);
         StartButton = GameObject.Find("Start Button");
+        EndButton = GameObject.Find("End Button");
         StartButton.GetComponent<BoxCollider2D>().enabled = false;
+        EndButton.GetComponent<BoxCollider2D>().enabled = false;
         BlackSqaure.GetComponent<SpriteRenderer>().DOFade(0f,1f).OnComplete(() =>
         {
             BlackSqaure.SetActive(false);
             BlackSqaure.GetComponent<SpriteRenderer>().DOFade(1f, 0.00001f);
             StartButton.GetComponent<BoxCollider2D>().enabled = true;
+            EndButton.GetComponent<BoxCollider2D>().enabled = true;
         });
     }
 
