@@ -32,11 +32,15 @@ public class NormalEnding : MonoBehaviour
         StartCoroutine(RunEndingSequence());
     }
 
-    private void Images_Fade(float a, float t) {
-        E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
-        D_character.GetComponent<SpriteRenderer>().DOFade(a, t);
-        D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
-        D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
+    // 노멀엔딩 type = 0, 번아웃 type = 1;
+    private void N_Images_Fade(float a, float t, int type) {
+        if (type == 0) {
+            E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
+            D_character.GetComponent<SpriteRenderer>().DOFade(a, t);
+            D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
+            D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
+        }
+        
     }
 
     private IEnumerator RunEndingSequence()
@@ -47,7 +51,7 @@ public class NormalEnding : MonoBehaviour
         {
             cutScene = burnoutCutScene;
             normalCutScene.DOFade(0f, 0f);
-            Images_Fade(0f, 0f);
+            N_Images_Fade(0f, 0f, 1);
             audioType = 1;
         }
         else
@@ -65,13 +69,13 @@ public class NormalEnding : MonoBehaviour
             Audio.Inst.playNormalEndingCut();
         }
         Time.timeScale = 1;
-        Images_Fade(1f, 1.5f);
+        N_Images_Fade(1f, 1.5f, audioType);
         cutScene.DOFade(1f, 1.5f).OnComplete(() =>
         {
-            Images_Fade(1f, 4f);
+            N_Images_Fade(1f, 4f, audioType);
             cutScene.DOFade(1, 4f).OnComplete(() =>
             {
-                Images_Fade(0f, 1.5f);
+                N_Images_Fade(0f, 1.5f, audioType);
                 cutScene.DOFade(0, 1.5f);
                 Audio.Inst.playNormalEnding();
             });

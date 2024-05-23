@@ -24,7 +24,7 @@ public class Initialize : MonoBehaviour
         BlackSqaure.GetComponent<SpriteRenderer>().DOFade(0f,1f).OnComplete(() =>
         {
             BlackSqaure.SetActive(false);
-            BlackSqaure.GetComponent<SpriteRenderer>().DOFade(1f, 0.00001f);
+            BlackSqaure.GetComponent<SpriteRenderer>().DOFade(1f, 0);
             StartButton.GetComponent<BoxCollider2D>().enabled = true;
             EndButton.GetComponent<BoxCollider2D>().enabled = true;
         });
