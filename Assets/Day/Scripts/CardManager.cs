@@ -35,7 +35,7 @@ public class CardManager : MonoBehaviour
         CostManager.isTimeChatUsed = false;
         usedTime = 0;
         Audio.Inst.playDayBackground();
-        StartCoroutine(chatDelay(2f));
+        StartCoroutine(chatDelay(1f));
 
         if (CostManager.MP <= 0)
         {
