@@ -14,13 +14,20 @@ public class FireEnding : MonoBehaviour
     [SerializeField] Transform charLocation;
     [SerializeField] GameObject chatSmall;
     [SerializeField] GameObject chatBig;
+    [SerializeField] GameObject dust1;
+    [SerializeField] GameObject dust2;
 
     private IEnumerator Delay(float seconds)
     {
         yield return new WaitForSeconds(seconds);
     }
 
-    void Start()
+    private void Start()
+    {
+        StartCoroutine(anim());
+    }
+
+    private IEnumerator anim()
     {
         TitleButton.SetActive(false);
         RestartButton.SetActive(false);
@@ -29,7 +36,6 @@ public class FireEnding : MonoBehaviour
         overPanel.DOFade(0f, 1.5f).OnComplete(() =>
         {
             // 나중에 나오는 순서, 속도, 위치 수정
-            StartCoroutine(Delay(2f));
             doorClosed.transform.DOScale(new Vector3(0.7f, 0.7f, 1), 0.15f).OnComplete(() =>
             {
                 doorClosed.SetActive(false);
@@ -39,14 +45,15 @@ public class FireEnding : MonoBehaviour
                     doorOpened.transform.DOScale(new Vector3(0.7f, 0.7f, 1f), 0.15f).OnComplete(() =>
                     {
                         doorOpened.transform.DOScale(new Vector3(1f, 1f, 1f), 0.3f);
+                        doorClosed.transform.DOScale(new Vector3(1f, 1f, 1), 0);
                     });
                 });
             });
 
             chatBig.SetActive(true);
-            chatBig.transform.DORotate(new Vector3(0, 0, 30), 0.15f).OnComplete(() =>
+            chatBig.transform.DORotate(new Vector3(0, 0, 10), 0.15f).OnComplete(() =>
             {
-                chatBig.transform.DORotate(new Vector3(0, 0, -30), 0.15f).OnComplete(() =>
+                chatBig.transform.DORotate(new Vector3(0, 0, -10), 0.15f).OnComplete(() =>
                 {
                     chatBig.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
                 });
@@ -55,13 +62,30 @@ public class FireEnding : MonoBehaviour
             character.transform.DOMove(charLocation.position, 1f);
             character.transform.DOScale(charLocation.localScale, 1f).OnComplete(() =>
             {
-                chatSmall.SetActive(true);
-                StartCoroutine(Delay(1f));
-                doorOpened.SetActive(false);
-                doorClosed.SetActive(true);
-                TitleButton.SetActive(true);
-                RestartButton.SetActive(true);
             });
         });
+        yield return new WaitForSeconds(3f);
+        chatSmall.SetActive(true);
+        chatSmall.transform.DORotate(new Vector3(0, 0, 10), 0.15f).OnComplete(() =>
+        {
+            chatSmall.transform.DORotate(new Vector3(0, 0, -10), 0.15f).OnComplete(() =>
+            {
+                chatSmall.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
+            });
+        });
+        yield return new WaitForSeconds(0.9f);
+        doorOpened.SetActive(false);
+        doorClosed.SetActive(true);
+        dust1.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+        dust1.transform.DOScale(new Vector3(0.3f, 0.3f, 0), 1f).SetEase(Ease.OutBounce);
+        dust2.GetComponent<SpriteRenderer>().DOFade(0, 1f);
+        dust2.transform.DOScale(new Vector3(0.3f, 0.3f, 0), 1f).SetEase(Ease.OutBounce);
+        yield return new WaitForSeconds(1f);
+        TitleButton.SetActive(true);
+        TitleButton.transform.DOMoveX(8.2f, 0.5f).SetEase(Ease.OutBack);
+        yield return new WaitForSeconds(0.7f);
+        RestartButton.SetActive(true);
+        RestartButton.transform.DOMoveX(8.2f, 0.5f).SetEase(Ease.OutBack);
+        yield break;
     }
 }

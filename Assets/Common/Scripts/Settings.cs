@@ -13,6 +13,7 @@ public class Setting : MonoBehaviour
     
     private void Start()
     {
+        Time.timeScale = 1f;
         volumeSlider.value = 0.5f;
         volumeSlider.onValueChanged.AddListener((value) => Audio.Inst.audioSource.volume = value);
     }
