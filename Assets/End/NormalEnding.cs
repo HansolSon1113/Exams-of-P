@@ -51,13 +51,14 @@ public class NormalEnding : MonoBehaviour
         {
             cutScene = burnoutCutScene;
             normalCutScene.DOFade(0f, 0f);
-            N_Images_Fade(0f, 0f, 1);
+            N_Images_Fade(0f, 0f, 0);
             audioType = 1;
         }
         else
         {
             cutScene = normalCutScene;
             burnoutCutScene.DOFade(0f, 0f);
+            N_Images_Fade(0f, 0f, 1);
         }
         overPanel.DOFade(0f, 1.5f);
         if(audioType == 1)
@@ -73,6 +74,7 @@ public class NormalEnding : MonoBehaviour
         cutScene.DOFade(1f, 1.5f).OnComplete(() =>
         {
             N_Images_Fade(1f, 4f, audioType);
+            D_effect.transform.DOMove(new Vector3(-0.22f, -1f, 0), 2f);
             cutScene.DOFade(1, 4f).OnComplete(() =>
             {
                 N_Images_Fade(0f, 1.5f, audioType);
