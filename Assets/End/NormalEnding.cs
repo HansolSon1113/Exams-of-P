@@ -42,7 +42,7 @@ public class NormalEnding : MonoBehaviour
             D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
             D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
         }
-        else if (type == 1) {
+        else {
             B_E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
             B_D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
         }
