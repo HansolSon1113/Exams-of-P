@@ -20,9 +20,12 @@ public class FireEnding : MonoBehaviour
         RestartButton.SetActive(false);
         Time.timeScale = 1f;
         Audio.Inst.playFireEnding();
-        overPanel.DOFade(0f, 1.5f);
-        // 나중에 나오는 순서, 속도, 위치 수정
-        TitleButton.SetActive(true);
-        RestartButton.SetActive(true);
+        overPanel.DOFade(0f, 1.5f).OnComplete(() =>
+        {
+            // 나중에 나오는 순서, 속도, 위치 수정
+            StartCoroutine(Delay(2f));
+            TitleButton.SetActive(true);
+            RestartButton.SetActive(true);
+        });
     }
 }

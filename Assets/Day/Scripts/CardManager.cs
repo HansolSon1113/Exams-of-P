@@ -31,6 +31,8 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
+        CostManager.isMPChatUsed = false;
+        CostManager.isTimeChatUsed = false;
         usedTime = 0;
         Audio.Inst.playDayBackground();
         StartCoroutine(chatDelay(2f));
@@ -43,15 +45,15 @@ public class CardManager : MonoBehaviour
         }
 
         int pass = 0;
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < itemSO.items.Length - 1; i++)
         {
-            if(CostManager.passedCards[i] != null)
+            if (itemSO.items[i].pass == true)
             {
                 pass++;
             }
         }
 
-        while (drawList.Count < 7)
+        while (drawList.Count < 7 && passCount < 3)
         {
             int randIndex;
             do
@@ -69,8 +71,13 @@ public class CardManager : MonoBehaviour
                     randIndex = Random.Range(0, itemSO.items.Length - 1);
                 } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
                 passCount++;
+                pass--;
             }
             drawList.Add(itemSO.items[randIndex]);
+        }
+        for(int i = 0; i < 7; i++)
+        {
+            Debug.Log(drawList[i].name);
         }
     }
 
@@ -234,6 +241,10 @@ public class CardManager : MonoBehaviour
     public void END()
     {
         CostManager.passedCards.Clear();
+        for(int i = 0; i < 3; i++)
+        {
+            CostManager.passedCards.Add(null);
+        }
         for (int i = 0; i < itemSO.items.Length - 1; i++)
         {
             itemSO.items[i].pass = false;
@@ -246,8 +257,6 @@ public class CardManager : MonoBehaviour
         {
             CostManager.startTime = 8f;
         }
-        CostManager.isMPChatUsed = false;
-        CostManager.isTimeChatUsed = false;
     }
 
     public void SetOriginOrder()
