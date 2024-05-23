@@ -36,36 +36,37 @@ public class TimeChatManager : MonoBehaviour
     private string setString()
     {
         float time = CardManager.Inst.usedTime + CostManager.startTime;
+        float scriptTime = time;
+        if (scriptTime >= 24)
+        {
+            scriptTime -= 24;
+        }
         List<string> str = new List<string>();
         if (!CostManager.isTimeChatUsed)
         {
-            str.Add("지금은 " + time + "시야.\n내가 아니면 안되겠구만.");
+            str.Add("지금은 " + scriptTime + "시야.\n내가 아니면 안되겠구만.");
         }
         else
         {
-            if (time >= 24)
-            {
-                time -= 24;
-            }
             if (time <= 11f)
             {
-                str.Add("...시계 숫자도 못 읽는거야?\n흥, " + time + "시라고.");
-                str.Add("성실한거야? 멍청한거야?\n" + time + "시라고 말만 해둘게.");
-                str.Add("몇 번을 말해줘야 해? " + time + "시라고!");
+                str.Add("...시계 숫자도 못 읽는거야?\n흥, " + scriptTime + "시라고.");
+                str.Add("성실한거야? 멍청한거야?\n" + scriptTime + "시라고 말만 해둘게.");
+                str.Add("몇 번을 말해줘야 해? " + scriptTime + "시라고!");
             }
             else if (time >= 12 && time <= 17)
             {
-                str.Add("와~ 꼴이 엉망진창인데?\n벌써 시간이 " + time + "신데...");
-                str.Add("야! 시끄러워! 몇 신지 알아?\n" + time + "시라고!");
-                str.Add(time + "시라는 시간을 보고도 웃음이 나오나보네.");
-                str.Add(time + "시.\n이렇게 말해주는 것도 시간낭비야.");
+                str.Add("와~ 꼴이 엉망진창인데?\n벌써 시간이 " + scriptTime + "신데...");
+                str.Add("야! 시끄러워! 몇 신지 알아?\n" + scriptTime + "시라고!");
+                str.Add(scriptTime + "시라는 시간을 보고도 웃음이 나오나보네.");
+                str.Add(scriptTime + "시.\n이렇게 말해주는 것도 시간낭비야.");
             }
             else if (time >= 18)
             {
-                str.Add(time + "시...\n흥, 시간 관리 못하는 사람이랑은 얘기하고 싶지 않은데~");
-                str.Add("내 시계는 정확해.\n" + time + "시야.");
-                str.Add("시간은 금보다 귀해. 넌 이해 못하겠지만.\n" + time + "시라는 걸 알아둬.");
-                str.Add("벌써 " + time + "시네~\n시간낭비는 너의 특기인가봐?");
+                str.Add(scriptTime + "시...\n흥, 시간 관리 못하는 사람이랑은 얘기하고 싶지 않은데~");
+                str.Add("내 시계는 정확해.\n" + scriptTime + "시야.");
+                str.Add("시간은 금보다 귀해. 넌 이해 못하겠지만.\n" + scriptTime + "시라는 걸 알아둬.");
+                str.Add("벌써 " + scriptTime + "시네~\n시간낭비는 너의 특기인가봐?");
             }
         }
         string res = str[Random.Range(0, str.Count)];
