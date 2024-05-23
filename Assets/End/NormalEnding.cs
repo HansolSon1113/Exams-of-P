@@ -24,6 +24,8 @@ public class NormalEnding : MonoBehaviour
     [SerializeField] GameObject D_character;
     [SerializeField] GameObject D_effect;
     [SerializeField] GameObject D_image;
+    [SerializeField] GameObject B_E_background;
+    [SerializeField] GameObject B_D_image;
     [SerializeField] float speed = 1f;
     void Start()
     {
@@ -39,6 +41,10 @@ public class NormalEnding : MonoBehaviour
             D_character.GetComponent<SpriteRenderer>().DOFade(a, t);
             D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
             D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
+        }
+        else if (type == 1) {
+            B_E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
+            B_D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
         }
         
     }
