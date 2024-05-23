@@ -122,10 +122,12 @@ public class NormalEnding : MonoBehaviour
         Audio.Inst.playEndingStamp();
         libGrade.sprite = sprites[CostManager.drawedLib];
         libGrade.DOColor(new Color(1, 1, 1, 1), 0f);
-        yield return StartCoroutine(Delay(0.5f));
+        yield return new WaitForSeconds(1f);
         TitleButton.SetActive(true);
-        yield return StartCoroutine(Delay(0.5f));
+        TitleButton.transform.DOMoveX(8.2f, 0.5f).SetEase(Ease.OutBack);
+        yield return new WaitForSeconds(0.7f);
         RestartButton.SetActive(true);
+        RestartButton.transform.DOMoveX(8.2f, 0.5f).SetEase(Ease.OutBack);
         yield break;
     }
 }

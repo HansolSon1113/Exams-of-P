@@ -390,7 +390,7 @@ Transform:
   m_GameObject: {fileID: 316760509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.62, y: -2.5, z: 0}
+  m_LocalPosition: {x: 11.19, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -447,7 +447,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.53, y: 1.1}
+    oldSize: {x: 4.19, y: 1.1}
     newSize: {x: 2.53, y: 1.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1183,7 +1183,7 @@ Transform:
   m_GameObject: {fileID: 1054094278}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.62, y: -3.8, z: 0}
+  m_LocalPosition: {x: 11.19, y: -3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1240,7 +1240,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 1.1}
+    oldSize: {x: 4.17, y: 1.07}
     newSize: {x: 2.56, y: 1.1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2274,6 +2274,8 @@ MonoBehaviour:
   TitleBackground: {fileID: 8300000, guid: 1b842e5d4b7614aaf80a5bf5b1591a9c, type: 3}
   EndingStamp: {fileID: 8300000, guid: 60d9c6d08b8554ce9a30efdd4821f7b6, type: 3}
   EndingWrite: {fileID: 8300000, guid: 5be3a413a05a34a739a98bffe977d305, type: 3}
+  FireDoorOpen: {fileID: 0}
+  FireDoorClose: {fileID: 0}
 --- !u!82 &1744154958
 AudioSource:
   m_ObjectHideFlags: 0
