@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 75edc54b961fc4464a08a8519dcd94f9
+guid: fb8a68d4127254eac91e6291e250cb5b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,11 +43,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 1
+  spritePivot: {x: 0, y: 1}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -134,106 +134,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: FireEnding2_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 287
-        width: 708
-        height: 433
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f89ff2da8f7a4a0eaaea6aa859a7de0
-      internalID: -1225832242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireEnding2_1
-      rect:
-        serializedVersion: 2
-        x: 845
-        y: 10
-        width: 416
-        height: 508
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 749b891a14864490db50b514efc8fd8c
-      internalID: -1247803619
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireEnding2_2
-      rect:
-        serializedVersion: 2
-        x: 655
-        y: 70
-        width: 194
-        height: 199
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6803482fcc0754e9d85ddffecba956fe
-      internalID: -1162134633
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireEnding2_3
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 15
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41f241130bcdd404caeb804d2c28e322
-      internalID: 29580074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      FireEnding2_0: -1225832242
-      FireEnding2_1: -1247803619
-      FireEnding2_2: -1162134633
-      FireEnding2_3: 29580074
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

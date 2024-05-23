@@ -23,6 +23,8 @@ public class Audio : MonoBehaviour
     public AudioClip TitleBackground;
     public AudioClip EndingStamp;
     public AudioClip EndingWrite;
+    public AudioClip FireDoorOpen;
+    public AudioClip FireDoorClose;
 
     void Start()
     {

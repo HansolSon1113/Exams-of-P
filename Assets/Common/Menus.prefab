@@ -814,6 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SettingPanel: {fileID: 1003534690277070503}
+  volumeSlider: {fileID: 6803388134240926787}
 --- !u!1 &7033864347748002430
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,12 +30,23 @@ public class FireEnding : MonoBehaviour
         {
             // 나중에 나오는 순서, 속도, 위치 수정
             StartCoroutine(Delay(2f));
-            doorClosed.SetActive(false);
-            doorOpened.SetActive(true);
-            chatBig.SetActive(true);
-            chatBig.transform.DORotate(new Vector3(0, 0, 20), 0.15f).OnComplete(() =>
+            doorClosed.transform.DOScale(new Vector3(0.7f, 0.7f, 1), 0.15f).OnComplete(() =>
             {
-                chatBig.transform.DORotate(new Vector3(0, 0, -20), 0.15f).OnComplete(() =>
+                doorClosed.SetActive(false);
+                doorOpened.SetActive(true);
+                doorOpened.transform.DOScale(new Vector3(1.3f, 1.3f, 1), 0.15f).OnComplete(() =>
+                {
+                    doorOpened.transform.DOScale(new Vector3(0.7f, 0.7f, 1f), 0.15f).OnComplete(() =>
+                    {
+                        doorOpened.transform.DOScale(new Vector3(1f, 1f, 1f), 0.3f);
+                    });
+                });
+            });
+
+            chatBig.SetActive(true);
+            chatBig.transform.DORotate(new Vector3(0, 0, 30), 0.15f).OnComplete(() =>
+            {
+                chatBig.transform.DORotate(new Vector3(0, 0, -30), 0.15f).OnComplete(() =>
                 {
                     chatBig.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
                 });
