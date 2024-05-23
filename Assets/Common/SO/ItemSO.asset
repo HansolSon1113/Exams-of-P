@@ -184,7 +184,7 @@ MonoBehaviour:
   - name: Play7
     type: 3
     cost: -4
-    time: 3
+    time: 1
     sprite: {fileID: -1108472328, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   - name: Play8
     type: 3
     cost: -4
-    time: 3
+    time: 2
     sprite: {fileID: -221583340, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 1
@@ -248,7 +248,7 @@ MonoBehaviour:
   - name: Play11
     type: 3
     cost: -4
-    time: 3
+    time: 4
     sprite: {fileID: 2127926104, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   - name: Play12
     type: 3
     cost: -4
-    time: 3
+    time: 5
     sprite: {fileID: -1056489587, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
     used: 1
