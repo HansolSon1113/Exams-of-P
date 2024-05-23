@@ -24,6 +24,8 @@ public class NormalEnding : MonoBehaviour
     [SerializeField] GameObject D_character;
     [SerializeField] GameObject D_effect;
     [SerializeField] GameObject D_image;
+    [SerializeField] GameObject B_E_background;
+    [SerializeField] GameObject B_D_image;
     [SerializeField] float speed = 1f;
     void Start()
     {
@@ -32,11 +34,19 @@ public class NormalEnding : MonoBehaviour
         StartCoroutine(RunEndingSequence());
     }
 
-    private void Images_Fade(float a, float t) {
-        E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
-        D_character.GetComponent<SpriteRenderer>().DOFade(a, t);
-        D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
-        D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
+    // 노멀엔딩 type = 0, 번아웃 type = 1;
+    private void N_Images_Fade(float a, float t, int type) {
+        if (type == 0) {
+            E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
+            D_character.GetComponent<SpriteRenderer>().DOFade(a, t);
+            D_effect.GetComponent<SpriteRenderer>().DOFade(a, t);
+            D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
+        }
+        else if (type == 1) {
+            B_E_background.GetComponent<SpriteRenderer>().DOFade(a, t);
+            B_D_image.GetComponent<SpriteRenderer>().DOFade(a, t);
+        }
+        
     }
 
     private IEnumerator RunEndingSequence()
@@ -47,13 +57,14 @@ public class NormalEnding : MonoBehaviour
         {
             cutScene = burnoutCutScene;
             normalCutScene.DOFade(0f, 0f);
-            Images_Fade(0f, 0f);
+            N_Images_Fade(0f, 0f, 0);
             audioType = 1;
         }
         else
         {
             cutScene = normalCutScene;
             burnoutCutScene.DOFade(0f, 0f);
+            N_Images_Fade(0f, 0f, 1);
         }
         overPanel.DOFade(0f, 1.5f);
         if(audioType == 1)
@@ -65,13 +76,14 @@ public class NormalEnding : MonoBehaviour
             Audio.Inst.playNormalEndingCut();
         }
         Time.timeScale = 1;
-        Images_Fade(1f, 1.5f);
+        N_Images_Fade(1f, 1.5f, audioType);
         cutScene.DOFade(1f, 1.5f).OnComplete(() =>
         {
-            Images_Fade(1f, 4f);
+            N_Images_Fade(1f, 4f, audioType);
+            D_effect.transform.DOMove(new Vector3(-0.22f, -1f, 0), 2f);
             cutScene.DOFade(1, 4f).OnComplete(() =>
             {
-                Images_Fade(0f, 1.5f);
+                N_Images_Fade(0f, 1.5f, audioType);
                 cutScene.DOFade(0, 1.5f);
                 Audio.Inst.playNormalEnding();
             });
