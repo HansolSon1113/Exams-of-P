@@ -481,6 +481,8 @@ MonoBehaviour:
   TitleBackground: {fileID: 8300000, guid: 1b842e5d4b7614aaf80a5bf5b1591a9c, type: 3}
   EndingStamp: {fileID: 8300000, guid: 60d9c6d08b8554ce9a30efdd4821f7b6, type: 3}
   EndingWrite: {fileID: 8300000, guid: 5be3a413a05a34a739a98bffe977d305, type: 3}
+  FireDoorOpen: {fileID: 0}
+  FireDoorClose: {fileID: 0}
 --- !u!1 &585188984
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +748,7 @@ GameObject:
   - component: {fileID: 678872569}
   - component: {fileID: 678872573}
   - component: {fileID: 678872574}
+  - component: {fileID: 678872575}
   m_Layer: 0
   m_Name: Start Button
   m_TagString: Untagged
@@ -903,6 +906,83 @@ MonoBehaviour:
   StartButton_highlight: {fileID: -782894829, guid: a7328ec4180db4c8b93dfd12c3cac919, type: 3}
   EndButton_normal: {fileID: 2129279566, guid: a7328ec4180db4c8b93dfd12c3cac919, type: 3}
   EndButton_highlight: {fileID: 1923606506, guid: a7328ec4180db4c8b93dfd12c3cac919, type: 3}
+--- !u!114 &678872575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678872568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &702084161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1219,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1002411712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1002411713}
+  - component: {fileID: 1002411714}
+  m_Layer: 0
+  m_Name: Cursor Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1002411713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002411712}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1002411714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002411712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 0}
+  highlightHand: {fileID: 0}
+  clickedHand: {fileID: 0}
 --- !u!1 &1098841818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1401,7 @@ GameObject:
   - component: {fileID: 1348631607}
   - component: {fileID: 1348631606}
   - component: {fileID: 1348631608}
+  - component: {fileID: 1348631609}
   m_Layer: 0
   m_Name: End Button
   m_TagString: Untagged
@@ -1423,6 +1551,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbaa701cb5a764a2f9244141837985f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1348631609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348631603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1002411714}
+          m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+          m_MethodName: OnMouseUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1475852897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,3 +1985,4 @@ SceneRoots:
   - {fileID: 2008533489}
   - {fileID: 324863781}
   - {fileID: 1169015477}
+  - {fileID: 1002411713}
