@@ -27,7 +27,7 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "Day")
+        if(SceneManager.GetActiveScene().name == "Day")
         {
             GameObject.Find("Clock").GetComponent<Clock>().moveClock(this.item.time);
         }
@@ -40,13 +40,12 @@ public class Card : MonoBehaviour
         this.transform.DOScale(prs.scale, time);
     }
 
-    private int nightCardClear()
-    {
-        for (int i = 0; i < 3; i++)
+    private int nightCardClear(){
+        for(int i = 0; i < 3; i++)
         {
-            if (NightCardManager.Inst.selectedCards[i] != null)
+            if(NightCardManager.Inst.selectedCards[i] != null)
             {
-                if (NightCardManager.Inst.selectedCards[i].item.name == this.item.name)
+                if(NightCardManager.Inst.selectedCards[i].item.name == this.item.name)
                 {
                     NightCardManager.Inst.selectedCards[i] = null;
                     return i;
@@ -58,73 +57,66 @@ public class Card : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (SceneManager.GetActiveScene().name == "Night")
+        if(SceneManager.GetActiveScene().name == "Night")
         {
-            int thisIndex = nightCardClear();
             Audio.Inst.playCardOnTarget();
             isDragging = false;
             isSelected = true;
             targetLocation = other.transform.position;
+            int thisIndex = nightCardClear();
             if (other.gameObject.name == "Target 1")
             {
-                if (NightCardManager.Inst.selectedCards[0] != null)
+                if(NightCardManager.Inst.selectedCards[0] != null)
                 {
-                    if (thisIndex != -1)
+                    if(thisIndex != -1)
                     {
                         NightCardManager.Inst.selectedCards[0].transform.DOMove(this.originLocation, 0.1f);
                         NightCardManager.Inst.selectedCards[thisIndex] = NightCardManager.Inst.selectedCards[0];
-                        NightCardManager.Inst.isUsed(this);
-                        NightCardManager.Inst.selectedCards[0] = this;
                     }
                     else
                     {
-                        // NightCardManager.Inst.unUsed(NightCardManager.Inst.selectedCards[0]);
-                        // Destroy(NightCardManager.Inst.selectedCards[0].gameObject);
-                        isSelected = false;
-                        isDragging = false;
+
+                        NightCardManager.Inst.unUsed(NightCardManager.Inst.selectedCards[0]);
+                        Destroy(NightCardManager.Inst.selectedCards[0].gameObject);
                     }
                 }
+                NightCardManager.Inst.selectedCards[0] = this;
             }
             else if (other.gameObject.name == "Target 2")
             {
                 if (NightCardManager.Inst.selectedCards[1] != null)
                 {
-                    if (thisIndex != -1)
+                   if(thisIndex != -1)
                     {
                         NightCardManager.Inst.selectedCards[1].transform.DOMove(this.originLocation, 0.1f);
                         NightCardManager.Inst.selectedCards[thisIndex] = NightCardManager.Inst.selectedCards[1];
-                        NightCardManager.Inst.isUsed(this);
-                        NightCardManager.Inst.selectedCards[1] = this;
                     }
                     else
                     {
-                        // NightCardManager.Inst.unUsed(NightCardManager.Inst.selectedCards[1]);
-                        // Destroy(NightCardManager.Inst.selectedCards[1].gameObject);
-                        isSelected = false;
-                        isDragging = false;
+                        NightCardManager.Inst.unUsed(NightCardManager.Inst.selectedCards[1]);
+                        Destroy(NightCardManager.Inst.selectedCards[1].gameObject);
                     }
                 }
+                NightCardManager.Inst.selectedCards[1] = this;
             }
             else if (other.gameObject.name == "Target 3")
             {
                 if (NightCardManager.Inst.selectedCards[2] != null)
                 {
-                    if (thisIndex != -1)
+                    if(thisIndex != -1)
                     {
                         NightCardManager.Inst.selectedCards[2].transform.DOMove(this.originLocation, 0.1f);
                         NightCardManager.Inst.selectedCards[thisIndex] = NightCardManager.Inst.selectedCards[2];
-                        NightCardManager.Inst.isUsed(this);
-                        NightCardManager.Inst.selectedCards[2] = this;
                     }
                     else
                     {
-                        // NightCardManager.Inst.unUsed(NightCardManager.Inst.selectedCards[2]);
-                        // Destroy(NightCardManager.Inst.selectedCards[2].gameObject);
-                        isSelected = false;
-                        isDragging = false;
+                        NightCardManager.Inst.unUsed(NightCardManager.Inst.selectedCards[2]);
+                        Destroy(NightCardManager.Inst.selectedCards[2].gameObject);
                     }
                 }
+                NightCardManager.Inst.selectedCards[2] = this;
             }
+            NightCardManager.Inst.isUsed(this);
             NightCardManager.Inst.showCards(NightCardManager.Inst.currentType, true);
         }
         this.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -141,12 +133,12 @@ public class Card : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (this.item.type != 4)
+        if(this.item.type != 4)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 objPosition = new Vector2(mousePosition.x, mousePosition.y);
             this.transform.DOMove(objPosition, 0.01f);
-            if (isDragging && isSelected && mousePosition.y >= -1.5f)
+            if(isDragging && isSelected && mousePosition.y >= -1.5f)
             {
                 isSelected = false;
                 isDragging = false;
