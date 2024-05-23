@@ -42,6 +42,15 @@ public class CardManager : MonoBehaviour
             return;
         }
 
+        int pass = 0;
+        for(int i = 0; i < 3; i++)
+        {
+            if(CostManager.passedCards[i] != null)
+            {
+                pass++;
+            }
+        }
+
         while (drawList.Count < 7)
         {
             int randIndex;
@@ -53,7 +62,7 @@ public class CardManager : MonoBehaviour
             {
                 passCount++;
             }
-            if ((drawList.Count == 4 && passCount < 1 || drawList.Count == 5 && passCount < 2 || drawList.Count == 6 && passCount < 3))
+            if (((drawList.Count == 4 && passCount < 1) && pass >= 3) || ((drawList.Count == 5 && passCount < 2) & pass >= 2) || ((drawList.Count == 6 && passCount < 3) && pass >= 1))
             {
                 do
                 {
