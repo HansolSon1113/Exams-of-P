@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 318613540}
   - component: {fileID: 318613541}
   - component: {fileID: 318613542}
+  - component: {fileID: 318613543}
   m_Layer: 0
   m_Name: Work Pack
   m_TagString: Untagged
@@ -280,6 +281,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &318613543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318613537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1001 &321478148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,6 +366,7 @@ GameObject:
   - component: {fileID: 390423382}
   - component: {fileID: 390423383}
   - component: {fileID: 390423384}
+  - component: {fileID: 390423385}
   m_Layer: 0
   m_Name: Liberal Pack
   m_TagString: Untagged
@@ -494,6 +511,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &390423385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390423379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &409534605
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +606,7 @@ GameObject:
   - component: {fileID: 409972321}
   - component: {fileID: 409972322}
   - component: {fileID: 409972323}
+  - component: {fileID: 409972324}
   m_Layer: 0
   m_Name: Play Pack
   m_TagString: Untagged
@@ -718,6 +751,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &409972324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409972318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &484170761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5232245971602971345, guid: d392e9e9e11624123bd9f576b75087d8, type: 3}
@@ -1502,6 +1550,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1053104957}
+  - component: {fileID: 1053104960}
   - component: {fileID: 1053104956}
   - component: {fileID: 1053104955}
   - component: {fileID: 1053104958}
@@ -1652,6 +1701,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1053104960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053104954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &1112657874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,6 +2331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1398749650}
+  - component: {fileID: 1398749651}
   - component: {fileID: 1398749649}
   m_Layer: 0
   m_Name: Card Packs
@@ -2315,6 +2380,21 @@ Transform:
   - {fileID: 409972319}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1398749651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398749648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &1550522067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,6 +2666,7 @@ GameObject:
   - component: {fileID: 1685488926}
   - component: {fileID: 1685488927}
   - component: {fileID: 1685488928}
+  - component: {fileID: 1685488929}
   m_Layer: 0
   m_Name: Major Pack
   m_TagString: Untagged
@@ -2730,6 +2811,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1685488929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685488923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &1698544842
 GameObject:
   m_ObjectHideFlags: 0

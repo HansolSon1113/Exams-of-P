@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 4157908687287441585}
   - component: {fileID: 3285883441537007447}
   - component: {fileID: 6011456568611021141}
+  - component: {fileID: 6522114350099556304}
   m_Layer: 0
   m_Name: Home
   m_TagString: Untagged
@@ -327,6 +328,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4244f51e099764b1e89f918cdb68c7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6522114350099556304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495114966219530608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &1739449085822010339
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +745,7 @@ GameObject:
   - component: {fileID: 8294850200500303061}
   - component: {fileID: 5553359122093913826}
   - component: {fileID: 5530597627162113836}
+  - component: {fileID: 7647992482000690970}
   m_Layer: 0
   m_Name: Settings
   m_TagString: Untagged
@@ -865,6 +882,21 @@ MonoBehaviour:
   SettingPanel: {fileID: 1003534690277070503}
   backgroundVolumeSlider: {fileID: 6803388134240926787}
   popVolumeSlider: {fileID: 5100160422491753612}
+--- !u!114 &7647992482000690970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840031147529365048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &5270797944678069632
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1310,7 @@ GameObject:
   - component: {fileID: 581977506053601737}
   - component: {fileID: 3133302570744662776}
   - component: {fileID: 6611612309921368349}
+  - component: {fileID: 2335259006691219012}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -1570,5 +1603,23 @@ PrefabInstance:
     - {fileID: 126298811276609252, guid: 359ddf4a114534c22964a25d4c100998, type: 3}
     - {fileID: 4941326383508521969, guid: 359ddf4a114534c22964a25d4c100998, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8689384932304677374, guid: 359ddf4a114534c22964a25d4c100998, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2335259006691219012}
   m_SourcePrefab: {fileID: 100100000, guid: 359ddf4a114534c22964a25d4c100998, type: 3}
+--- !u!114 &2335259006691219012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8421187957024124623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
