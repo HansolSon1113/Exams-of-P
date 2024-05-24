@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4798487885446299895}
   - component: {fileID: 3006316590124430417}
   - component: {fileID: 6092881938813465366}
+  - component: {fileID: 5865848230484466717}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1778399357
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 237868925, guid: 213a516cbc5364bf285e515c53c81988, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,3 +188,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.4683688, y: 4.9679966}
   m_EdgeRadius: 0
+--- !u!114 &5865848230484466717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094357769642855669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}

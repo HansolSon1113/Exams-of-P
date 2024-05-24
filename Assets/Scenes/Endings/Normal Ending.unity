@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 316760513}
   - component: {fileID: 316760512}
   - component: {fileID: 316760514}
+  - component: {fileID: 316760515}
   m_Layer: 0
   m_Name: Title Button
   m_TagString: Untagged
@@ -525,6 +526,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &316760515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316760509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &465119679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,6 +1188,7 @@ GameObject:
   - component: {fileID: 1054094282}
   - component: {fileID: 1054094281}
   - component: {fileID: 1054094283}
+  - component: {fileID: 1054094284}
   m_Layer: 0
   m_Name: Restart Button
   m_TagString: Untagged
@@ -1318,6 +1335,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc5305edd02640718d16b47e0edaa85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1054094284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054094278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &1089344257
 GameObject:
   m_ObjectHideFlags: 0

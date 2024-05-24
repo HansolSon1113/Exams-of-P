@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 217742453}
   - component: {fileID: 217742454}
   - component: {fileID: 217742455}
+  - component: {fileID: 217742456}
   m_Layer: 0
   m_Name: Title Button
   m_TagString: Untagged
@@ -441,6 +442,21 @@ MonoBehaviour:
   itemSO: {fileID: 11400000, guid: 30b040633701949379ed35fff460eb25, type: 2}
   BlackSquare: {fileID: 783500166}
   MaskObject: {fileID: 1734588537}
+--- !u!114 &217742456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217742450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &428475853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,6 +1746,7 @@ GameObject:
   - component: {fileID: 1890617101}
   - component: {fileID: 1890617102}
   - component: {fileID: 1890617103}
+  - component: {fileID: 1890617104}
   m_Layer: 0
   m_Name: Restart Button
   m_TagString: Untagged
@@ -1876,6 +1893,21 @@ MonoBehaviour:
   itemSO: {fileID: 11400000, guid: 30b040633701949379ed35fff460eb25, type: 2}
   BlackSquare: {fileID: 783500166}
   MaskObject: {fileID: 1734588537}
+--- !u!114 &1890617104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890617098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b207d74e5e5c4785b58d3f4f7dc6c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalHand: {fileID: 2800000, guid: a0dc57643ac4e440583dfbb8e511cd06, type: 3}
+  highlightHand: {fileID: 2800000, guid: d23c9c989f64f4fe0ac1151a740b0a65, type: 3}
+  clickedHand: {fileID: 2800000, guid: e4f820c050a134649a98b1237f226974, type: 3}
 --- !u!1 &1901461891
 GameObject:
   m_ObjectHideFlags: 0

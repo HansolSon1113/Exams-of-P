@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] private Texture2D normalHand;
-    [SerializeField] private Texture2D highlightHand;
-    [SerializeField] private Texture2D clickedHand;
+    [SerializeField] Texture2D normalHand;
+    [SerializeField] Texture2D highlightHand;
+    [SerializeField] Texture2D clickedHand;
 
     private Texture2D defaultCursor;
 
@@ -23,7 +23,7 @@ public class CursorManager : MonoBehaviour
 
     public void OnMouseExit()
     {
-        Cursor.SetCursor(normalHand, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     }
 
     public void OnMouseDown()

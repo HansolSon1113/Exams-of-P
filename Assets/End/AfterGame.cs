@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.Tilemaps;
 
 public class AfterGame : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class AfterGame : MonoBehaviour
 
     private void OnMouseDown() {
         if (gameObject.name == "Title Button") {
-            MaskObject.transform.position = TitleButton.transform.position;
+            MaskObject.transform.DOMove(new Vector3(TitleButton.transform.position.x - 1f, TitleButton.transform.position.y,0), 0);
             MaskObject.SetActive(true);
             BlackSquare.SetActive(true);
             Audio.Inst.playSettings();
@@ -36,7 +37,7 @@ public class AfterGame : MonoBehaviour
             });
         }
         if (gameObject.name == "Restart Button") {
-            MaskObject.transform.position = RestartButton.transform.position;
+            MaskObject.transform.DOMove(new Vector3(RestartButton.transform.position.x - 1f, RestartButton.transform.position.y,0), 0);
             MaskObject.SetActive(true);
             BlackSquare.SetActive(true);
             Audio.Inst.playSettings();
