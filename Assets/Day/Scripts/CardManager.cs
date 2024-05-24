@@ -51,24 +51,24 @@ public class CardManager : MonoBehaviour
         }
 
         int pass = 0;
-        for(int i = 0; i < itemSO.items.Length - 1; i++)
+        for (int i = 0; i < itemSO.items.Length - 1; i++)
         {
             if (itemSO.items[i].pass == true)
             {
                 pass++;
             }
         }
+        if(pass > 3)
+            Debug.Log("Pass Count Error, passcount: " + passCount);
 
         int maxAttempts = 100;
-        int attempts = 0;
-        while ((drawList.Count < 7 && passCount < 3 && attempts < maxAttempts) && CostManager.drawedCardCount < itemSO.items.Length)
+        while ((drawList.Count < 7 && passCount < 3) && CostManager.drawedCardCount < itemSO.items.Length - 1)
         {
             int randIndex;
             do
             {
-            randIndex = Random.Range(0, itemSO.items.Length - 1);
-            attempts++;
-            } while ((itemSO.items[randIndex].used == true && itemSO.items[randIndex].type != 4) || drawList.Contains(itemSO.items[randIndex]));
+                randIndex = Random.Range(0, itemSO.items.Length - 1);
+            } while ((itemSO.items[randIndex].used == true || itemSO.items[randIndex].type == 4) || drawList.Contains(itemSO.items[randIndex]));
 
             if (itemSO.items[randIndex].pass == true)
             {
@@ -77,25 +77,19 @@ public class CardManager : MonoBehaviour
 
             if (((drawList.Count == 4 && passCount < 1) && pass >= 3) || ((drawList.Count == 5 && passCount < 2) && pass >= 2) || ((drawList.Count == 6 && passCount < 3) && pass >= 1))
             {
-            do
-            {
-                randIndex = Random.Range(0, itemSO.items.Length - 1);
-                attempts++;
-            } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
+                do
+                {
+                    randIndex = Random.Range(0, itemSO.items.Length - 1);
+                } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
 
-            passCount++;
-            pass--;
+                passCount++;
+                pass--;
             }
 
             drawList.Add(itemSO.items[randIndex]);
         }
 
-        if (attempts >= maxAttempts)
-        {
-            Debug.LogError("Failed to generate draw list within the maximum number of attempts.");
-        }
-
-        for(int i = 0; i < 7; i++)
+        for (int i = 0; i < drawList.Count; i++)
         {
             Debug.Log(drawList[i].name);
         }
@@ -173,7 +167,7 @@ public class CardManager : MonoBehaviour
         cardCount++;
         int randIndex = Random.Range(0, drawList.Count);
         // 버스트 관련 수정 예정
-        if (usedTime <= 24f - CostManager.startTime)
+        if (usedTime <= 24f - CostManager.startTime && drawList.Count > 0)
         {
             usedTime += drawList[randIndex].time;
             var cardObject = Instantiate(cardPrefab, cardManager.position, Utils.QI);
@@ -182,7 +176,7 @@ public class CardManager : MonoBehaviour
             cards.Add(card);
             SetOriginOrder();
             CardAlignment();
-            isUsed(card);
+            itemSO.items[randIndex].used = true;
             if (CostManager.MP - drawList[randIndex].cost * drawList[randIndex].time <= 100)
                 CostManager.MP -= drawList[randIndex].cost * drawList[randIndex].time;
             else
@@ -234,6 +228,7 @@ public class CardManager : MonoBehaviour
                 burstPanel.transform.DOMove(new Vector3(0, 0, 0), 2f).SetEase(Ease.OutBounce).OnComplete(() =>
                 {
                     CostManager.drawedCardCount--;
+                    Debug.Log("Uncount: " + drawList[randIndex].name);
                     switch (drawList[randIndex].type)
                     {
                         case 0:
@@ -249,18 +244,29 @@ public class CardManager : MonoBehaviour
                             CostManager.drawedPlay--;
                             break;
                     }
+                    Debug.Log("draw reset");
                     burstPanel.SetActive(false);
-                    unUsed(card);
-                    END();
-                    BlackSqaure.SetActive(true);
-                    MaskObject.SetActive(true);
-                    Audio.Inst.playSceneChange();
-                    MaskObject.transform.DOScale(new Vector3(0, 0, 1), 1f).SetEase(Ease.OutQuart).OnComplete(() =>
-                    {
-                        SceneManager.LoadScene("Night");
-                    });
+                    Debug.Log("burstPanel hide");
+                    itemSO.items[randIndex].used = false;
+                    Debug.Log("card unused");
+                    Day2NightCircle();
                 });
             }
+        }
+        switch (drawList[randIndex].type)
+        {
+            case 0:
+                Debug.Log("Type: Major, Used: " + CostManager.drawedMajor);
+                break;
+            case 1:
+                Debug.Log("Type: Liberal, Used: " + CostManager.drawedLib);
+                break;
+            case 2:
+                Debug.Log("Type: Work, Used: " + CostManager.drawedWork + " Name: " + drawList[randIndex].name);
+                break;
+            case 3:
+                Debug.Log("Type: Play, Used: " + CostManager.drawedPlay);
+                break;
         }
         drawList.RemoveAt(randIndex);
     }
@@ -268,7 +274,7 @@ public class CardManager : MonoBehaviour
     public void END()
     {
         CostManager.passedCards.Clear();
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             CostManager.passedCards.Add(null);
         }
