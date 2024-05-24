@@ -9,13 +9,16 @@ public class Setting : MonoBehaviour
     void Awake() => Inst = this;
 
     public GameObject SettingPanel;
-    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider backgroundVolumeSlider;
+    [SerializeField] Slider popVolumeSlider;
     
     private void Start()
     {
         Time.timeScale = 1f;
-        volumeSlider.value = 0.5f;
-        volumeSlider.onValueChanged.AddListener((value) => Audio.Inst.audioSource.volume = value);
+        backgroundVolumeSlider.value = Audio.Inst.backgroundVolume;
+        backgroundVolumeSlider.onValueChanged.AddListener((value) => Audio.Inst.backgroundVolume = value);
+        popVolumeSlider.value = Audio.Inst.popVolume;
+        popVolumeSlider.onValueChanged.AddListener((value) => Audio.Inst.popVolume = value);
     }
 
     private void OnMouseDown()
