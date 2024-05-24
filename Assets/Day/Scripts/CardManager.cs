@@ -147,7 +147,7 @@ public class CardManager : MonoBehaviour
 
         for (int i = 0; i < availableItems.Count; i++)
         {
-            if (availableItems[i].pass == true && passCount < 3)
+            if (availableItems[i].pass == true && availableItems[i].used == false)
             {
                 drawList.Add(availableItems[i]);
                 availableItems.RemoveAt(i);
@@ -158,8 +158,11 @@ public class CardManager : MonoBehaviour
         while (drawList.Count < 7 && availableItems.Count > 0)
         {
             int randIndex = Random.Range(0, availableItems.Count);
-            drawList.Add(availableItems[randIndex]);
-            availableItems.RemoveAt(randIndex);
+            if(availableItems[randIndex].used == false)
+            {
+                drawList.Add(availableItems[randIndex]);
+                availableItems.RemoveAt(randIndex);
+            }
         }
 
         for (int i = 0; i < drawList.Count; i++)
@@ -179,7 +182,7 @@ public class CardManager : MonoBehaviour
 
     public void draw()
     {
-        if (cardCount < 7 && usedTime <= 24f - CostManager.startTime && CostManager.drawedCardCount <= itemSO.items.Length)
+        if (cardCount < 7 && usedTime <= 24f - CostManager.startTime && CostManager.drawedCardCount < itemSO.items.Length)
         {
             AddCard();
         }
@@ -219,6 +222,7 @@ public class CardManager : MonoBehaviour
         {
             if (card.item.name == itemSO.items[i].name)
             {
+                Debug.Log("Used Card: " + card.item.name);
                 itemSO.items[i].used = true;
             }
         }
@@ -230,6 +234,7 @@ public class CardManager : MonoBehaviour
         {
             if (card.item.name == itemSO.items[i].name)
             {
+                Debug.Log("Unused Card: " + card.item.name);
                 itemSO.items[i].used = false;
             }
         }
@@ -238,6 +243,7 @@ public class CardManager : MonoBehaviour
 
     void AddCard()
     {
+        Debug.Log("AddCard Called");
         cardCount++;
         int randIndex = Random.Range(0, drawList.Count);
         // 버스트 관련 수정 예정
@@ -250,6 +256,7 @@ public class CardManager : MonoBehaviour
             cards.Add(card);
             SetOriginOrder();
             CardAlignment();
+            Debug.Log("isUsed Called");
             isUsed(card);
             if (CostManager.MP - drawList[randIndex].cost * drawList[randIndex].time <= 100)
                 CostManager.MP -= drawList[randIndex].cost * drawList[randIndex].time;

@@ -19,7 +19,7 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: -571289192, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uBCC0\uC2E0\uC220"
     type: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: -1330784457, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uB9C8\uBC95\uC57D\uC81C\uC870"
     type: 0
@@ -43,7 +43,7 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: -1108886442, guid: bb1792c3b652e9f429299f58d4236aae, type: 3}
     percent: 0
-    used: 1
+    used: 0
     pass: 0
   - name: "\uBC29\uC5B4\uC220"
     type: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     time: 2
     sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: Liberal5
     type: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
     time: 2
     sprite: {fileID: 1039467990, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uB8EC\uBB38\uC790\uD68C\uD654"
     type: 1
@@ -115,7 +115,7 @@ MonoBehaviour:
     time: 2
     sprite: {fileID: -1239903077, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: Liberal7
     type: 1
@@ -123,7 +123,7 @@ MonoBehaviour:
     time: 2
     sprite: {fileID: -1239903077, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uB9C8\uBC95\uC0AC\uC758\uC5ED\uC0AC"
     type: 1
@@ -132,14 +132,14 @@ MonoBehaviour:
     sprite: {fileID: -1310891084, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
     used: 0
-    pass: 0
+    pass: 1
   - name: Liberal8
     type: 1
     cost: 3
     time: 2
     sprite: {fileID: -1310891084, guid: 30158f8e17533954a9b91c0057e29acb, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uC57D\uCD08\uBB3C\uC8FC\uAE30"
     type: 2
@@ -147,15 +147,15 @@ MonoBehaviour:
     time: 6
     sprite: {fileID: -245994074, guid: 1d9e5dbf6971f704d99f9619aebdd5f0, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
-  - name: WWork5
+  - name: "\uC57D\uCD08\uBB3C\uC8FC\uAE302"
     type: 2
     cost: 2
     time: 6
     sprite: {fileID: -245994074, guid: 1d9e5dbf6971f704d99f9619aebdd5f0, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uBB3C\uC57D\uC81C\uC870"
     type: 2
@@ -164,14 +164,14 @@ MonoBehaviour:
     sprite: {fileID: 407762449, guid: 1d9e5dbf6971f704d99f9619aebdd5f0, type: 3}
     percent: 0
     used: 0
-    pass: 0
-  - name: WWork6
+    pass: 1
+  - name: "\uBB3C\uC57D\uC81C\uC8702"
     type: 2
     cost: 2
     time: 6
     sprite: {fileID: 407762449, guid: 1d9e5dbf6971f704d99f9619aebdd5f0, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uC7AC\uB8CC\uCC44\uC9D1"
     type: 2
@@ -187,7 +187,7 @@ MonoBehaviour:
     time: 6
     sprite: {fileID: -398471667, guid: 1d9e5dbf6971f704d99f9619aebdd5f0, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uACE0\uC591\uC774\uC640\uB180\uAE30"
     type: 3
@@ -195,7 +195,7 @@ MonoBehaviour:
     time: 1
     sprite: {fileID: -1108472328, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: Play7
     type: 3
@@ -203,7 +203,7 @@ MonoBehaviour:
     time: 1
     sprite: {fileID: -1108472328, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uC0AC\uACFC\uC640 \uB180\uAE30"
     type: 3
@@ -219,7 +219,7 @@ MonoBehaviour:
     time: 2
     sprite: {fileID: -221583340, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uC885\uC774\uD559\uC811\uAE30"
     type: 3
@@ -243,7 +243,7 @@ MonoBehaviour:
     time: 3
     sprite: {fileID: 332193849, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: Play10
     type: 3
@@ -259,15 +259,15 @@ MonoBehaviour:
     time: 4
     sprite: {fileID: 2127926104, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
-    pass: 0
+    used: 1
+    pass: 1
   - name: Play11
     type: 3
     cost: -4
     time: 4
     sprite: {fileID: 2127926104, guid: df5c7ab82f0425a4eb11eec8486f5475, type: 3}
     percent: 0
-    used: 0
+    used: 1
     pass: 0
   - name: "\uAC8C\uC784\uC990\uAE30\uAE30"
     type: 3

@@ -66,7 +66,7 @@ public class NightCardManager : MonoBehaviour
         {
             selectedCards.Add(null);
         }
-        for (int i = 0; i < itemSO.items.Length - 1; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
             originUsed.Add(itemSO.items[i].used);
         }
@@ -224,7 +224,7 @@ public class NightCardManager : MonoBehaviour
         Destroy(target2);
         Destroy(target3);
 
-        for (int i = 0; i < itemSO.items.Length - 1; i++)
+        for (int i = 0; i < itemSO.items.Length; i++)
         {
             itemSO.items[i].used = originUsed[i];
         }
