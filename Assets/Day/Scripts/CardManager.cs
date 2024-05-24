@@ -35,6 +35,67 @@ public class CardManager : MonoBehaviour
         anim.SetInteger("MP", CostManager.MP);
     }
 
+    // void Start()
+    // {
+    //     CostManager.isMPChatUsed = false;
+    //     CostManager.isTimeChatUsed = false;
+    //     usedTime = 0;
+    //     Audio.Inst.playDayBackground();
+    //     StartCoroutine(chatDelay(1f));
+
+    //     if (CostManager.MP <= 0)
+    //     {
+    //         burstPanel.SetActive(false);
+    //         Day2NightCircle();
+    //         return;
+    //     }
+
+    //     int pass = 0;
+    //     for (int i = 0; i < itemSO.items.Length - 1; i++)
+    //     {
+    //         if (itemSO.items[i].pass == true)
+    //         {
+    //             pass++;
+    //         }
+    //     }
+    //     if (pass > 3)
+    //         Debug.Log("Pass Count Error, passcount: " + passCount);
+
+    //     while ((drawList.Count <= 7 && passCount < 3) && CostManager.drawedCardCount < itemSO.items.Length - 1)
+    //     {
+    //         int randIndex;
+    //         do
+    //         {
+    //             randIndex = Random.Range(0, itemSO.items.Length - 1);
+    //         } while ((itemSO.items[randIndex].used == true || itemSO.items[randIndex].type == 4) || drawList.Contains(itemSO.items[randIndex]));
+
+    //         if (itemSO.items[randIndex].pass == true)
+    //         {
+    //             passCount++;
+    //         }
+
+    //         if (((drawList.Count == 4 && passCount < 1) && pass >= 3) || ((drawList.Count == 5 && passCount < 2) && pass >= 2) || ((drawList.Count == 6 && passCount < 3) && pass >= 1))
+    //         {
+    //             do
+    //             {
+    //                 randIndex = Random.Range(0, itemSO.items.Length - 1);
+    //                 if(CostManager.passedCards.Contains(itemSO.items[randIndex]) && !drawList.Contains(itemSO.items[randIndex]))
+    //                     break;
+    //             } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
+
+    //             passCount++;
+    //             pass--;
+    //         }
+
+    //         drawList.Add(itemSO.items[randIndex]);
+    //     }
+
+    //     for (int i = 0; i < drawList.Count; i++)
+    //     {
+    //         Debug.Log(drawList[i].name);
+    //     }
+    // }
+
     void Start()
     {
         CostManager.isMPChatUsed = false;
@@ -50,44 +111,24 @@ public class CardManager : MonoBehaviour
             return;
         }
 
-        int pass = 0;
-        for (int i = 0; i < itemSO.items.Length - 1; i++)
+        List<Item> availableItems = new List<Item>(itemSO.items);
+        int passCount = 0;
+        
+        for (int i = 0; i < availableItems.Count; i++)
         {
-            if (itemSO.items[i].pass == true)
+            if (availableItems[i].pass == true && passCount < 3)
             {
-                pass++;
+                drawList.Add(availableItems[i]);
+                availableItems.RemoveAt(i);
+                i--;
+                passCount++;
             }
         }
-        if (pass > 3)
-            Debug.Log("Pass Count Error, passcount: " + passCount);
-
-        while ((drawList.Count <= 7 && passCount < 3) && CostManager.drawedCardCount < itemSO.items.Length - 1)
+        while (drawList.Count < 7 && availableItems.Count > 0)
         {
-            int randIndex;
-            do
-            {
-                randIndex = Random.Range(0, itemSO.items.Length - 1);
-            } while ((itemSO.items[randIndex].used == true || itemSO.items[randIndex].type == 4) || drawList.Contains(itemSO.items[randIndex]));
-
-            if (itemSO.items[randIndex].pass == true)
-            {
-                passCount++;
-            }
-
-            if (((drawList.Count == 4 && passCount < 1) && pass >= 3) || ((drawList.Count == 5 && passCount < 2) && pass >= 2) || ((drawList.Count == 6 && passCount < 3) && pass >= 1))
-            {
-                do
-                {
-                    randIndex = Random.Range(0, itemSO.items.Length - 1);
-                    if(CostManager.passedCards.Contains(itemSO.items[randIndex]) && !drawList.Contains(itemSO.items[randIndex]))
-                        break;
-                } while (!CostManager.passedCards.Contains(itemSO.items[randIndex]) || drawList.Contains(itemSO.items[randIndex]));
-
-                passCount++;
-                pass--;
-            }
-
-            drawList.Add(itemSO.items[randIndex]);
+            int randIndex = Random.Range(0, availableItems.Count);
+            drawList.Add(availableItems[randIndex]);
+            availableItems.RemoveAt(randIndex);
         }
 
         for (int i = 0; i < drawList.Count; i++)
@@ -95,6 +136,7 @@ public class CardManager : MonoBehaviour
             Debug.Log(drawList[i].name);
         }
     }
+
 
     private IEnumerator chatDelay(float delay)
     {
