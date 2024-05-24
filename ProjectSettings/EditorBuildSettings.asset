@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Endings/Normal Ending.unity
     guid: 1ca90cf4a2a8f44dd8e94eef9b023eca
+  - enabled: 1
+    path: Assets/Scenes/Credit.unity
+    guid: 92eefdb80e9904800bfa4a4cbd4df702
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d144c604c162445df9ab6647b52da7d1, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: d0e4dd768b91342f8aa3a9144628925f, type: 2}
