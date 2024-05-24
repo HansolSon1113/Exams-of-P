@@ -23,6 +23,8 @@ public class CardManager : MonoBehaviour
     public GameObject target;
     public GameObject timeCharacter1;
     public GameObject timeCharacter2;
+    public GameObject timeCharacter3;
+    public GameObject timeCharacter4;
     private int passCount = 0;
     private int cardCount = 0;
     public bool isLoaded = false;
@@ -33,6 +35,34 @@ public class CardManager : MonoBehaviour
     void Update()
     {
         anim.SetInteger("MP", CostManager.MP);
+        if(24 - CostManager.startTime - usedTime >= 14)
+        {
+            timeCharacter1.SetActive(true);
+            timeCharacter2.SetActive(false);
+            timeCharacter3.SetActive(false);
+            timeCharacter4.SetActive(false);
+        }
+        else if(24 - CostManager.startTime - usedTime <= 13 && 24 - CostManager.startTime - usedTime >= 9)
+        {
+            timeCharacter1.SetActive(false);
+            timeCharacter2.SetActive(true);
+            timeCharacter3.SetActive(false);
+            timeCharacter4.SetActive(false);
+        }
+        else if(24 - CostManager.startTime - usedTime <= 8 && 24 - CostManager.startTime - usedTime >= 4)
+        {
+            timeCharacter1.SetActive(false);
+            timeCharacter2.SetActive(false);
+            timeCharacter3.SetActive(true);
+            timeCharacter4.SetActive(false);
+        }
+        else
+        {
+            timeCharacter1.SetActive(false);
+            timeCharacter2.SetActive(false);
+            timeCharacter3.SetActive(false);
+            timeCharacter4.SetActive(true);
+        }
     }
 
     // void Start()
@@ -262,8 +292,6 @@ public class CardManager : MonoBehaviour
             CostManager.drawedCardCount++;
             if (usedTime > 24f - CostManager.startTime)
             {
-                timeCharacter1.SetActive(false);
-                timeCharacter2.SetActive(true);
                 Audio.Inst.playBurst();
                 clearCards(null);
                 drawButton.SetActive(false);
