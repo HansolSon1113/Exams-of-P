@@ -8,14 +8,14 @@ using UnityEngine.U2D.Animation;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] GameObject timerObj;
     [SerializeField] GameObject BlackSqaure;
     [SerializeField] GameObject MaskObject;
+    private int time = 30;
     GameObject DayButton;
 
     private void Start()
     {
-        InvokeRepeating("timer", 0, 0.0185f);
+        InvokeRepeating("timer", 0, 1);
         DayButton = GameObject.Find("Day Button");
     }
 
@@ -43,9 +43,8 @@ public class Timer : MonoBehaviour
 
     private void timer()
     {
-        timerObj.transform.localScale = timerObj.transform.localScale - new Vector3(0.01f, 0, 0);
-
-        if (timerObj.transform.localScale.x <= 0)
+        time--;
+        if (time<= 0)
         {
             CancelInvoke("timer");
             SceneChanger();

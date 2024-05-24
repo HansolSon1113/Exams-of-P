@@ -16,5 +16,6 @@ public static class CostManager
     public static List<Item> passedCards;
     public static bool isMPChatUsed;
     public static bool isTimeChatUsed;
-    public static float volume = 0.5f;
+    public static float backgroundVolume = 0.5f;
+    public static float popVolume = 0.5f;
 }

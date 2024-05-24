@@ -44,12 +44,14 @@ public class Menu : MonoBehaviour
         {
             Home.SetActive(true);
             Home.transform.position = Settings.transform.position;
-            Home.transform.DOMove(menu.transform.position + new Vector3(1.1f, -0.3f, 0), 0.5f);
-            isMoving = false;
+            Home.transform.DOMove(menu.transform.position + new Vector3(1.1f, -0.3f, 0), 0.5f).OnComplete(() =>
+            {
+                isMoving = false;
+                Settings.GetComponent<CircleCollider2D>().enabled = true;
+                Home.GetComponent<CircleCollider2D>().enabled = true;
+            });
         });
         isShowing = true;
-        Settings.GetComponent<CircleCollider2D>().enabled = true;
-        Home.GetComponent<CircleCollider2D>().enabled = true;
     }
 
     public void HideMenu()

@@ -25,23 +25,23 @@ public class Audio : MonoBehaviour
     public AudioClip EndingWrite;
     public AudioClip FireDoorOpen;
     public AudioClip FireDoorClose;
-    public float backgroundVolume = 0.5f;
-    public float popVolume = 0.5f;
 
     void Start()
     {
         backgroundAudioSource.mute = false;
-        backgroundAudioSource.volume = backgroundVolume;
+        backgroundAudioSource.volume = CostManager.backgroundVolume;
         backgroundAudioSource.loop = true;
         popAudioSource.mute = false;
-        popAudioSource.volume = popVolume;
+        popAudioSource.volume = CostManager.popVolume;
         popAudioSource.loop = false;
     }
 
     void Update()
     {
-        backgroundAudioSource.volume = backgroundVolume;
-        popAudioSource.volume = popVolume;
+        if(backgroundAudioSource.volume != CostManager.backgroundVolume)
+            backgroundAudioSource.volume = CostManager.backgroundVolume;
+        if(popAudioSource.volume != CostManager.popVolume)
+            popAudioSource.volume = CostManager.popVolume;
     }
 
     public void playBurnout()

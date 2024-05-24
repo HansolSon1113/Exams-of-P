@@ -15,10 +15,10 @@ public class Setting : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        backgroundVolumeSlider.value = Audio.Inst.backgroundVolume;
-        backgroundVolumeSlider.onValueChanged.AddListener((value) => Audio.Inst.backgroundVolume = value);
-        popVolumeSlider.value = Audio.Inst.popVolume;
-        popVolumeSlider.onValueChanged.AddListener((value) => Audio.Inst.popVolume = value);
+        backgroundVolumeSlider.value = CostManager.backgroundVolume;
+        backgroundVolumeSlider.onValueChanged.AddListener((value) => CostManager.backgroundVolume = value);
+        popVolumeSlider.value = CostManager.popVolume;
+        popVolumeSlider.onValueChanged.AddListener((value) => CostManager.popVolume = value);
     }
 
     private void OnMouseDown()
