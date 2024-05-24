@@ -149,7 +149,7 @@ MonoBehaviour:
     percent: 0
     used: 0
     pass: 0
-  - name: Work5
+  - name: WWork5
     type: 2
     cost: 2
     time: 6
@@ -165,7 +165,7 @@ MonoBehaviour:
     percent: 0
     used: 0
     pass: 0
-  - name: Work6
+  - name: WWork6
     type: 2
     cost: 2
     time: 6

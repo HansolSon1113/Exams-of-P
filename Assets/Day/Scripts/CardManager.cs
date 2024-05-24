@@ -112,8 +112,9 @@ public class CardManager : MonoBehaviour
         }
 
         List<Item> availableItems = new List<Item>(itemSO.items);
+        availableItems.RemoveAt(itemSO.items.Length - 1);
         int passCount = 0;
-        
+
         for (int i = 0; i < availableItems.Count; i++)
         {
             if (availableItems[i].pass == true && passCount < 3)
@@ -323,6 +324,7 @@ public class CardManager : MonoBehaviour
         Debug.Log("burstPanel hide");
         unUsed(card);
         Debug.Log("card unused");
+        yield return new WaitForSeconds(0.11f);
         Day2NightCircle();
     }
 
