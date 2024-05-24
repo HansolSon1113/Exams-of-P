@@ -27,6 +27,14 @@ public class Buttons : MonoBehaviour
         {
             Audio.Inst.playDraw();
             CardManager.Inst.draw();
+            StartCoroutine(Delay());
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        DrawButton.GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        DrawButton.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
