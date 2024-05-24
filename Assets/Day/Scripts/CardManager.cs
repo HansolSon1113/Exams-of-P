@@ -28,6 +28,12 @@ public class CardManager : MonoBehaviour
     public bool isLoaded = false;
     public float usedTime;
     private List<Item> drawList = new List<Item>();
+    public Animator anim;
+
+    void Update()
+    {
+        anim.SetInteger("MP", CostManager.MP);
+    }
 
     void Start()
     {
@@ -276,7 +282,7 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-            CostManager.startTime = 8f;
+            CostManager.startTime = 9f;
         }
     }
 
