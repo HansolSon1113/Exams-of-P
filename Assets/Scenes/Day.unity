@@ -3106,6 +3106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menus
       objectReference: {fileID: 0}
+    - target: {fileID: 3674433674143716473, guid: b3cd649023184430eb605cf22fa8f0f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5065149592772033271, guid: b3cd649023184430eb605cf22fa8f0f0, type: 3}
       propertyPath: m_Camera
       value: 
@@ -3148,6 +3152,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7724631924380602760, guid: b3cd649023184430eb605cf22fa8f0f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8642024778941232802, guid: b3cd649023184430eb605cf22fa8f0f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760553170876218408, guid: b3cd649023184430eb605cf22fa8f0f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8980244885477351608, guid: b3cd649023184430eb605cf22fa8f0f0, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
